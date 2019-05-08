@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.purchase.PurchaseProductMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.purchase.PurchaseProduct" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="sourseorder" property="sourseorder" jdbcType="VARCHAR" />
+    <result column="orders" property="orders" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="proorders" property="proorders" jdbcType="VARCHAR" />
+    <result column="proname" property="proname" jdbcType="VARCHAR" />
+    <result column="supname" property="supname" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="totalprice" property="totalprice" jdbcType="DOUBLE" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="purchaseid" property="purchaseid" jdbcType="BIGINT" />
+    <result column="forcenum" property="forcenum" jdbcType="INTEGER" />
+    <result column="stockover" property="stockover" jdbcType="INTEGER" />
+    <result column="ontheway" property="ontheway" jdbcType="INTEGER" />
+    <result column="forcedate" property="forcedate" jdbcType="VARCHAR" />
+    <result column="expecteddate" property="expecteddate" jdbcType="VARCHAR" />
+    <result column="depotnum" property="depotnum" jdbcType="VARCHAR" />
+    <result column="depotname" property="depotname" jdbcType="VARCHAR" />
+    <result column="floor" property="floor" jdbcType="VARCHAR" />
+    <!--<association property="purchaseOrders" javaType="com.yc.education.model.purchase.PurchaseOrders"  >-->
+      <!--<id column="id" property="id" jdbcType="BIGINT" />-->
+      <!--<result column="createdate" property="createdate" jdbcType="DATE" />-->
+      <!--<result column="orders" property="orders" jdbcType="VARCHAR" />-->
+      <!--<result column="suppliernum" property="suppliernum" jdbcType="VARCHAR" />-->
+      <!--<result column="supplierdes" property="supplierdes" jdbcType="VARCHAR" />-->
+      <!--<result column="warehouseid" property="warehouseid" jdbcType="VARCHAR" />-->
+      <!--<result column="warehousename" property="warehousename" jdbcType="VARCHAR" />-->
+      <!--<result column="seeorders" property="seeorders" jdbcType="VARCHAR" />-->
+      <!--<result column="comedate" property="comedate" jdbcType="DATE" />-->
+      <!--<result column="ptax" property="ptax" jdbcType="INTEGER" />-->
+      <!--<result column="pcurrency" property="pcurrency" jdbcType="INTEGER" />-->
+      <!--<result column="purpeopletype" property="purpeopletype" jdbcType="INTEGER" />-->
+      <!--<result column="purpeople" property="purpeople" jdbcType="VARCHAR" />-->
+      <!--<result column="createpeople" property="createpeople" jdbcType="VARCHAR" />-->
+      <!--<result column="shpeople" property="shpeople" jdbcType="VARCHAR" />-->
+      <!--<result column="shdate" property="shdate" jdbcType="VARCHAR" />-->
+      <!--<result column="updatepeople" property="updatepeople" jdbcType="VARCHAR" />-->
+      <!--<result column="updatedate" property="updatedate" jdbcType="VARCHAR" />-->
+      <!--<result column="suppliername" property="suppliername" jdbcType="VARCHAR" />-->
+      <!--<result column="supplierconcat" property="supplierconcat" jdbcType="VARCHAR" />-->
+      <!--<result column="supplierphone" property="supplierphone" jdbcType="VARCHAR" />-->
+      <!--<result column="supplierfax" property="supplierfax" jdbcType="VARCHAR" />-->
+      <!--<result column="supplieraddress" property="supplieraddress" jdbcType="VARCHAR" />-->
+      <!--<result column="shstatus" property="shstatus" jdbcType="INTEGER" />-->
+      <!--<result column="orderstatus" property="orderstatus" jdbcType="INTEGER" />-->
+      <!--<result column="isdel" property="isdel" jdbcType="INTEGER" />-->
+    <!--</association>-->
+  </resultMap>
+
+
+  <resultMap id="BaseResultMapTwo" type="com.yc.education.model.purchase.PurchaseProduct" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="sourseorder" property="sourseorder" jdbcType="VARCHAR" />
+    <result column="orders" property="orders" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="proorders" property="proorders" jdbcType="VARCHAR" />
+    <result column="proname" property="proname" jdbcType="VARCHAR" />
+    <result column="supname" property="supname" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="totalprice" property="totalprice" jdbcType="DOUBLE" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="purchaseid" property="purchaseid" jdbcType="BIGINT" />
+    <result column="forcenum" property="forcenum" jdbcType="INTEGER" />
+    <result column="stockover" property="stockover" jdbcType="INTEGER" />
+    <result column="ontheway" property="ontheway" jdbcType="INTEGER" />
+    <result column="forcedate" property="forcedate" jdbcType="VARCHAR" />
+    <result column="expecteddate" property="expecteddate" jdbcType="VARCHAR" />
+    <result column="depotnum" property="depotnum" jdbcType="VARCHAR" />
+    <result column="depotname" property="depotname" jdbcType="VARCHAR" />
+    <result column="floor" property="floor" jdbcType="VARCHAR" />
+    <association property="purchaseOrders" javaType="com.yc.education.model.purchase.PurchaseOrders"  >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="createdate" property="createdate" jdbcType="DATE" />
+    <result column="orders" property="orders" jdbcType="VARCHAR" />
+    <result column="suppliernum" property="suppliernum" jdbcType="VARCHAR" />
+    <result column="supplierdes" property="supplierdes" jdbcType="VARCHAR" />
+    <result column="warehouseid" property="warehouseid" jdbcType="VARCHAR" />
+    <result column="warehousename" property="warehousename" jdbcType="VARCHAR" />
+    <result column="seeorders" property="seeorders" jdbcType="VARCHAR" />
+    <result column="comedate" property="comedate" jdbcType="DATE" />
+    <result column="ptax" property="ptax" jdbcType="INTEGER" />
+    <result column="pcurrency" property="pcurrency" jdbcType="INTEGER" />
+    <result column="purpeopletype" property="purpeopletype" jdbcType="INTEGER" />
+    <result column="purpeople" property="purpeople" jdbcType="VARCHAR" />
+    <result column="createpeople" property="createpeople" jdbcType="VARCHAR" />
+    <result column="shpeople" property="shpeople" jdbcType="VARCHAR" />
+    <result column="shdate" property="shdate" jdbcType="VARCHAR" />
+    <result column="updatepeople" property="updatepeople" jdbcType="VARCHAR" />
+    <result column="updatedate" property="updatedate" jdbcType="VARCHAR" />
+    <result column="suppliername" property="suppliername" jdbcType="VARCHAR" />
+    <result column="supplierconcat" property="supplierconcat" jdbcType="VARCHAR" />
+    <result column="supplierphone" property="supplierphone" jdbcType="VARCHAR" />
+    <result column="supplierfax" property="supplierfax" jdbcType="VARCHAR" />
+    <result column="supplieraddress" property="supplieraddress" jdbcType="VARCHAR" />
+    <result column="shstatus" property="shstatus" jdbcType="INTEGER" />
+    <result column="orderstatus" property="orderstatus" jdbcType="INTEGER" />
+    <result column="isdel" property="isdel" jdbcType="INTEGER" />
+    </association>
+  </resultMap>
+
+
+  <!--根据采购订单编号查询采购产品-->
+  <select id="findPurchaseProduct"  resultMap="BaseResultMap">
+    select * from purchase_product where  purchaseid =#{purchaseid}
+  </select>
+
+  <select id="findPurchaseProductNotStock" resultMap="BaseResultMapTwo">
+    select ord.*,pro.* from purchase_product pro
+    left join purchase_orders ord on ord.id = pro.purchaseid
+     where num > stockover
+     order by pro.id desc
+  </select>
+
+  <select id="findPurchaseProductByPronum" resultMap="BaseResultMap">
+    select * from purchase_product where  purchaseid =#{purchaseid} and proorders =#{pronum} limit 0,1
+  </select>
+
+
+  <select id="findPurchaseProductNew" resultMap="BaseResultMap">
+
+    select pro.proorders,pro.proname,pro.num,pro.remarks,ords.orders "purchaseOrders.orders" ,ords.seeorders "purchaseOrders.seeorders",ords.createdate "purchaseOrders.createdate"  from purchase_product pro
+    left join purchase_orders ords on ords.id = pro.purchaseid
+    <where>
+
+      <if test="sisnum != '' and sisnum != null ">
+        and  pro.proorders &gt;= #{sisnum}
+      </if>
+      <if test="eisnum != '' and eisnum != null ">
+        and  pro.proorders &lt;= #{eisnum}
+      </if>
+      <if test="sproname != '' and sproname != null ">
+        and  pro.proname &gt;= #{sproname}
+      </if>
+      <if test="eproname != '' and eproname != null ">
+        and  pro.proname &lt;= #{eproname}
+      </if>
+      <!--<if test="stype != '' and stype != null ">
+        and  productorder &gt;= #{stype}
+      </if>
+      <if test="etype != '' and etype != null ">
+        and  productorder &lt;= #{etype}
+      </if>-->
+
+      <if test="sdate != null and sdate !=''    ">
+
+        AND  DATE_FORMAT(ords.createdate,'%Y-%m-%d') &gt;= #{sdate}
+
+      </if>
+
+      <if test="edate != null and edate !=''   ">
+
+        AND   DATE_FORMAT(ords.createdate,'%Y-%m-%d') &lt;= #{edate}
+
+      </if>
+
+    </where>
+	order by ords.createdate desc
+  </select>
+
+  <select id="findPurchaseProductPriceSUM" resultType="java.lang.Double">
+    select SUM(pp.totalprice) from purchase_product pp where pp.purchaseid = #{purchaseid};
+  </select>
+
+  <select id="findPurchaseProductAndProductNameAndStartTimeAndEndTime" resultMap="BaseResultMap">
+    select po.createdate "purchaseOrders.createdate",po.orders "purchaseOrders.orders",po.suppliername "purchaseOrders.suppliername",pp.num,pp.price,po.ptax "purchaseOrders.ptax",pp.remarks from purchase_product pp ,purchase_orders po
+
+    <where>
+
+    and  pp.purchaseid =  po.id
+
+    and pp.proorders = #{productName}
+
+      <if test="startTime != null and startTime != ''" >
+        and str_to_date(po.createdate, '%Y-%m-%d') &gt;= str_to_date(#{startTime}, '%Y-%m-%d')
+      </if>
+      <if test="endTime != null and endTime != ''" >
+        and str_to_date(po.createdate, '%Y-%m-%d') &lt;= str_to_date(#{endTime}, '%Y-%m-%d')
+      </if>
+
+    </where>
+
+      order by po.createdate desc
+  </select>
+
+
+  <select id="findPurchaseProductByOrdersAndProductName" resultMap="BaseResultMapTwo">
+
+    select pp.*,po.* from purchase_product pp , purchase_orders po where pp.purchaseid = po.id  and po.orders = #{purchaseOrders} and pp.proorders = #{productOrders}
+
+    </select>
+
+</mapper>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.sale.SaleReturnGoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.sale.SaleReturnGoods" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="pinback_no" property="pinbackNo" jdbcType="VARCHAR" />
+    <result column="early_document" property="earlyDocument" jdbcType="BIT" />
+    <result column="customer_no" property="customerNo" jdbcType="VARCHAR" />
+    <result column="customer_no_str" property="customerNoStr" jdbcType="VARCHAR" />
+    <result column="business_leader" property="businessLeader" jdbcType="VARCHAR" />
+    <result column="business_leader_str" property="businessLeaderStr" jdbcType="VARCHAR" />
+    <result column="tax" property="tax" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="warehouse_in" property="warehouseIn" jdbcType="VARCHAR" />
+    <result column="warehouse_in_str" property="warehouseInStr" jdbcType="VARCHAR" />
+    <result column="return_reason" property="returnReason" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="return_reason_people" property="returnReasonPeople" jdbcType="VARCHAR" />
+    <result column="made_people" property="madePeople" jdbcType="VARCHAR" />
+    <result column="audit_people" property="auditPeople" jdbcType="VARCHAR" />
+    <result column="audit_people_str" property="auditPeopleStr" jdbcType="VARCHAR" />
+    <result column="last_update" property="lastUpdate" jdbcType="VARCHAR" />
+    <result column="last_update_str" property="lastUpdateStr" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="order_audit" property="orderAudit" jdbcType="BIT" />
+    <result column="invalid" property="invalid" jdbcType="BIT" />
+    <result column="tax_rate" property="taxRate" jdbcType="FLOAT" />
+    <result column="ticket" property="ticket" jdbcType="BIT" />
+  </resultMap>
+
+  <select id="listSaleGoodsByOrderNotInbound" resultMap="BaseResultMap">
+    select distinct o.pinback_no,o.* from sale_return_goods o INNER JOIN sale_return_goods_product p on o.id = p.return_goods_id
+    where  p.num > p.inbound_num
+    ORDER BY addtime desc
+  </select>
+
+  <select id="listTimeWhere" resultMap="BaseResultMap">
+    SELECT * FROM sale_return_goods
+    <where>
+      <if test="ben != null and ben != ''">
+        and addtime &gt;= #{ben}
+      </if>
+      <if test="end != null and end != ''">
+        and addtime &lt;= #{end}
+      </if>
+    </where>
+    ORDER BY addtime desc
+  </select>
+
+  <!--查询最订单号-->
+  <select id="getMaxOrderNo" resultType="java.lang.String">
+  SELECT MAX(pinback_no) FROM sale_return_goods
+  </select>
+
+  <!-- 模糊查询 -->
+  <select id="listSaleReturnGoodsAll" resultMap="BaseResultMap">
+      SELECT * FROM sale_return_goods
+      <where>
+        <if test="audit != null and audit != '' and audit == '1'.toString()">
+          and order_audit = #{audit}
+        </if>
+        <if test="text != null and text != ''">
+          and pinback_no like concat(concat('%',#{text}),'%') or customer_no_str like concat(concat('%',#{text}),'%')
+        </if>
+      </where>
+      ORDER BY addtime desc
+    </select>
+
+  <select id="getSaleReturnGoods" resultMap="BaseResultMap">
+        SELECT * FROM sale_return_goods WHERE pinback_no = #{orderno}
+    </select>
+
+  <select id="getLastSaleReturnGoods" resultMap="BaseResultMap">
+        SELECT * FROM sale_return_goods  ORDER BY id desc  limit 0,1
+    </select>
+
+  <select id="getFirstSaleReturnGoods" resultMap="BaseResultMap">
+        SELECT * FROM sale_return_goods  ORDER BY id asc  limit 0,1
+    </select>
+
+  <select id="getSaleReturnGoodsByPage" resultMap="BaseResultMap">
+       SELECT * FROM sale_return_goods limit #{page},#{rows}
+    </select>
+
+  <!--<select id="getSaleReturnGoodsCount" resultType="integer">-->
+       <!--SELECT count(*) FROM sale_return_goods-->
+    <!--</select>-->
+
+  <select id="getSaleReturnGoodsByPages" resultMap="BaseResultMap">
+    SELECT * FROM sale_return_goods
+    <!--<where>-->
+      <!--<if test="text != null and text != ''">-->
+        <!--and pinback_no like concat(concat('%',#{text}),'%') or customer_no_str like concat(concat('%',#{text}),'%')-->
+      <!--</if>-->
+    <!--</where>-->
+    ORDER BY addtime desc
+  </select>
+
+
+  <select id="listSaleReturnGoodsNotSh" resultMap="BaseResultMap">
+     SELECT * FROM sale_return_goods where order_audit = 0  order by id desc
+  </select>
+
+</mapper>

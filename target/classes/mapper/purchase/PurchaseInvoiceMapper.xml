@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.purchase.PurchaseInvoiceMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.purchase.PurchaseInvoice" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="supplierorder" property="supplierorder" jdbcType="VARCHAR" />
+    <result column="supplierdes" property="supplierdes" jdbcType="VARCHAR" />
+    <result column="invoicenumber" property="invoicenumber" jdbcType="VARCHAR" />
+    <result column="invoicedata" property="invoicedata" jdbcType="VARCHAR" />
+    <result column="invoiceprice" property="invoiceprice" jdbcType="DOUBLE" />
+    <result column="offsetprice" property="offsetprice" jdbcType="DOUBLE" />
+    <result column="meetprice" property="meetprice" jdbcType="DOUBLE" />
+    <result column="purchaseorder" property="purchaseorder" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!--查询应付账款-->
+  <select id="findPurchaseInvoice" resultMap="BaseResultMap">
+
+    select * from purchase_invoice
+
+    <where>
+
+      <if test="supplierOrderStart != null and supplierOrderStart != ''" >
+       and  supplierorder &gt;= #{supplierOrderStart}
+      </if>
+      <if test="supplierOrderEnd != null and supplierOrderEnd != ''" >
+        and  supplierorder &lt;= #{supplierOrderEnd}
+      </if>
+      <if test="invoiceNumberStart != null and invoiceNumberStart != ''" >
+      and   invoicenumber &gt;= #{invoiceNumberStart}
+      </if>
+      <if test="invoiceNumberEnd != null and invoiceNumberEnd != ''" >
+      and   invoicenumber &lt;= #{invoiceNumberEnd}
+      </if>
+      <if test="invoiceDateStart != null and invoiceDateStart != ''" >
+        and str_to_date(invoicedata, '%Y-%m-%d') &gt;= str_to_date(#{invoiceDateStart}, '%Y-%m-%d')
+      </if>
+      <if test="invoiceDateEnd != null and invoiceDateEnd != ''" >
+        and str_to_date(invoicedata, '%Y-%m-%d') &lt;= str_to_date(#{invoiceDateEnd}, '%Y-%m-%d')
+      </if>
+
+    </where>
+
+  </select>
+
+
+  <select id="findInvoiceNumber" resultMap="BaseResultMap">
+    select id,invoicenumber,invoicedata
+    from purchase_invoice
+    group by invoicenumber,invoicedata
+  </select>
+
+
+</mapper>

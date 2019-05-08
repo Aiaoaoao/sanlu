@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.ProductStockMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.ProductStock" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="productorder" property="productorder" jdbcType="VARCHAR" />
+    <result column="productname" property="productname" jdbcType="VARCHAR" />
+    <result column="usablenum" property="usablenum" jdbcType="INTEGER" />
+    <result column="stocknum" property="stocknum" jdbcType="INTEGER" />
+    <result column="onthewaynum" property="onthewaynum" jdbcType="INTEGER" />
+    <result column="salenum" property="salenum" jdbcType="INTEGER" />
+    <result column="backnum" property="backnum" jdbcType="INTEGER" />
+    <result column="purchasenum" property="purchasenum" jdbcType="INTEGER" />
+    <result column="parprice" property="parprice" jdbcType="DOUBLE" />
+    <result column="purchaseprice" property="purchaseprice" jdbcType="DOUBLE" />
+    <result column="depot" property="depot" jdbcType="VARCHAR" />
+
+
+    <result column="normprice" property="normprice" jdbcType="DOUBLE" />
+    <result column="lowprice" property="lowprice" jdbcType="DOUBLE" />
+    <result column="basicunit" property="basicunit" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="depname" property="depname" jdbcType="VARCHAR" />
+  </resultMap>
+  <!--产品库存查询-->
+  <select id="findProductStock" resultMap="BaseResultMap">
+
+    select ps.id,ps.productorder,ps.productname,SUM(ps.usablenum) usablenum , SUM(ps.stocknum) stocknum,SUM(ps.onthewaynum) onthewaynum  , SUM(ps.salenum) salenum ,SUM(ps.backnum) backnum ,SUM(ps.purchasenum) purchasenum,pb.normprice parprice from product_stock ps,product_basic pb
+
+
+    <where>
+      and ps.productorder = pb.isnum
+      <if test="sisnum != '' and sisnum != null ">
+        and  ps.productorder &gt;= #{sisnum}
+      </if>
+      <if test="eisnum != '' and eisnum != null ">
+        and  ps.productorder &lt;= #{eisnum}
+      </if>
+      <if test="sproname != '' and sproname != null ">
+        and  ps.productname &gt;= #{sproname}
+      </if>
+      <if test="eproname != '' and eproname != null ">
+        and  ps.productname &lt;= #{eproname}
+      </if>
+      <!--<if test="stype != '' and stype != null ">-->
+      <!--and  productorder &gt;= #{stype}-->
+      <!--</if>-->
+      <!--<if test="etype != '' and etype != null ">-->
+      <!--and  productorder &lt;= #{etype}-->
+      <!--</if>-->
+    </where>
+    GROUP BY ps.productorder
+  </select>
+
+  <select id="findProductStockByWarehouseId" resultType="java.lang.Double">
+
+    select SUM(ps.stocknum) from product_stock ps where ps.depot in (select dbs.isnum from depot_basic dbs where dbs.parentid in (select ds.id from data_setting ds ,(select * from data_setting dsc where dsc.id = #{warehouseId}) db where db.id =  ds.previd or db.id = ds.id))  and ps.productorder= #{pronum} ;
+
+  </select>
+
+
+  <select id="findProductStockByDeoptParent" resultMap="BaseResultMap">
+  select pros.id,pros.productorder,pros.productname,pros.depot from product_stock pros  where depot in (select depb.isnum from depot_basic depb where depb.parentid = #{parent} or  depb.parentid in (select das.id from data_setting das where das.parentid = 33 and das.previd = #{parent}))
+  </select>
+
+
+  <select id="findProductStockByProductOrderAndProductNameAndMore" resultMap="BaseResultMap">
+
+  select pst.id,pst.productorder,pst.productname,pst.usablenum,pst.stocknum,pst.onthewaynum,pb.normprice normprice,pb.lowprice lowprice,pb.basicunit basicunit,dsdata.title title,db.depname depname,pb.protype from product_stock pst , product_basic pb,(select ds.* from data_setting ds where ds.parentid =33 ) dsdata,depot_basic db
+
+    <where>
+      and   pst.productorder = pb.isnum and pst.depot = db.isnum and db.parentid = dsdata.id
+      <if test="productOrder != null and productOrder != ''">
+        and pst.productorder like concat(concat('%',#{productOrder}),'%')
+      </if>
+      <if test="productName != null and productName != ''">
+        and pst.productname like concat(concat('%',#{productName}),'%')
+      </if>
+      <if test="productType != null and productType != '' and  productType != 0">
+        and pb.protype = #{productType}
+      </if>
+      <if test="warehouseName != null and warehouseName != ''">
+        and title like concat(concat('%',#{warehouseName}),'%')
+      </if>
+      <if test="deportName != null and deportName != ''">
+        and depname like concat(concat('%',#{deportName}),'%')
+      </if>
+    </where>
+
+    order by id desc
+
+  </select>
+
+
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.basic.SupplierPurchaserMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.basic.SupplierPurchaser" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="staffid" property="staffid" jdbcType="BIGINT" />
+    <result column="staffname" property="staffname" jdbcType="VARCHAR" />
+    <result column="keycontent" property="keycontent" jdbcType="INTEGER" />
+    <result column="staffremarks" property="staffremarks" jdbcType="VARCHAR" />
+    <result column="ispoint" property="ispoint" jdbcType="INTEGER" />
+    <result column="supplierid" property="supplierid" jdbcType="BIGINT" />
+  </resultMap>
+
+  <!--根据供应商编号查询采购负责人-->
+  <select id="selectSupplierPurchaseBySupplierid" resultMap="BaseResultMap">
+    SELECT * FROM SUPPLIER_PURCHASER WHERE SUPPLIERID =#{supplierid}
+  </select>
+
+  <delete id="deleteSupplierPurchase">
+    DELETE  FROM  SUPPLIER_PURCHASER WHERE SUPPLIERID =#{supplierid}
+  </delete>
+
+</mapper>

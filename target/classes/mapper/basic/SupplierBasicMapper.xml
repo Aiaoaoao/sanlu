@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.education.mapper.basic.SupplierBasicMapper">
+  <resultMap id="BaseResultMap" type="com.yc.education.model.basic.SupplierBasic">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="idnum" jdbcType="VARCHAR" property="idnum" />
+    <result column="supdes" jdbcType="VARCHAR" property="supdes" />
+    <result column="supname" jdbcType="VARCHAR" property="supname" />
+    <result column="regadd" jdbcType="VARCHAR" property="regadd" />
+    <result column="country" jdbcType="INTEGER" property="country" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="postalcode" jdbcType="VARCHAR" property="postalcode" />
+    <result column="phonetype" jdbcType="INTEGER" property="phonetype" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="faxtype" jdbcType="INTEGER" property="faxtype" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="addpeople" jdbcType="VARCHAR" property="addpeople" />
+    <result column="adddate" jdbcType="DATE" property="adddate" />
+    <result column="updatepeople" jdbcType="VARCHAR" property="updatepeople" />
+    <result column="updatedate" jdbcType="DATE" property="updatedate" />
+    <result column="isstop" jdbcType="INTEGER" property="isstop" />
+    <result column="stopdes" jdbcType="VARCHAR" property="stopdes" />
+    <result column="comeandgo" jdbcType="INTEGER" property="comeandgo" />
+  </resultMap>
+
+  <!--查询最大编号-->
+  <select id="selectMaxIdnum" resultType="java.lang.String">
+  SELECT MAX(IDNUM) FROM SUPPLIER_BASIC
+  </select>
+
+
+  <!--查询所有供应商-->
+  <select id="selectSupplierBasic" resultMap="BaseResultMap">
+    SELECT * FROM SUPPLIER_BASIC WHERE COMEANDGO = 0 and isstop = 0 order by id DESC
+  </select>
+
+<select id="selectSupplierBasicByIdnumOrName" resultMap="BaseResultMap">
+  SELECT * FROM SUPPLIER_BASIC
+  <where>
+    and COMEANDGO = 0 and isstop = 0
+    <if test="idnumOrName != null and idnumOrName != ''">
+      and idnum like concat(concat('%',#{idnumOrName}),'%') or  supdes like concat(concat('%',#{idnumOrName}),'%')
+    </if>
+  </where>
+  order by id DESC
+</select>
+
+
+  <select id="selectSupplierBasicByIsStop" resultMap="BaseResultMap">
+    SELECT * FROM SUPPLIER_BASIC WHERE COMEANDGO = 0 and isstop = #{types} order by id DESC
+  </select>
+
+  <select id="selectSupplierBasicByIsnum" resultMap="BaseResultMap">
+    SELECT * FROM SUPPLIER_BASIC WHERE idnum = #{idnum} limit 0,1
+  </select>
+
+
+  <select id="selectSupplierBasicNotSotp" resultMap="BaseResultMap">
+    SELECT * FROM SUPPLIER_BASIC
+
+    <where>
+    and COMEANDGO = 0
+    <if test="types != null and  types != '' and types != 0">
+      and isstop = #{types}
+    </if>
+    </where>
+    order by id DESC
+  </select>
+
+</mapper>

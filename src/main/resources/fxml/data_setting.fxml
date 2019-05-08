@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<!--资料设定-->
+
+<AnchorPane prefHeight="263.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.DataSettingController">
+   <children>
+      <HBox layoutX="170.0" layoutY="184.0" prefHeight="402.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ScrollPane prefHeight="263.0" prefWidth="133.0">
+              <content>
+                  <AnchorPane fx:id="radioGroup" minHeight="0.0" minWidth="0.0" prefHeight="60.0" prefWidth="131.0" />
+              </content>
+            </ScrollPane>
+            <VBox prefHeight="263.0" prefWidth="468.0">
+               <children>
+                  <TableView  fx:id="tableView1" onKeyPressed="#tableView1Key" prefHeight="204.0" prefWidth="470.0">
+                    <columns>
+                        <TableColumn fx:id="sort" prefWidth="75.0" text="序号" />
+
+                        <TableColumn fx:id="title" prefWidth="200.0" text="类型名字" />
+
+                        <TableColumn fx:id="remarks" prefWidth="150.0" text="备注" />
+                    </columns>
+                  </TableView>
+                  <Pane prefHeight="58.0" prefWidth="435.0">
+                     <children>
+                        <Button fx:id="yesBtn" onMouseClicked="#submitBtn" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="应用" />
+                        <Button fx:id="updateBtn" onMouseClicked="#updateBtn" layoutX="89.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="修改" />
+                        <Button fx:id="sureBtn" onMouseClicked="#submitBtn" layoutX="165.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="确定" />
+                        <Button fx:id="closeBtn" onMouseClicked="#closeBtn" layoutX="239.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="关闭" />
+                     </children></Pane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

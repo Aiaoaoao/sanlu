@@ -1,0 +1,128 @@
+#menbar{
+    /*按钮背景颜色*/
+    -fx-background-color:#CCCCCC;
+
+}
+
+#pane{
+    /*按钮背景颜色*/
+    -fx-background-color:#CCCCCC;
+}
+
+.items{
+    -fx-background-color:#CCCCCC;
+
+}
+
+#homePane{
+
+    -fx-border-color: #CCCCCC;
+
+}
+
+.mouse_hover{
+    -fx-background-color:#EFF3F7;
+}
+
+.mouse_hover:hover{
+    -fx-background-color:#169252 !important;
+}
+
+.mouse_hover:hover Label{
+    -fx-text-fill: #FFF !important;
+}
+
+
+
+
+
+
+Label{
+    -fx-text-fill: #8CA0B3;
+}
+
+
+#xspane{
+    -fx-background-image: url("/images/basic/xs.png") ;
+    -fx-background-repeat: no-repeat;
+}
+
+#cgpane{
+    -fx-background-image: url("/images/basic/cg.png");
+    -fx-background-repeat: no-repeat;
+}
+
+#kcpane{
+    -fx-background-image: url("/images/basic/kc.png");
+    -fx-background-repeat: no-repeat;
+}
+
+#zkpane{
+    -fx-background-image: url("/images/basic/zk.png");
+    -fx-background-repeat: no-repeat;
+}
+
+#zlpane{
+    -fx-background-image: url("/images/basic/zl.png");
+    -fx-background-repeat: no-repeat;
+}
+
+#khpane{
+    -fx-background-image: url("/images/basic/kh.png");
+    -fx-background-repeat: no-repeat;
+}
+
+#kqpane{
+    -fx-background-image: url("/images/basic/kq.png");
+    -fx-background-repeat: no-repeat;
+}
+
+#bbpane{
+    -fx-background-image: url("/images/basic/bb.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.mouse_hover:hover #xspane{
+    -fx-background-image: url("/images/basic/xsed.png") !important;
+    -fx-background-repeat: no-repeat;
+}
+
+.mouse_hover:hover #cgpane{
+    -fx-background-image: url("/images/basic/cged.png") !important ;
+    -fx-background-repeat: no-repeat;
+}
+
+.mouse_hover:hover #kcpane{
+    -fx-background-image: url("/images/basic/kced.png") !important;
+    -fx-background-repeat: no-repeat;
+}
+
+.mouse_hover:hover #zkpane{
+    -fx-background-image: url("/images/basic/zked.png") !important;
+    -fx-background-repeat: no-repeat;
+}
+
+.mouse_hover:hover #zlpane{
+    -fx-background-image: url("/images/basic/zled.png") !important;
+    -fx-background-repeat: no-repeat;
+}
+
+.mouse_hover:hover #khpane{
+    -fx-background-image: url("/images/basic/khed.png") !important;
+    -fx-background-repeat: no-repeat;
+}
+
+.mouse_hover:hover #kqpane{
+    -fx-background-image: url("/images/basic/kqed.png") !important;
+    -fx-background-repeat: no-repeat;
+}
+
+.mouse_hover:hover #bbpane{
+    -fx-background-image: url("/images/basic/bbed.png") !important;
+    -fx-background-repeat: no-repeat;
+}
+
+.tree-cell:selected{
+-fx-background-color: #1F9659;
+}
+

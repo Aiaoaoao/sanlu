@@ -1,0 +1,897 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sale_statistics" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="223d87eb-75de-4033-a670-139d35ead474">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 12">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 12_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 12_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 12_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="createPeople" class="java.lang.String"/>
+	<parameter name="company" class="java.lang.String"/>
+	<parameter name="customerNo" class="java.lang.String"/>
+	<parameter name="creataDate" class="java.lang.String"/>
+	<parameter name="saleDate" class="java.lang.String"/>
+	<parameter name="business" class="java.lang.String"/>
+	<parameter name="warehouseNo" class="java.lang.String"/>
+	<parameter name="saleNo" class="java.lang.String"/>
+	<parameter name="productNo" class="java.lang.String"/>
+	<parameter name="productCategory" class="java.lang.String"/>
+	<parameter name="createDateBen" class="java.lang.String"/>
+	<parameter name="createDateEnd" class="java.lang.String"/>
+	<parameter name="saleNoBen" class="java.lang.String"/>
+	<parameter name="saleNoEnd" class="java.lang.String"/>
+	<parameter name="customerNoBen" class="java.lang.String"/>
+	<parameter name="customerNoEnd" class="java.lang.String"/>
+	<parameter name="businessLeaderBen" class="java.lang.String"/>
+	<parameter name="businessLeaderEnd" class="java.lang.String"/>
+	<parameter name="warehouseBen" class="java.lang.String"/>
+	<parameter name="warehouseEnd" class="java.lang.String"/>
+	<parameter name="productNoBen" class="java.lang.String"/>
+	<parameter name="productNoEnd" class="java.lang.String"/>
+	<parameter name="productCategoryBen" class="java.lang.String"/>
+	<parameter name="productCategoryEnd" class="java.lang.String"/>
+	<parameter name="bool_rmb" class="java.lang.String">
+		<parameterDescription><![CDATA[RMB$金额]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="bool_rmb_v" class="java.lang.String"/>
+	<parameter name="bool_warehouse" class="java.lang.String"/>
+	<parameter name="bool_warehouse_v" class="java.lang.String"/>
+	<parameter name="bool_business" class="java.lang.String"/>
+	<parameter name="bool_business_v" class="java.lang.String"/>
+	<parameter name="bool_customer" class="java.lang.String"/>
+	<parameter name="bool_customer_v" class="java.lang.String"/>
+	<parameter name="bool_sale_date" class="java.lang.String"/>
+	<parameter name="bool_sale_date_v" class="java.lang.String"/>
+	<parameter name="dynamiccolumn" class="java.util.Collection"/>
+	<queryString>
+		<![CDATA[/* 销货明细报表 -- 日期别 */
+select g.create_date,g.sale_no,g.customer_no_str,g.business_leader_str,g.warehouse_out_str,g.currency,p.num*p.price 'sale_money',(
+        CASE g.tax
+        WHEN '外加' THEN
+            p.price*p.num*(g.tax_rate)
+        ELSE
+            0
+        END
+			)  'tax_money',(
+        CASE g.tax
+        WHEN '外加' THEN
+            p.price*p.num*(g.tax_rate+1)
+        ELSE
+            p.price*p.num
+        END
+			)  'calc_money',g.tax,p.product_no,p.product_name,p.num,p.unit,p.price,p.num*p.price 'money' from sale_goods g RIGHT JOIN sale_goods_product p ON g.id=p.sale_goods_id
+			where 1 = 1
+			and if($P{createDateBen} ='' ,1=1, $P{createDateBen}<=g.create_date) and if($P{createDateEnd} ='' ,1=1,$P{createDateEnd}>=g.create_date)
+			and if($P{saleNoBen} ='' ,1=1, $P{saleNoBen}<=g.sale_no) and if($P{saleNoEnd} ='' ,1=1,$P{saleNoEnd}>=g.sale_no)
+			and if($P{customerNoBen} ='' ,1=1, $P{customerNoBen}<=g.customer_no) and if($P{customerNoEnd} ='' ,1=1,$P{customerNoEnd}>=g.customer_no)
+			and if($P{businessLeaderBen} ='' ,1=1, $P{businessLeaderBen}<=g.business_leader_str) and if($P{businessLeaderEnd} ='' ,1=1,$P{businessLeaderEnd}>=g.business_leader_str)
+			and if($P{warehouseBen} ='' ,1=1, $P{warehouseBen}<=g.warehouse_out_str) and if($P{warehouseEnd} ='' ,1=1,$P{warehouseEnd}>=g.warehouse_out_str)
+			and if($P{productNoBen} ='' ,1=1, $P{productNoBen}<=p.product_no) and if($P{productNoEnd} ='' ,1=1,$P{productNoEnd}>=p.product_no)
+			and if($P{productCategoryBen} ='' ,1=1, $P{productCategoryBen}<=p.category) and if($P{productCategoryEnd} ='' ,1=1,$P{productCategoryEnd}>=p.category)
+			ORDER BY g.create_date asc,g.sale_no asc ;]]>
+	</queryString>
+	<field name="create_date" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[制单日期]]></fieldDescription>
+	</field>
+	<field name="sale_no" class="java.lang.String">
+		<fieldDescription><![CDATA[销售单号]]></fieldDescription>
+	</field>
+	<field name="customer_no_str" class="java.lang.String">
+		<fieldDescription><![CDATA[客户编号描述]]></fieldDescription>
+	</field>
+	<field name="business_leader_str" class="java.lang.String">
+		<fieldDescription><![CDATA[业务负责描述]]></fieldDescription>
+	</field>
+	<field name="warehouse_out_str" class="java.lang.String">
+		<fieldDescription><![CDATA[出货仓库描述]]></fieldDescription>
+	</field>
+	<field name="currency" class="java.lang.String">
+		<fieldDescription><![CDATA[币别]]></fieldDescription>
+	</field>
+	<field name="sale_money" class="java.math.BigDecimal"/>
+	<field name="tax_money" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[税额]]></fieldDescription>
+	</field>
+	<field name="calc_money" class="java.math.BigDecimal"/>
+	<field name="tax" class="java.lang.String">
+		<fieldDescription><![CDATA[税别]]></fieldDescription>
+	</field>
+	<field name="product_no" class="java.lang.String">
+		<fieldDescription><![CDATA[产品编号]]></fieldDescription>
+	</field>
+	<field name="product_name" class="java.lang.String">
+		<fieldDescription><![CDATA[产品名称]]></fieldDescription>
+	</field>
+	<field name="num" class="java.lang.Integer">
+		<fieldDescription><![CDATA[数量]]></fieldDescription>
+	</field>
+	<field name="unit" class="java.lang.String">
+		<fieldDescription><![CDATA[单位]]></fieldDescription>
+	</field>
+	<field name="price" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[单价]]></fieldDescription>
+	</field>
+	<field name="money" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[金额]]></fieldDescription>
+	</field>
+	<variable name="total_sum" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{sale_money}]]></variableExpression>
+	</variable>
+	<variable name="sum_money" class="java.math.BigDecimal" resetType="Group" resetGroup="By Date" calculation="Sum">
+		<variableExpression><![CDATA[$F{sale_money}]]></variableExpression>
+	</variable>
+	<variable name="sum_tax" class="java.math.BigDecimal" resetType="Group" resetGroup="By Date" calculation="Sum">
+		<variableExpression><![CDATA[$F{tax_money}]]></variableExpression>
+	</variable>
+	<variable name="sum_tax_total" class="java.math.BigDecimal" resetType="Group" resetGroup="By Date" calculation="Sum">
+		<variableExpression><![CDATA[$F{calc_money}]]></variableExpression>
+	</variable>
+	<variable name="total_sum_tax" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{tax_money}]]></variableExpression>
+	</variable>
+	<variable name="total_sum_tax_total" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{calc_money}]]></variableExpression>
+	</variable>
+	<group name="By Date">
+		<groupExpression><![CDATA[$F{create_date}]]></groupExpression>
+		<groupHeader>
+			<band height="47">
+				<textField pattern="yyyy/MM/dd">
+					<reportElement x="3" y="0" width="87" height="20" uuid="6ab23a5b-d331-4fae-8d74-7a4d9c70e8e5">
+						<printWhenExpression><![CDATA[new Boolean($P{bool_sale_date_v})]]></printWhenExpression>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{create_date}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="90" y="0" width="82" height="20" uuid="95663ab4-af32-401e-aeee-46fd7915164b">
+						<printWhenExpression><![CDATA[new Boolean($P{bool_customer_v})]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{customer_no_str}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="172" y="0" width="83" height="20" uuid="4f2f7c93-679f-4b49-8363-e5ba85adc2b0">
+						<printWhenExpression><![CDATA[new Boolean($P{bool_business_v})]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{business_leader_str}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="255" y="0" width="82" height="20" uuid="0b97e0f4-586b-4398-bfad-bcbfd7829a0e">
+						<printWhenExpression><![CDATA[new Boolean($P{bool_warehouse_v})]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{warehouse_out_str}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="337" y="0" width="88" height="20" uuid="8f94a821-cf30-489f-b447-70352503eefb"/>
+					<textFieldExpression><![CDATA[$F{currency}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement x="425" y="0" width="84" height="20" uuid="4f2d4a96-6ddf-4100-9a7a-edc31d5f4b04"/>
+					<textFieldExpression><![CDATA[$F{sale_money}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement x="509" y="0" width="83" height="20" uuid="e5c73feb-239f-41a2-ad44-7fe256b8f9cd"/>
+					<textFieldExpression><![CDATA[$F{tax_money}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement x="594" y="0" width="82" height="20" uuid="0e9b30b1-b0e1-4728-960b-fce79306a63a"/>
+					<textFieldExpression><![CDATA[$F{calc_money}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement x="678" y="0" width="75" height="20" uuid="a0489fb6-b582-4c14-a5ad-bc73d1ee728e">
+						<printWhenExpression><![CDATA[new Boolean($P{bool_rmb_v})]]></printWhenExpression>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{calc_money}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="753" y="0" width="47" height="20" uuid="45dbb246-2bbc-40c6-914b-3e4c666f457f"/>
+					<textElement>
+						<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tax}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="21" width="802" height="1" uuid="00d38c10-7c3e-4765-a85c-8414336b7799"/>
+				</line>
+				<staticText>
+					<reportElement x="337" y="25" width="49" height="20" uuid="327e9d1f-b9a2-4a90-ad09-336873ec61f0"/>
+					<textElement>
+						<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[销货单号]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="424" y="25" width="49" height="20" uuid="2777331b-d716-4933-97a4-5c5e0a7d6024"/>
+					<textElement>
+						<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[产品编号]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="511" y="25" width="49" height="20" uuid="38efcd63-0f04-4c90-a40e-320f801af21b"/>
+					<textElement>
+						<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[产品名称]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="594" y="25" width="57" height="20" uuid="57d358c7-4ca2-44d9-9dce-a93bd3444e68"/>
+					<textElement>
+						<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[数量/单位]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="678" y="25" width="49" height="20" uuid="af93c8f1-78c2-4d0f-814c-19521df12542"/>
+					<textElement>
+						<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[单价]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="752" y="25" width="49" height="20" uuid="86390d87-6698-4645-9a17-d97a786b000a"/>
+					<textElement>
+						<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[金额]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="22">
+				<staticText>
+					<reportElement x="4" y="2" width="86" height="16" uuid="724104f2-1716-43be-9bae-cf44c438a8f9"/>
+					<textElement>
+						<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[日期别销货小计：]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="20" width="802" height="1" uuid="a54ebad1-532c-4779-bec4-6128e00d10a5"/>
+				</line>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement x="427" y="0" width="87" height="20" uuid="8c2ae5d4-83bf-4c06-85bc-5476f078a9f0"/>
+					<textFieldExpression><![CDATA[$V{sum_money}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement x="515" y="0" width="70" height="20" uuid="3ed0bedb-7e64-4342-90db-3b0f69e30a78"/>
+					<textFieldExpression><![CDATA[$V{sum_tax}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00;###0.00-">
+					<reportElement x="592" y="1" width="87" height="20" uuid="48b60501-c334-49ce-aa05-e6caf19a779f"/>
+					<textFieldExpression><![CDATA[$V{sum_tax_total}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="319" y="0" width="166" height="21" uuid="7724cc34-7f0b-45eb-a5de-ac853ffaec17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="微软雅黑" size="14" isBold="false" isUnderline="false" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[销货明细表（日期别）]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="122" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="0" width="54" height="22" uuid="af045be8-fa3c-42c2-9478-89104454ba75"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[制  表  人：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="45" width="54" height="22" uuid="0e58806e-ac43-4a6b-86d3-65e11c115c66"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[产品编号：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="22" width="54" height="22" uuid="84297024-7e83-4bef-be3c-9e62ec74ec1e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[销货日期：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="0" width="54" height="22" uuid="8854d76e-722a-4363-b3d9-b677fe14edc6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[制表日期：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="23" width="54" height="22" uuid="450f29d2-90a2-4b55-94ef-35f64d0dda9a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[客户编号：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="571" y="45" width="54" height="22" uuid="93bb7a9d-8a27-4619-afc9-2604844f9eb9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[销货单号：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="46" width="54" height="22" uuid="f5f5b832-909f-46ed-989e-217ea2e9b435"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[产品大类：]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="98" width="802" height="1" uuid="f657805b-3451-44f4-8fe3-901cf5121c83"/>
+			</line>
+			<staticText>
+				<reportElement x="8" y="100" width="52" height="20" uuid="476df829-eb8d-436a-b2cf-723e9aacc47c">
+					<printWhenExpression><![CDATA[new Boolean($P{bool_sale_date})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[销货日期]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="100" width="45" height="20" uuid="826624ad-9ed4-4612-a9b8-6ffc2b5fc30b">
+					<printWhenExpression><![CDATA[new Boolean($P{bool_business})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[业务负责]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="509" y="100" width="57" height="20" uuid="2cb676ad-6747-4d00-8030-c0ca28bbdb5c"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[税额]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="100" width="47" height="20" uuid="8c58eaa1-05e9-4367-adf7-419ab91a4538"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[销售净额]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="100" width="50" height="20" uuid="c5211b4d-d4c4-4815-8d2b-2e701e5ca162"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[币别]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="100" width="51" height="20" uuid="fa9f1843-f554-46fc-b550-23f185a3e185">
+					<printWhenExpression><![CDATA[new Boolean($P{bool_warehouse})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[仓库名称]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="93" y="100" width="48" height="20" uuid="c9506a7b-c727-4e86-9910-df1bf3a85cd4">
+					<printWhenExpression><![CDATA[new Boolean($P{bool_customer})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[客户简称]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="57" y="2" width="218" height="20" uuid="08392f5a-dcb2-48cd-92cf-df9c26ccbff4"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{createPeople}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="57" y="24" width="218" height="20" uuid="b6720483-84e6-469a-ab30-2a0725575e49"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{saleDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="625" y="46" width="174" height="20" uuid="faab9590-1363-4c08-8d5e-31d62ec00975"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{saleNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="593" y="99" width="62" height="20" uuid="1b188d08-d004-4de3-ada3-0bcad86fe1ae"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[销货总金额]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="676" y="98" width="52" height="20" uuid="b231fbd3-aa23-4ff8-8752-c7095ab965fe">
+					<printWhenExpression><![CDATA[new Boolean($P{bool_rmb})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[RMB$金额]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="57" y="46" width="218" height="20" uuid="33ab4b24-d93e-40e0-af82-a2843a0df303"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{productNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="47" width="193" height="20" uuid="5206f5f7-7ebb-4d46-bc9e-d98adcf7bc0f"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{productCategory}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="119" width="801" height="1" uuid="eccc2b98-3d9b-4872-a6b2-3999a3760a7a"/>
+			</line>
+			<staticText>
+				<reportElement x="571" y="1" width="54" height="20" uuid="8dfe2827-d72c-42ea-a433-3e6a4faeafd2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[公  司  别：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="67" width="54" height="20" uuid="5a530f27-94a5-4ca6-a695-dc30bd7a0717"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[仓库编号：]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="57" y="67" width="218" height="20" uuid="ba21e409-ee5f-40ea-a12f-8d2fad9b471d"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{warehouseNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="571" y="22" width="54" height="22" uuid="22367d97-4988-4d0b-bc55-d6e2e30664de"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="微软雅黑" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[业务负责：]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="625" y="23" width="174" height="20" uuid="a1bc8dbb-d594-4946-b06a-3da342813e46"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{business}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="24" width="193" height="20" uuid="48f41980-caf2-4b48-8b1e-52b1360d636f"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{customerNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="625" y="1" width="174" height="20" uuid="cdf432c0-68ed-45a1-8f45-f2faf5d26146"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{company}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="753" y="99" width="39" height="20" uuid="1ad0bd4a-3724-4083-9248-683d3a523d3c"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[税别]]></text>
+			</staticText>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="349" y="2" width="100" height="20" uuid="5cf8b123-811e-4e1f-bd7e-6f90f1cb19e7"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25">
+			<line>
+				<reportElement x="337" y="22" width="463" height="1" uuid="c58dc602-7b11-4f68-b0ff-974a38863ba7"/>
+			</line>
+			<textField>
+				<reportElement x="337" y="1" width="88" height="20" uuid="7e49d0dc-355b-4a58-951b-faed609f69eb"/>
+				<textFieldExpression><![CDATA[$F{sale_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="0" width="84" height="20" uuid="309d90f1-4ef5-46b1-898f-a1a9c31369fc"/>
+				<textFieldExpression><![CDATA[$F{product_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="0" width="84" height="20" uuid="02b0a622-e18c-4958-8da1-40cbea826584"/>
+				<textFieldExpression><![CDATA[$F{product_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="594" y="0" width="30" height="20" uuid="1149a601-aca6-4f12-9729-8d945681abfb"/>
+				<textFieldExpression><![CDATA[$F{num}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="624" y="0" width="27" height="20" uuid="ff5af4d1-6b01-4e22-bbc0-7aa6f7958e2f"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="679" y="1" width="72" height="20" uuid="3dfe3816-1acf-4c6c-8ff3-0517da555994"/>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="752" y="2" width="47" height="20" uuid="158cc052-b436-4bb3-bfbc-869324808d2c"/>
+				<textFieldExpression><![CDATA[$F{money}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="2" width="90" height="20" uuid="28b12a4e-c641-4323-8093-cd9288760de2"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[合计：]]></text>
+			</staticText>
+			<textField pattern="###0.00;###0.00-">
+				<reportElement x="592" y="2" width="87" height="20" uuid="93885910-de88-4ea3-b789-c58f35bb0a58"/>
+				<textFieldExpression><![CDATA[$V{total_sum_tax_total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;###0.00-">
+				<reportElement x="514" y="2" width="70" height="20" uuid="cee8922c-633a-4e1d-b7a2-aca8785f10cf"/>
+				<textFieldExpression><![CDATA[$V{total_sum_tax}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;###0.00-">
+				<reportElement x="427" y="2" width="87" height="20" uuid="ed0ef7a0-1c4f-41a9-b08b-ea7b7e826253"/>
+				<textFieldExpression><![CDATA[$V{total_sum}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="23" width="802" height="1" uuid="ea0ab921-8be4-43a6-913c-1245d2ec85f8"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="22">
+			<textField>
+				<reportElement x="345" y="2" width="80" height="20" uuid="dae220a2-b08f-4398-bb3d-ac5f7544d069"/>
+				<textElement textAlignment="Right">
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["页次："+$V{PAGE_NUMBER}+"of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="425" y="2" width="40" height="20" uuid="6fc00548-594f-4492-9420-4d9ae9296122"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="655" y="2" width="60" height="20" uuid="8962d062-91dd-4564-a374-a214bd7adfea"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm.ss">
+				<reportElement x="715" y="2" width="77" height="20" uuid="bb1ae71d-2637-41f0-ae34-4357453777d6"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

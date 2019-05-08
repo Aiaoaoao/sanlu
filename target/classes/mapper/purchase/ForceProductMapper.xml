@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.purchase.ForceProductMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.purchase.ForceProduct" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="forceid" property="forceid" jdbcType="BIGINT" />
+    <result column="pronum" property="pronum" jdbcType="VARCHAR" />
+    <result column="proname" property="proname" jdbcType="VARCHAR" />
+    <result column="ordernum" property="ordernum" jdbcType="INTEGER" />
+    <result column="forcenum" property="forcenum" jdbcType="INTEGER" />
+    <result column="forcedate" property="forcedate" jdbcType="VARCHAR" />
+    <result column="forceover" property="forceover" jdbcType="INTEGER" />
+    <result column="stockover" property="stockover" jdbcType="INTEGER" />
+    <result column="ontheway" property="ontheway" jdbcType="INTEGER" />
+  </resultMap>
+  <!--根据强制结案编号查询强制结案采购产品-->
+  <select id="findForceProductByForceId" resultMap="BaseResultMap">
+    select * from force_product where forceid = #{forceid}
+  </select>
+
+</mapper>

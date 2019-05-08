@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.account.AccountPrepaymentMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.account.AccountPrepayment" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="customer_no" property="customerNo" jdbcType="VARCHAR" />
+    <result column="customer_no_str" property="customerNoStr" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="currency_two" property="currencyTwo" jdbcType="VARCHAR" />
+    <result column="rate" property="rate" jdbcType="VARCHAR" />
+    <result column="payment_type" property="paymentType" jdbcType="VARCHAR" />
+    <result column="payment_money" property="paymentMoney" jdbcType="DECIMAL" />
+    <result column="process_people" property="processPeople" jdbcType="VARCHAR" />
+    <result column="process_people_str" property="processPeopleStr" jdbcType="VARCHAR" />
+    <result column="token_no" property="tokenNo" jdbcType="VARCHAR" />
+    <result column="made_people" property="madePeople" jdbcType="VARCHAR" />
+    <result column="prepayment_money" property="prepaymentMoney" jdbcType="DECIMAL" />
+    <result column="invoice_no" property="invoiceNo" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="last_update" property="lastUpdate" jdbcType="VARCHAR" />
+    <result column="last_update_str" property="lastUpdateStr" jdbcType="VARCHAR" />
+    <result column="audit" property="audit" jdbcType="VARCHAR" />
+    <result column="audit_str" property="auditStr" jdbcType="VARCHAR" />
+    <result column="order_audit" property="orderAudit" jdbcType="BIT" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="listAccountPrepaymentByRecently" resultMap="BaseResultMap">
+    SELECT * FROM account_prepayment
+    ORDER BY addtime desc limit 0,#{num}
+  </select>
+
+  <!--查询最订单号-->
+  <select id="getMaxOrderNo" resultType="java.lang.String">
+  SELECT MAX(order_no) FROM account_prepayment
+  </select>
+
+  <select id="listOrderNoLike" resultMap="BaseResultMap">
+    SELECT * FROM account_prepayment
+    <where>
+      <if test="orderNo != null and orderNo != ''">
+        and order_no like concat(concat('%',#{orderNo}),'%')
+      </if>
+    </where>
+    ORDER BY addtime desc
+  </select>
+
+  <select id="listAccountPrepayment" resultMap="BaseResultMap">
+    select * from account_prepayment
+    <where>
+      <if test="text != null and text != ''">
+        and order_no like concat(concat('%',#{text}),'%') or customer_no_str like concat(concat('%',#{text}),'%')
+      </if>
+    </where>
+     order by addtime desc
+  </select>
+
+  <select id="getByOrderNo" resultMap="BaseResultMap">
+    select * from account_prepayment where order_no = #{orderno} limit 0,1
+  </select>
+
+  <select id="listAccountPrepaymentNotSh" resultMap="BaseResultMap">
+    select * from account_prepayment where order_audit = 0 order by id desc
+  </select>
+
+
+</mapper>

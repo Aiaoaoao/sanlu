@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxWidth="1143.0" prefHeight="710.0" prefWidth="1143.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.yc.education.controller.customer.AccountsReceivableAgeAnalysisController" >
+    <children>
+        <HBox prefHeight="30.0" prefWidth="1143.0" style="-fx-background-color: #e0e0e0;" styleClass="items">
+            <children>
+                <Label prefHeight="30.0" prefWidth="150.0" text="应收账款账龄分析" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </Label>
+            </children>
+        </HBox>
+      <Pane layoutY="36.0">
+         <children>
+              <VBox layoutY="10.0" prefHeight="1.0" prefWidth="30.0" style="-fx-background-color: #000;" />
+              <VBox layoutX="74.0" layoutY="10.0" prefHeight="1.0" prefWidth="1068.0" style="-fx-background-color: #000;" />
+              <Label layoutX="37.0" style="-fx-font-weight: bold;" text="修改">
+                  <font>
+                      <Font size="15.0" />
+                  </font>
+              </Label>
+         </children>
+      </Pane>
+        <Pane layoutX="32.0" layoutY="80.0" prefHeight="188.0" prefWidth="642.0">
+            <children>
+                <Pane layoutY="3.0" nodeOrientation="RIGHT_TO_LEFT">
+                    <children>
+                        <Label layoutX="3.0" text="公司别：" />
+                        <Label layoutX="3.0" layoutY="34.0" text="客户编号：" />
+                        <Label layoutX="1.0" layoutY="66.0" text="账面余额：" />
+                        <Label layoutX="2.0" layoutY="100.0" text="销项发票单号：" />
+                        <Label layoutX="2.0" layoutY="131.0" text="发票号码：" />
+                    </children>
+                </Pane>
+                <Pane layoutX="80.0" prefHeight="185.0" prefWidth="213.0">
+                    <children>
+                        <TextField />
+                        <Button layoutX="163.0" mnemonicParsing="false" text="..." />
+                        <TextField layoutY="33.0" prefHeight="23.0" prefWidth="186.0" />
+                        <TextField layoutY="99.0" />
+                        <TextField layoutY="130.0" />
+                        <Button layoutX="163.0" layoutY="99.0" mnemonicParsing="false" text="..." />
+                        <Button layoutX="163.0" layoutY="130.0" mnemonicParsing="false" text="..." />
+                  <TextField layoutY="66.0" prefHeight="23.0" prefWidth="186.0" />
+                    </children>
+                </Pane>
+                <Pane layoutX="374.0">
+                    <children>
+                        <TextField layoutX="64.0" layoutY="32.0" />
+                        <Button layoutX="228.0" layoutY="32.0" mnemonicParsing="false" text="..." />
+                        <Button layoutX="229.0" layoutY="98.0" mnemonicParsing="false" text="..." />
+                        <Button layoutX="229.0" layoutY="129.0" mnemonicParsing="false" text="..." />
+                        <TextField layoutX="65.0" layoutY="98.0" />
+                        <TextField layoutX="65.0" layoutY="129.0" />
+                  <TextField layoutX="66.0" layoutY="66.0" prefHeight="23.0" prefWidth="186.0" />
+                    </children>
+                </Pane>
+                <Pane layoutX="294.0" layoutY="10.0" prefHeight="178.0" prefWidth="117.0">
+                    <children>
+                        <VBox layoutY="33.0" prefHeight="1.0" prefWidth="117.0" style="-fx-background-color: #000;" />
+                        <VBox layoutY="67.0" prefHeight="1.0" prefWidth="117.0" style="-fx-background-color: #000;" />
+                        <VBox layoutY="100.0" prefHeight="1.0" prefWidth="117.0" style="-fx-background-color: #000;" />
+                        <VBox layoutY="133.0" prefHeight="1.0" prefWidth="117.0" style="-fx-background-color: #000;" />
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+      <Pane layoutY="579.0">
+         <children>
+              <HBox prefHeight="77.0" prefWidth="1143.0" style="-fx-background-color: #e0e0e0;" styleClass="items">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="86.0" style="-fx-border-radius: 8; -fx-background-radius: 8;" text="预览">
+                     <HBox.margin>
+                        <Insets left="150.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="86.0" style="-fx-border-radius: 8; -fx-background-radius: 8;" text="Excel">
+                     <HBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="86.0" style="-fx-border-radius: 8; -fx-background-radius: 8;" text="Word">
+                     <HBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="86.0" style="-fx-border-radius: 8; -fx-background-radius: 8;" text="打印">
+                     <HBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="86.0" style="-fx-border-radius: 8; -fx-background-radius: 8;" text="退出">
+                     <HBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <Button layoutY="102.0" mnemonicParsing="false" text="打开项目名称">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>

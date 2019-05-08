@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+
+<!-- 原始考勤資料 -->
+
+<AnchorPane maxWidth="1143.0" prefHeight="710.0" prefWidth="1143.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.check.TimecardController">
+    <children>
+        <HBox prefHeight="30.0" prefWidth="1143.0" styleClass="title_bar_background" stylesheets="@/css/basic.css">
+            <children>
+                <Label prefHeight="30.0" prefWidth="132.0" styleClass="title_bar_words" text="原始考勤资料">
+                </Label>
+                <!--<Label fx:id="fxmlStatus" prefHeight="30.0" prefWidth="105.0" styleClass="title_bar_words_state" text="【查看】" userData="">-->
+                <!--</Label>-->
+            </children>
+        </HBox>
+
+        <Pane layoutX="14.0" layoutY="30.0" prefHeight="151.0" prefWidth="898.0" stylesheets="@/css/basic.css">
+            <children>
+                <Label layoutX="244.0" layoutY="41.0" />
+            <GridPane layoutY="15.0" prefHeight="116.0" prefWidth="700.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="124.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="27.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="48.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="53.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.0" minWidth="0.0" prefWidth="41.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="121.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="24.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="167.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                      <Label text="员工编号：" GridPane.halignment="RIGHT" />
+                      <TextField fx:id="endorder" GridPane.columnIndex="6" GridPane.columnSpan="1" />
+                      <Button fx:id="saleButton" onAction="#buttonEnd" mnemonicParsing="false" text="..." GridPane.columnIndex="7" />
+                  <Label text="考勤日期：" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="starttime" prefHeight="23.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="endtime" prefHeight="23.0" prefWidth="194.0" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                  <Line endX="-55.0" startX="-100.0" GridPane.columnIndex="4" />
+                  <Line endX="-55.0" startX="-100.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <TextField fx:id="startorder" layoutX="425.0" layoutY="24.0" GridPane.columnIndex="1" />
+                  <Button fx:id="saleButton1" onAction="#buttonStart" layoutX="615.0" layoutY="24.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="0.0" text="..." GridPane.columnIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#searchCheck" text="查询考勤资料" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#searchCanteen" text="查询食堂资料" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#clearTextField" text="清空" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" text="打印" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+
+
+            </children>
+        </Pane>
+
+
+        <TabPane layoutY="170.0" prefHeight="540.0" prefWidth="1143.0" stylesheets="@/css/basic.css" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="查询结果">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="timecardTableView" layoutY="-1.0" prefHeight="446.0" prefWidth="1143.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+                                    <columns>
+                                        <TableColumn maxWidth="50.0" prefWidth="50.0" text=" " />
+                                        <TableColumn fx:id="emporder" maxWidth="600.0" prefWidth="600.0" text="员工编号" />
+                                        <TableColumn fx:id="emptime" maxWidth="600.0" prefWidth="600.0" text="日期" />
+                                        <TableColumn maxWidth="4000.0" prefWidth="4000.0" text="" />
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+            </tabs>
+        </TabPane>
+
+
+
+
+    </children>
+</AnchorPane>

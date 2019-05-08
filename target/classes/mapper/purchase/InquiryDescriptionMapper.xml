@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.purchase.InquiryDescriptionMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.purchase.InquiryDescription" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="des" property="des" jdbcType="VARCHAR" />
+    <result column="inquiryid" property="inquiryid" jdbcType="BIGINT" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+  </resultMap>
+  <!--根据询价单编号和类型编号查询 询价单的备注及说明-->
+  <select id="findInquiryDescription" resultMap="BaseResultMap">
+      select * from inquiry_description where inquiryid = #{inquiryid} and type =#{type}
+  </select>
+
+</mapper>

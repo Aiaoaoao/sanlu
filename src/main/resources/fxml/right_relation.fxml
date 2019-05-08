@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="850.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.RelationController">
+   <children>
+      <VBox layoutX="77.0" layoutY="130.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="141.0" prefWidth="226.0">
+               <children>
+                  <GridPane layoutX="13.0" layoutY="16.0" prefHeight="108.0" prefWidth="200.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="72.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="135.0" minWidth="10.0" prefWidth="72.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="135.0" minWidth="10.0" prefWidth="61.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="单据类型：">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="orderType" prefHeight="25.0" prefWidth="129.0" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                        <Button mnemonicParsing="false" onMouseClicked="#searchOrders" prefHeight="23.0" prefWidth="50.0" text="查找" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label layoutX="10.0" layoutY="11.0" text="单据编号：" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="orders" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onMouseClicked="#clearAllInput" prefHeight="23.0" prefWidth="50.0" text="清空" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+               </children>
+            </Pane>
+            <Pane prefHeight="30.0" prefWidth="226.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="4.0" text="相关单据列表">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="679.0" prefWidth="226.0">
+               <children>
+                  <TableView fx:id="stayOrderTableView" layoutY="4.0" prefHeight="679.0" prefWidth="250.0">
+                    <columns>
+                      <TableColumn fx:id="tabSort" prefWidth="30.0" text="" />
+                      <TableColumn fx:id="tabOrderType" prefWidth="75.0" text="单据种类" />
+                        <TableColumn fx:id="tabOrders" prefWidth="75.0" text="单据编号" />
+                        <TableColumn fx:id="tabTime" prefWidth="75.0" text="制单日期" />
+                        <TableColumn fx:id="createPeople" prefWidth="75.0" text="制单人" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

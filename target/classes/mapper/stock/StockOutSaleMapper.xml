@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.stock.StockOutSaleMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.stock.StockOutSale" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="outbound_no" property="outboundNo" jdbcType="VARCHAR" />
+    <result column="sale_no" property="saleNo" jdbcType="VARCHAR" />
+    <result column="warehouse_in" property="warehouseIn" jdbcType="VARCHAR" />
+    <result column="warehouse_in_str" property="warehouseInStr" jdbcType="VARCHAR" />
+    <result column="customer_no" property="customerNo" jdbcType="VARCHAR" />
+    <result column="customer_no_str" property="customerNoStr" jdbcType="VARCHAR" />
+    <result column="made_people" property="madePeople" jdbcType="VARCHAR" />
+    <result column="audit" property="audit" jdbcType="VARCHAR" />
+    <result column="audit_str" property="auditStr" jdbcType="VARCHAR" />
+    <result column="last_update" property="lastUpdate" jdbcType="VARCHAR" />
+    <result column="last_update_str" property="lastUpdateStr" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="order_audit" property="orderAudit" jdbcType="BIT" />
+  </resultMap>
+
+  <select id="getStockOutSaleBySaleNo" resultMap="BaseResultMap">
+        SELECT * FROM stock_out_sale where sale_no = #{saleNo} limit 0,1
+    </select>
+
+  <!--查询最订单号-->
+  <select id="getMaxOrderNo" resultType="java.lang.String">
+  SELECT MAX(outbound_no) FROM stock_out_sale
+  </select>
+
+  <select id="listStockOutSaleAll" resultMap="BaseResultMap">
+        SELECT * FROM stock_out_sale ORDER BY addtime desc
+    </select>
+
+  <select id="getStockOutSale" resultMap="BaseResultMap">
+        SELECT * FROM stock_out_sale WHERE sale_no = #{orderno}
+    </select>
+
+  <select id="getLastStockOutSale" resultMap="BaseResultMap">
+        SELECT * FROM stock_out_sale  ORDER BY id asc  limit 0,1
+    </select>
+
+  <select id="getFirstStockOutSale" resultMap="BaseResultMap">
+        SELECT * FROM stock_out_sale  ORDER BY id desc  limit 0,1
+    </select>
+
+  <select id="getStockOutSaleByPage" resultMap="BaseResultMap">
+       SELECT * FROM stock_out_sale limit #{page},#{rows}
+    </select>
+
+  <select id="getStockOutSaleCount" resultType="integer">
+       SELECT count(*) FROM stock_out_sale
+    </select>
+
+  <select id="listStockOutSaleNotSh" resultMap="BaseResultMap">
+     SELECT * FROM stock_out_sale  where order_audit = 0 ORDER BY id desc
+  </select>
+
+  <select id="getStockOutSaleByOutboundNo" resultMap="BaseResultMap">
+      SELECT * FROM stock_out_sale WHERE outbound_no = #{outboundNo}
+  </select>
+
+</mapper>

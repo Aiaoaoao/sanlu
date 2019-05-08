@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.education.mapper.basic.ProductDetailsMapper">
+  <resultMap id="BaseResultMap" type="com.yc.education.model.basic.ProductDetails">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="proid" jdbcType="BIGINT" property="proid" />
+    <result column="declares" jdbcType="VARCHAR" property="declare" />
+  </resultMap>
+
+  <select id="selectProductDetailsByProid" resultMap="BaseResultMap">
+    SELECT * FROM PRODUCT_DETAILS WHERE  proid=#{proid}
+  </select>
+
+
+
+
+</mapper>

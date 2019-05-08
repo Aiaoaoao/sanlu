@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.education.mapper.customer.CustomerDataMaintainMapper">
+  <resultMap id="BaseResultMap" type="com.yc.education.model.customer.CustomerDataMaintain">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="customer_no" jdbcType="VARCHAR" property="customerNo" />
+    <result column="customer_no_str" jdbcType="VARCHAR" property="customerNoStr" />
+    <result column="create_no" jdbcType="VARCHAR" property="createNo" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+    <result column="leader_people" jdbcType="VARCHAR" property="leaderPeople" />
+    <result column="contacts" jdbcType="VARCHAR" property="contacts" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="delivery_address" jdbcType="VARCHAR" property="deliveryAddress" />
+    <result column="invoice_address" jdbcType="VARCHAR" property="invoiceAddress" />
+    <result column="purchase" jdbcType="VARCHAR" property="purchase" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="create_people" jdbcType="VARCHAR" property="createPeople" />
+    <result column="create_people_str" jdbcType="VARCHAR" property="createPeopleStr" />
+    <result column="update_people" jdbcType="VARCHAR" property="updatePeople" />
+    <result column="update_people_str" jdbcType="VARCHAR" property="updatePeopleStr" />
+    <result column="start_year" jdbcType="VARCHAR" property="startYear" />
+    <result column="annual_turnover" jdbcType="VARCHAR" property="annualTurnover" />
+    <result column="employee_num" jdbcType="VARCHAR" property="employeeNum" />
+    <result column="budget" jdbcType="VARCHAR" property="budget" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="production_type" jdbcType="VARCHAR" property="productionType" />
+    <result column="vendor" jdbcType="VARCHAR" property="vendor" />
+    <result column="factory" jdbcType="VARCHAR" property="factory" />
+  </resultMap>
+
+
+  <select id="listCustomerDataMaintain" resultMap="BaseResultMap">
+    SELECT * FROM customer_data_maintain
+    <where>
+      <if test="text != null and text != ''">
+        and create_no like concat(concat('%',#{text}),'%') or customer_name like concat(concat('%',#{text}),'%')
+      </if>
+    </where>
+    ORDER BY addtime desc
+  </select>
+</mapper>

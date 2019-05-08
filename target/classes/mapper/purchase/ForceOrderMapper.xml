@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.purchase.ForceOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.purchase.ForceOrder" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="purchaseorder" property="purchaseorder" jdbcType="VARCHAR" />
+    <result column="purchasedate" property="purchasedate" jdbcType="DATE" />
+    <result column="planorder" property="planorder" jdbcType="VARCHAR" />
+    <result column="comedate" property="comedate" jdbcType="DATE" />
+    <result column="suppliernum" property="suppliernum" jdbcType="VARCHAR" />
+    <result column="suppliername" property="suppliername" jdbcType="VARCHAR" />
+    <result column="shpeople" property="shpeople" jdbcType="VARCHAR" />
+    <result column="shdate" property="shdate" jdbcType="DATE" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="isdel" property="isdel" jdbcType="INTEGER" />
+  </resultMap>
+
+  <!--查询强制结案-->
+  <select id="findForceOrder" resultMap="BaseResultMap">
+    select * from force_order where isdel = 0 order by id DESC
+  </select>
+  <!--根据采购订单查询该订单下强制结案的订单-->
+  <select id="findForceOrderByPurchaseOrder" resultMap="BaseResultMap">
+    select * from force_order where isdel = 0 and purchaseorder = #{purchaseOrder}
+  </select>
+
+
+  <select id="findForceOrderBySupplier" resultMap="BaseResultMap">
+
+
+    select * from force_order
+
+    <where>
+
+      <if test="supplier != null and supplier != ''" >
+        and  suppliernum = #{supplier}
+      </if>
+      <if test="startTime != null and startTime != ''" >
+        and str_to_date(purchasedate, '%Y-%m-%d') &gt;= str_to_date(#{startTime}, '%Y-%m-%d')
+      </if>
+      <if test="endTime != null and endTime != ''" >
+        and str_to_date(purchasedate, '%Y-%m-%d') &lt;= str_to_date(#{endTime}, '%Y-%m-%d')
+      </if>
+
+    </where>
+
+    order by id DESC
+
+
+  </select>
+
+</mapper>

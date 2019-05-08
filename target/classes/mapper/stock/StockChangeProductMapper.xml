@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.stock.StockChangeProductMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.stock.StockChangeProduct" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="soursebill" property="soursebill" jdbcType="VARCHAR" />
+    <result column="sourseorder" property="sourseorder" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="VARCHAR" />
+    <result column="productorder" property="productorder" jdbcType="VARCHAR" />
+    <result column="productname" property="productname" jdbcType="VARCHAR" />
+    <result column="productnum" property="productnum" jdbcType="INTEGER" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="depotorder" property="depotorder" jdbcType="VARCHAR" />
+    <result column="depotname" property="depotname" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="changestockid" property="changestockid" jdbcType="BIGINT" />
+    <association property="stockChange" javaType="com.yc.education.model.stock.StockChange"  >
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="changedate" jdbcType="DATE" property="changedate" />
+    <result column="changeorder" jdbcType="VARCHAR" property="changeorder" />
+    <result column="depotorder" jdbcType="VARCHAR" property="depotorder" />
+    <result column="depotname" jdbcType="VARCHAR" property="depotname" />
+    <result column="changetype" jdbcType="INTEGER" property="changetype" />
+    <result column="peopleorder" jdbcType="VARCHAR" property="peopleorder" />
+    <result column="peoplename" jdbcType="VARCHAR" property="peoplename" />
+    <result column="changecurrency" jdbcType="INTEGER" property="changecurrency" />
+    <result column="changesourse" jdbcType="VARCHAR" property="changesourse" />
+    <result column="createpeople" jdbcType="VARCHAR" property="createpeople" />
+    <result column="shpeople" jdbcType="VARCHAR" property="shpeople" />
+    <result column="shdate" jdbcType="VARCHAR" property="shdate" />
+    <result column="updatepeople" jdbcType="VARCHAR" property="updatepeople" />
+    <result column="updatedate" jdbcType="VARCHAR" property="updatedate" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="shstatus" jdbcType="INTEGER" property="shstatus" />
+    </association>
+  </resultMap>
+
+
+  <select id="findStockChangeProduct" resultMap="BaseResultMap">
+  select * from stock_change_product  where changestockid = #{stockChangeId}
+  </select>
+
+  <select id="findStockChangeProductByProductNumAndChangeTypeAndChangeDate" resultMap="BaseResultMap">
+      select * from stock_change sc ,stock_change_product scp
+
+    <where>
+
+      AND scp.changestockid = sc.id  and sc.shstatus = 1
+
+      <if test="proTextStart != '' and proTextStart != null ">
+        and  scp.productorder &gt;= #{proTextStart}
+      </if>
+      <if test="proTextEnd != '' and proTextEnd != null ">
+        and  scp.productorder &lt;= #{proTextEnd}
+      </if>
+      <if test="changeTypeStart != '' and changeTypeStart != null and  changeTypeStart != 0 ">
+        and  sc.changetype &gt;= #{changeTypeStart}
+      </if>
+      <if test="changeTypeEnd != '' and changeTypeEnd != null and changeTypeEnd != 0 ">
+        and  sc.changetype &lt;= #{changeTypeEnd}
+      </if>
+      <if test="changeDateStart != null and changeDateStart !=''    ">
+
+        AND  DATE_FORMAT(sc.changedate,'%Y-%m-%d') &gt;= #{changeDateStart}
+
+      </if>
+
+      <if test="changeDateEnd != null and changeDateEnd !=''   ">
+
+        AND   DATE_FORMAT(sc.changedate,'%Y-%m-%d') &lt;= #{changeDateEnd}
+
+      </if>
+
+
+    </where>
+
+
+
+  </select>
+
+
+</mapper>

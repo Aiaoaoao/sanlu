@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<!-- 销货日报表 -->
+
+<AnchorPane maxWidth="1143.0" prefHeight="710.0" prefWidth="1143.0" stylesheets="@../../css/basic.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox prefHeight="30.0" prefWidth="1143.0" styleClass="title_bar_background" stylesheets="@/css/basic.css">
+            <children>
+                <Label prefHeight="30.0" prefWidth="112.0" styleClass="title_bar_words" text="销货日报表">
+                </Label>
+            </children>
+        </HBox>
+      <Pane layoutY="646.0" prefHeight="63.0" prefWidth="1143.0" style="-fx-background-color: #eee;">
+         <children>
+            <Button layoutX="353.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="预览" />
+            <Button layoutX="446.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="Excel" />
+            <Button layoutX="634.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="打印" />
+            <Button layoutX="541.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="Word" />
+            <Button layoutX="724.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="退出" />
+         </children>
+      </Pane>
+      <Pane layoutX="46.0" layoutY="42.0">
+         <children>
+            <RadioButton layoutX="12.0" layoutY="29.0" text="依业务别" />
+            <RadioButton layoutX="255.0" layoutY="29.0" text="依产品别" />
+            <RadioButton layoutX="133.0" layoutY="29.0" text="依仓库别" />
+            <Label layoutX="12.0" text="格式" />
+         </children>
+      </Pane>
+      <GridPane layoutX="-10.0" layoutY="156.0" prefHeight="300.0" prefWidth="657.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="26.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="0.0" prefWidth="96.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="81.0" minWidth="10.0" prefWidth="49.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="109.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="27.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.0" minWidth="10.0" prefWidth="53.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="83.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="10.0" prefWidth="48.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="147.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="27.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="公司别：" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+            <TextField prefHeight="23.0" prefWidth="42.0" text="05" GridPane.columnIndex="2" />
+            <TextField prefHeight="23.0" prefWidth="99.0" text="三禄" GridPane.columnIndex="3" GridPane.columnSpan="2" />
+            <Label text="销货日期：" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+            <DatePicker prefHeight="23.0" prefWidth="182.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+            <DatePicker prefHeight="23.0" prefWidth="170.0" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+            <Label text="销货单号：" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <TextField prefHeight="23.0" prefWidth="119.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="8.0" text="..." GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <TextField prefHeight="23.0" prefWidth="119.0" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="8.0" text="..." GridPane.columnIndex="9" GridPane.rowIndex="2" />
+            <Label text="客户编号：" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+            <Label text="负责业务：" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+            <Label text="仓库编号：" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+            <TextField prefHeight="23.0" prefWidth="119.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="8.0" text="..." GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <TextField prefHeight="23.0" prefWidth="119.0" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="8.0" text="..." GridPane.columnIndex="9" GridPane.rowIndex="3" />
+            <TextField prefHeight="23.0" prefWidth="147.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+            <TextField prefHeight="23.0" prefWidth="161.0" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+            <TextField prefHeight="23.0" prefWidth="147.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="5" />
+            <TextField prefHeight="23.0" prefWidth="147.0" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+             <Label text="产品编号：" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+             <TextField prefHeight="23.0" prefWidth="119.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+             <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="8.0" text="..." GridPane.columnIndex="4" GridPane.rowIndex="6" />
+             <TextField prefHeight="23.0" prefWidth="119.0" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+             <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="8.0" text="..." GridPane.columnIndex="9" GridPane.rowIndex="6" />
+
+             <Label text="产品大类：" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+             <ComboBox prefHeight="23.0" prefWidth="179.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="7" />
+             <ComboBox prefHeight="23.0" prefWidth="171.0" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+             <Label text="产品大类：" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
+             <ComboBox prefHeight="23.0" prefWidth="179.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="8" />
+             <ComboBox prefHeight="23.0" prefWidth="171.0" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+             <Label text="产品大类：" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
+             <ComboBox prefHeight="23.0" prefWidth="179.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="9" />
+             <ComboBox prefHeight="23.0" prefWidth="171.0" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+
+             <Pane prefHeight="1.0" prefWidth="72.0" style="-fx-background-color: #000;" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                 <opaqueInsets>
+                     <Insets />
+                 </opaqueInsets>
+                 <GridPane.margin>
+                     <Insets bottom="15.0" top="14.0" />
+                 </GridPane.margin>
+             </Pane>
+             <Pane prefHeight="1.0" prefWidth="72.0" style="-fx-background-color: #000;" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                 <opaqueInsets>
+                     <Insets />
+                 </opaqueInsets>
+                 <GridPane.margin>
+                     <Insets bottom="15.0" top="14.0" />
+                 </GridPane.margin>
+             </Pane>
+             <Pane prefHeight="1.0" prefWidth="72.0" style="-fx-background-color: #000;" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                 <opaqueInsets>
+                     <Insets />
+                 </opaqueInsets>
+                 <GridPane.margin>
+                     <Insets bottom="15.0" top="14.0" />
+                 </GridPane.margin>
+             </Pane>
+             <Pane prefHeight="1.0" prefWidth="72.0" style="-fx-background-color: #000;" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                 <opaqueInsets>
+                     <Insets />
+                 </opaqueInsets>
+                 <GridPane.margin>
+                     <Insets bottom="15.0" top="14.0" />
+                 </GridPane.margin>
+             </Pane>
+             <Pane prefHeight="1.0" prefWidth="72.0" style="-fx-background-color: #000;" GridPane.columnIndex="6" GridPane.rowIndex="5">
+                 <opaqueInsets>
+                     <Insets />
+                 </opaqueInsets>
+                 <GridPane.margin>
+                     <Insets bottom="15.0" top="14.0" />
+                 </GridPane.margin>
+             </Pane>
+             <Pane prefHeight="1.0" prefWidth="72.0" style="-fx-background-color: #000;" GridPane.columnIndex="6" GridPane.rowIndex="6">
+                 <opaqueInsets>
+                     <Insets />
+                 </opaqueInsets>
+                 <GridPane.margin>
+                     <Insets bottom="15.0" top="14.0" />
+                 </GridPane.margin>
+             </Pane>
+             <Pane prefHeight="1.0" prefWidth="72.0" style="-fx-background-color: #000;" GridPane.columnIndex="6" GridPane.rowIndex="7">
+                 <opaqueInsets>
+                     <Insets />
+                 </opaqueInsets>
+                 <GridPane.margin>
+                     <Insets bottom="15.0" top="14.0" />
+                 </GridPane.margin>
+             </Pane>
+             <Pane prefHeight="1.0" prefWidth="72.0" style="-fx-background-color: #000;" GridPane.columnIndex="6" GridPane.rowIndex="8">
+                 <opaqueInsets>
+                     <Insets />
+                 </opaqueInsets>
+                 <GridPane.margin>
+                     <Insets bottom="15.0" top="14.0" />
+                 </GridPane.margin>
+             </Pane>
+             <Pane prefHeight="1.0" prefWidth="72.0" style="-fx-background-color: #000;" GridPane.columnIndex="6" GridPane.rowIndex="9">
+                 <opaqueInsets>
+                     <Insets />
+                 </opaqueInsets>
+                 <GridPane.margin>
+                     <Insets bottom="15.0" top="14.0" />
+                 </GridPane.margin>
+             </Pane>
+         </children>
+      </GridPane>
+      <Label layoutX="75.0" layoutY="122.0" text="条件" />
+
+
+    </children>
+</AnchorPane>

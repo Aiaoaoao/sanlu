@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.check.CheckDataMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.check.CheckData" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="orders" property="orders" jdbcType="VARCHAR" />
+    <result column="depot" property="depot" jdbcType="VARCHAR" />
+    <result column="starttime" property="starttime" jdbcType="DATE" />
+    <result column="endtime" property="endtime" jdbcType="DATE" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="createpeople" property="createpeople" jdbcType="VARCHAR" />
+    <result column="createdate" property="createdate" jdbcType="VARCHAR" />
+    <result column="shpeople" property="shpeople" jdbcType="VARCHAR" />
+    <result column="shdate" property="shdate" jdbcType="VARCHAR" />
+    <result column="updatepeople" property="updatepeople" jdbcType="VARCHAR" />
+    <result column="updatedate" property="updatedate" jdbcType="VARCHAR" />
+    <result column="shstatus" property="shstatus" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="findCheckData" resultMap="BaseResultMap">
+    select * from check_data
+  </select>
+  
+  
+
+
+
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.education.mapper.customer.CustomerContactsMapper">
+  <resultMap id="BaseResultMap" type="com.yc.education.model.customer.CustomerContacts">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="customer_id" jdbcType="BIGINT" property="customerId" />
+    <result column="primary_contacts" jdbcType="BIT" property="primaryContacts" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+  </resultMap>
+
+  <update id="setCustomerDefaultInvoice">
+      update customer_contacts set primary_contacts = 1 where id = #{id}
+  </update>
+
+  <update id="clearCustomerDefaultInvoice">
+      update customer_contacts set primary_contacts = 0 where customer_id = #{customerid}
+  </update>
+
+    <select id="listCustomerContactsByCustomerId" resultMap="BaseResultMap">
+        SELECT  * from customer_contacts where customer_id = #{customerid} ORDER BY primary_contacts desc
+    </select>
+
+    <delete id="deleteCustomerContactsByCustomerId" >
+        DELETE from customer_contacts where customer_id = #{customerid}
+    </delete>
+</mapper>

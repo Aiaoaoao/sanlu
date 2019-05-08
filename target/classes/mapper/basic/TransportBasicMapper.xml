@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.basic.TransportBasicMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.basic.TransportBasic" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="idnum" property="idnum" jdbcType="VARCHAR" />
+    <result column="supdes" property="supdes" jdbcType="VARCHAR" />
+    <result column="supname" property="supname" jdbcType="VARCHAR" />
+    <result column="regadd" property="regadd" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="INTEGER" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="postalcode" property="postalcode" jdbcType="VARCHAR" />
+    <result column="phonetype" property="phonetype" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="faxtype" property="faxtype" jdbcType="INTEGER" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="addpeople" property="addpeople" jdbcType="VARCHAR" />
+    <result column="adddate" property="adddate" jdbcType="VARCHAR" />
+    <result column="updatepeople" property="updatepeople" jdbcType="VARCHAR" />
+    <result column="updatedate" property="updatedate" jdbcType="VARCHAR" />
+    <result column="isstop" property="isstop" jdbcType="INTEGER" />
+    <result column="stopdes" property="stopdes" jdbcType="VARCHAR" />
+    <result column="comeandgo" property="comeandgo" jdbcType="INTEGER" />
+  </resultMap>
+
+
+  <!--查询最大编号-->
+  <select id="selectMaxIdnum" resultType="java.lang.String">
+    SELECT MAX(IDNUM) FROM transport_basic
+  </select>
+
+
+  <!--查询所有供应商-->
+  <select id="selectTransportBasic" resultMap="BaseResultMap">
+    SELECT * FROM transport_basic WHERE COMEANDGO = 0 and isstop = 0 order by id DESC
+  </select>
+
+
+  <select id="selectTransportBasicByIsnum" resultMap="BaseResultMap">
+    SELECT * FROM transport_basic WHERE idnum = #{idnum} limit 0,1
+  </select>
+
+
+  <select id="selectTransportBasicNotSotp" resultMap="BaseResultMap">
+    SELECT * FROM transport_basic
+    <where>
+      and COMEANDGO = 0
+      <if test="types != null and  types != '' and types != 0">
+        and isstop = #{types}
+      </if>
+    </where>
+    order by id DESC
+  </select>
+
+
+</mapper>

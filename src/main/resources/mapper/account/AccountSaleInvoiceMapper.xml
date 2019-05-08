@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.account.AccountSaleInvoiceMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.account.AccountSaleInvoice" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="sale_goods_no" property="saleGoodsNo" jdbcType="VARCHAR" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="invoice_type" property="invoiceType" jdbcType="VARCHAR" />
+    <result column="invoice_date" property="invoiceDate" jdbcType="TIMESTAMP" />
+    <result column="invoice_no" property="invoiceNo" jdbcType="VARCHAR" />
+    <result column="made_people" property="madePeople" jdbcType="VARCHAR" />
+    <result column="customer_no" property="customerNo" jdbcType="VARCHAR" />
+    <result column="customer_no_str" property="customerNoStr" jdbcType="VARCHAR" />
+    <result column="invoice_title" property="invoiceTitle" jdbcType="VARCHAR" />
+    <result column="invoice_address" property="invoiceAddress" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="taxpayer_no" property="taxpayerNo" jdbcType="VARCHAR" />
+    <result column="bank" property="bank" jdbcType="VARCHAR" />
+    <result column="bank_no" property="bankNo" jdbcType="VARCHAR" />
+    <result column="payment_method" property="paymentMethod" jdbcType="VARCHAR" />
+    <result column="payment_date" property="paymentDate" jdbcType="TIMESTAMP" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="audit" property="audit" jdbcType="VARCHAR" />
+    <result column="audit_str" property="auditStr" jdbcType="VARCHAR" />
+    <result column="last_update" property="lastUpdate" jdbcType="VARCHAR" />
+    <result column="last_update_str" property="lastUpdateStr" jdbcType="VARCHAR" />
+    <result column="order_audit" property="orderAudit" jdbcType="BIT" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="order_cancel" property="orderCancel" jdbcType="BIT" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="receive_money" property="receiveMoney" jdbcType="DECIMAL" />
+  </resultMap>
+
+  <select id="listAccountSaleInvoiceByCustomer" resultMap="BaseResultMap">
+    SELECT * FROM account_sale_invoice
+    <where>
+      order_audit = 1
+      <if test="customerNo != null and customerNo != ''">
+        and customer_no = #{customerNo}
+      </if>
+    </where>
+    ORDER BY addtime asc
+  </select>
+
+
+  <select id="listNotRushAccountSaleInvoice" resultMap="BaseResultMap">
+    SELECT * FROM account_sale_invoice
+    <where>
+      order_audit = 1
+      <if test="customerNo != null and customerNo != ''">
+        and customer_no = #{customerNo}
+      </if>
+      and money &gt; receive_money
+    </where>
+    ORDER BY addtime asc
+  </select>
+
+
+  <!--查询最订单号-->
+  <select id="getMaxOrderNo" resultType="java.lang.String">
+  SELECT MAX(order_no) FROM account_sale_invoice
+  </select>
+
+  <select id="listOrderNoLike" resultMap="BaseResultMap">
+    SELECT * FROM account_sale_invoice
+    <where>
+      <if test="orderNo != null and orderNo != ''">
+        and order_no like concat(concat('%',#{orderNo}),'%')
+      </if>
+    </where>
+    ORDER BY addtime desc
+  </select>
+
+  <select id="listAccountSaleInvoice" resultMap="BaseResultMap">
+    select * from account_sale_invoice
+    <where>
+      <if test="text != null and text != ''">
+        and order_no like concat(concat('%',#{text}),'%') or customer_no_str like concat(concat('%',#{text}),'%')
+      </if>
+    </where>
+    order by addtime desc
+  </select>
+
+  <select id="getByOrderNo" resultMap="BaseResultMap">
+    select * from account_sale_invoice where order_no = #{orderno} limit 0,1
+  </select>
+
+
+  <select id="listAccountSaleInvoiceNotSh" resultMap="BaseResultMap">
+    select * from account_sale_invoice where order_audit = 0 order by id desc
+  </select>
+
+
+</mapper>

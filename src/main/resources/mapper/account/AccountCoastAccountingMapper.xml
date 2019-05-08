@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.education.mapper.account.AccountCoastAccountingMapper">
+    <resultMap id="BaseResultMap" type="com.yc.education.model.account.AccountCoastAccounting">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="storage_in_no" jdbcType="VARCHAR" property="storageInNo"/>
+        <result column="install_no" jdbcType="VARCHAR" property="installNo"/>
+        <result column="audit" jdbcType="VARCHAR" property="audit"/>
+        <result column="audit_date" jdbcType="TIMESTAMP" property="auditDate"/>
+        <result column="storage_in_remark" jdbcType="VARCHAR" property="storageInRemark"/>
+        <result column="verify_people" jdbcType="VARCHAR" property="verifyPeople"/>
+        <result column="verify_people_str" jdbcType="VARCHAR" property="verifyPeopleStr"/>
+        <result column="invoice_no" jdbcType="VARCHAR" property="invoiceNo"/>
+        <result column="currency" jdbcType="INTEGER" property="currency"/>
+        <result column="customs_fee" jdbcType="VARCHAR" property="customsFee"/>
+        <result column="proxy_fee" jdbcType="VARCHAR" property="proxyFee"/>
+        <result column="carriage_fee" jdbcType="VARCHAR" property="carriageFee"/>
+        <result column="poundage_fee" jdbcType="VARCHAR" property="poundageFee"/>
+        <result column="other_fee" jdbcType="VARCHAR" property="otherFee"/>
+        <result column="loan_total" jdbcType="VARCHAR" property="loanTotal"/>
+        <result column="tax_total" jdbcType="VARCHAR" property="taxTotal"/>
+        <result column="price_tax_total" jdbcType="VARCHAR" property="priceTaxTotal"/>
+        <result column="total" jdbcType="VARCHAR" property="total"/>
+        <result column="exchange_rate" jdbcType="VARCHAR" property="exchangeRate"/>
+        <result column="exchange_currency" jdbcType="VARCHAR" property="exchangeCurrency"/>
+        <result column="addtime" jdbcType="TIMESTAMP" property="addtime"/>
+        <result column="order_audit" property="orderAudit" jdbcType="BIT" />
+    </resultMap>
+
+    <!--查询最订单号-->
+    <select id="getMaxOrderNo" resultType="java.lang.String">
+  SELECT MAX(storage_in_no) FROM account_coast_accounting
+    </select>
+
+    <select id="listAccountCoastAccounting" resultMap="BaseResultMap">
+    select * from account_coast_accounting
+    <where>
+        <if test="text != null and text != ''">
+            and install_no like concat(concat('%',#{text}),'%')
+        </if>
+    </where>
+     order by addtime desc
+  </select>
+
+    <select id="getByOrderNo" resultMap="BaseResultMap">
+    select * from account_coast_accounting where storage_in_no = #{orderno} limit 0,1
+  </select>
+</mapper>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!-- 销项成本明细 -->
+
+<AnchorPane maxWidth="1143.0" prefHeight="710.0" prefWidth="1143.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.account.QueryAccountSaleCostController">
+    <children>
+      <HBox prefHeight="30.0" prefWidth="1143.0" style="-fx-background-color: #e0e0e0;" styleClass="items">
+            <children>
+                <Label prefHeight="30.0" prefWidth="135.0" text="销项成本明细" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </Label>
+                <Label prefHeight="30.0" prefWidth="105.0" text="【待输入】" textAlignment="CENTER">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <padding>
+                        <Insets right="10.0" />
+                    </padding>
+                </Label>
+            </children>
+        </HBox>
+      <GridPane layoutX="59.0" layoutY="53.0" prefHeight="275.0" prefWidth="693.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.0" minWidth="10.0" prefWidth="117.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.0" minWidth="10.0" prefWidth="24.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="236.0" minWidth="10.0" prefWidth="205.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="168.0" minWidth="10.0" prefWidth="164.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="10.0" prefWidth="26.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="10.0" prefWidth="26.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="格式" />
+            <Label text="条件" GridPane.rowIndex="2" />
+            <Label text="公司别：" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+            <Label text="销货日期：" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+            <Label text="销货单号：" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+            <Label text="客户编号：" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+            <Label text="产品编号：" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+            <Label text="产品大类：" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
+            <TextField prefHeight="23.0" prefWidth="1.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+            <DatePicker fx:id="sale_date" prefHeight="23.0" prefWidth="211.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+            <TextField fx:id="sale_no" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <Button id="销货单" mnemonicParsing="false" onMouseClicked="#moreSaleGoods" text="..." GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <TextField fx:id="customer_no" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" onMouseClicked="#CurrentClientButton" text="..." GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <TextField fx:id="product_no" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" onMouseClicked="#moreProductButton" text="..." GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <ComboBox fx:id="product_category" prefHeight="23.0" prefWidth="211.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="8" />
+            <DatePicker fx:id="sale_date_end" prefHeight="23.0" prefWidth="213.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+            <TextField fx:id="product_no_end" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" onMouseClicked="#moreProductButtonEnd" text="..." GridPane.columnIndex="6" GridPane.rowIndex="7" />
+            <TextField fx:id="sale_no_end" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <TextField fx:id="customer_no_end" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <ComboBox fx:id="product_category_end" prefHeight="23.0" prefWidth="234.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+            <Button id="销货单end" mnemonicParsing="false" onMouseClicked="#moreSaleGoodsEnd" text="..." GridPane.columnIndex="6" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" onMouseClicked="#CurrentClientButtonEnd" text="..." GridPane.columnIndex="6" GridPane.rowIndex="6" />
+             <VBox prefHeight="1.0" prefWidth="117.0" style="-fx-background-color: #000;" GridPane.columnIndex="4" GridPane.rowIndex="8">
+                 <GridPane.margin>
+                     <Insets bottom="15.0" left="40.0" right="40.0" top="14.0" />
+                 </GridPane.margin>
+             </VBox>
+             <VBox prefHeight="1.0" prefWidth="117.0" style="-fx-background-color: #000;" GridPane.columnIndex="4" GridPane.rowIndex="7">
+                 <GridPane.margin>
+                     <Insets bottom="15.0" left="40.0" right="40.0" top="14.0" />
+                 </GridPane.margin>
+             </VBox>
+             <VBox prefHeight="1.0" prefWidth="117.0" style="-fx-background-color: #000;" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                 <GridPane.margin>
+                     <Insets bottom="15.0" left="40.0" right="40.0" top="14.0" />
+                 </GridPane.margin>
+             </VBox>
+             <VBox prefHeight="1.0" prefWidth="117.0" style="-fx-background-color: #000;" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                 <GridPane.margin>
+                     <Insets bottom="15.0" left="40.0" right="40.0" top="14.0" />
+                 </GridPane.margin>
+             </VBox>
+             <VBox prefHeight="1.0" prefWidth="117.0" style="-fx-background-color: #000;" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                 <GridPane.margin>
+                     <Insets bottom="15.0" left="40.0" right="40.0" top="15.0" />
+                 </GridPane.margin>
+             </VBox>
+            <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
+               <children>
+                  <RadioButton fx:id="radio_goods" layoutX="24.0" layoutY="8.0" mnemonicParsing="false" text="依销货单" />
+                  <RadioButton fx:id="radio_product" layoutX="163.0" layoutY="8.0" mnemonicParsing="false" text="依产品别" />
+               </children>
+            </Pane>
+         </children>
+      </GridPane>
+      <TableView fx:id="tableview_order" layoutY="337.0" prefHeight="251.0" prefWidth="1143.0">
+         <columns>
+            <TableColumn fx:id="col_id" prefWidth="75.0" text="ID" visible="false"/>
+            <TableColumn fx:id="col_no" prefWidth="25.0" text="序号" />
+            <TableColumn fx:id="col_sale_no" prefWidth="75.0" text="销售单号" />
+            <TableColumn fx:id="col_create_date" prefWidth="75.0" text="制单日期" />
+            <TableColumn fx:id="col_customer_name" prefWidth="75.0" text="客户名称" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <VBox layoutY="588.0" prefHeight="86.0" prefWidth="1144.0" style="-fx-background-color: #E8E7E3;">
+         <children>
+            <GridPane>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="167.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="94.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="10.0" prefWidth="96.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="276.0" minWidth="10.0" prefWidth="92.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="95.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="367.0" minWidth="10.0" prefWidth="367.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="22.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button onMouseClicked="#openWebviewWindow" mnemonicParsing="false" prefHeight="38.0" prefWidth="93.0" text="预览" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button onMouseClicked="#exportExcel" mnemonicParsing="false" prefHeight="38.0" prefWidth="93.0" text="Excel" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="2.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="93.0" text="Word" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="93.0" text="打印" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="93.0" text="退出" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+      <Button layoutX="2.0" layoutY="678.0" mnemonicParsing="false" text="打开项目名称">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="754.0" layoutY="303.0" mnemonicParsing="false" onMouseClicked="#queryButton" prefHeight="23.0" prefWidth="69.0" text="查询" />
+    </children>
+</AnchorPane>

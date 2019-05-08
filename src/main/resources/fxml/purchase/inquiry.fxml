@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!-- 询价单 -->
+
+<AnchorPane maxWidth="1143.0" prefHeight="710.0" prefWidth="1143.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.purchase.InquiryController">
+    <children>
+        <HBox prefHeight="30.0" prefWidth="1143.0" styleClass="title_bar_background" stylesheets="@/css/basic.css">
+            <children>
+                <Label prefHeight="30.0" prefWidth="77.0" styleClass="title_bar_words" text="询价单">
+                </Label>
+                <Label fx:id="fxmlStatus" prefHeight="30.0" prefWidth="105.0" styleClass="title_bar_words_state" text="【查看】" userData="">
+                </Label>
+            </children>
+        </HBox>
+
+
+        <HBox layoutY="30.0" prefHeight="56.0" prefWidth="1143.0" stylesheets="@/css/basic.css">
+            <children>
+
+                <VBox fx:id="first" onMouseClicked="#pages" prefHeight="40.0" styleClass="menu_tools,mouse_hover" stylesheets="@/css/basic.css" userData="">
+                    <HBox.margin>
+                        <Insets left="10.0" right="2.5" />
+                    </HBox.margin>
+                    <children>
+                        <Pane fx:id="firstimg" prefHeight="20.0" prefWidth="16.0">
+                            <children>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </Pane>
+                        <Label styleClass="menu_words" text="第一笔" textAlignment="CENTER">
+
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </VBox>
+                <VBox fx:id="prev" onMouseClicked="#pages" styleClass="menu_tools,mouse_hover" stylesheets="@/css/basic.css" userData="">
+                    <children>
+                        <Pane fx:id="previmg" prefHeight="20.0" prefWidth="16.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </Pane>
+                        <Label styleClass="menu_words" text="前一笔" textAlignment="CENTER">
+
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="2.5" right="2.5" />
+                    </HBox.margin>
+                </VBox>
+                <VBox fx:id="next" onMouseClicked="#pages" styleClass="menu_tools,mouse_hover" userData="">
+                    <children>
+                        <Pane fx:id="nextimg" prefHeight="20.0" prefWidth="27.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </Pane>
+                        <Label styleClass="menu_words" text="后一笔" textAlignment="CENTER">
+
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="2.5" right="2.5" />
+                    </HBox.margin>
+                </VBox>
+                <VBox fx:id="last" onMouseClicked="#pages" styleClass="menu_tools,mouse_hover" userData="">
+                    <children>
+                        <Pane fx:id="lastimg" prefHeight="20.0" prefWidth="21.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </Pane>
+                        <Label styleClass="menu_words" text="最末尾" textAlignment="CENTER">
+
+
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="2.5" right="2.5" />
+                    </HBox.margin>
+                </VBox>
+                <VBox fx:id="clearvbox" onMouseClicked="#clearValue" styleClass="menu_tools,mouse_hover">
+                    <children>
+                        <Pane fx:id="clearvboximg" prefHeight="20.0" prefWidth="20.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </Pane>
+                        <Label styleClass="menu_words" text="清空" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+
+                            <VBox.margin>
+                                <Insets left="5.0" />
+                            </VBox.margin>
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="2.5" right="2.5" />
+                    </HBox.margin>
+                </VBox>
+                <VBox fx:id="submitvbox" onMouseClicked="#submit" styleClass="menu_tools,mouse_hover">
+                    <children>
+                        <Pane fx:id="submitvboximg" prefHeight="20.0" prefWidth="27.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </Pane>
+                        <Label styleClass="menu_words" text="提交" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets left="5.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="2.5" right="2.5" />
+                    </HBox.margin>
+                </VBox>
+                <VBox fx:id="insertvbox" onMouseClicked="#insert" styleClass="menu_tools,mouse_hover">
+                    <children>
+                        <Pane fx:id="insertvboximg" prefHeight="21.0" prefWidth="28.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </Pane>
+                        <Label styleClass="menu_words" text="新增" textAlignment="CENTER">
+
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets left="5.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="2.5" right="2.5" />
+                    </HBox.margin>
+                </VBox>
+                <VBox fx:id="updatevbox" onMouseClicked="#update" styleClass="menu_tools,mouse_hover">
+                    <children>
+                        <Pane fx:id="updatevboximg" prefHeight="20.0" prefWidth="22.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </Pane>
+                        <Label styleClass="menu_words" text="修改" textAlignment="CENTER">
+
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets left="5.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="2.5" right="2.5" />
+                    </HBox.margin>
+                </VBox>
+                <VBox fx:id="deletevbox" onMouseClicked="#delete" styleClass="menu_tools,mouse_hover">
+                    <children>
+                        <Pane fx:id="deletevboximg" prefHeight="20.0" prefWidth="26.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </Pane>
+                        <Label styleClass="menu_words" text="删除" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets left="5.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="2.5" right="2.5" />
+                    </HBox.margin>
+                </VBox>
+                <VBox fx:id="printingvbox" styleClass="menu_tools,mouse_hover">
+                    <children>
+                        <Pane fx:id="copyimg" prefHeight="20.0" prefWidth="26.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </Pane>
+                        <Label styleClass="menu_words" text="打印" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets left="5.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="2.5" right="2.5" />
+                    </HBox.margin>
+                </VBox>
+
+                <VBox fx:id="shyes" layoutX="542.0" layoutY="10.0" onMouseClicked="#shButtonSuccess" styleClass="menu_tools,mouse_hover">
+                    <children>
+                        <Pane fx:id="shyesimg" prefHeight="20.0" prefWidth="26.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </Pane>
+                        <Label styleClass="menu_words" text="审核" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets left="5.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="2.5" right="2.5" />
+                    </HBox.margin>
+                </VBox>
+                <VBox fx:id="shno" layoutX="600.0" layoutY="10.0" onMouseClicked="#shButtonCancel" prefHeight="61.0" prefWidth="86.0" styleClass="menu_tools_inport,mouse_hover">
+                    <children>
+                        <Pane fx:id="shnoimg" prefHeight="20.0" prefWidth="39.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="20.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </Pane>
+                        <Label prefHeight="15.0" prefWidth="526.0" styleClass="menu_words" text="取消审核" textAlignment="CENTER">
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="2.5" right="2.5" />
+                    </HBox.margin>
+                </VBox>
+
+
+                <VBox fx:id="importData" layoutX="648.0" layoutY="10.0" prefHeight="61.0" prefWidth="86.0" styleClass="menu_tools_inport,mouse_hover">
+                    <children>
+                        <Pane fx:id="importDataimg" prefHeight="20.0" prefWidth="39.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+                            </children>
+                            <VBox.margin>
+                                <Insets left="15.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </Pane>
+                        <MenuButton mnemonicParsing="false" style="-fx-background-color: transparent;" text="导入">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#importButtonQuotation" text="报价单" />
+                                <MenuItem mnemonicParsing="false" onAction="#importButtonSaleGoods" text="销货单" />
+                            </items>
+                        </MenuButton>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="2.5" right="2.5" />
+                    </HBox.margin>
+                </VBox>
+
+                <VBox fx:id="importOut" layoutX="696.0" layoutY="10.0" prefHeight="63.0" prefWidth="120.0" styleClass="menu_tools_inport,mouse_hover">
+                    <children>
+                        <Pane fx:id="importOutimg" prefHeight="20.0" prefWidth="32.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets left="15.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </Pane>
+                        <MenuButton fx:id="imports1" mnemonicParsing="false" style="-fx-background-color: transparent;" text="导出">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#importOutPurchase" text="采购订单" />
+                            </items>
+                        </MenuButton>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="2.5" />
+                    </HBox.margin>
+                </VBox>
+
+            </children>
+        </HBox>
+        <VBox layoutY="84.0" prefHeight="1.0" prefWidth="1143.0" styleClass="menu_underline" stylesheets="@/css/basic.css" AnchorPane.bottomAnchor="625.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="84.0" />
+
+
+        <Pane layoutX="16.0" layoutY="111.0" prefHeight="94.0" prefWidth="540.0" stylesheets="@/css/basic.css">
+         <children>
+            <GridPane layoutX="-20.0" prefHeight="71.0" prefWidth="600.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="136.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="84.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="80.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                      <Label text="制单日期：" GridPane.halignment="RIGHT" />
+                      <DatePicker fx:id="createdate" prefHeight="23.0" prefWidth="161.0" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                      <Label text="供应商编号：" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                      <TextField fx:id="suppliernum" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                      <Button fx:id="supplierBtn" mnemonicParsing="false" onMouseClicked="#moreSupplierClick" text="..." GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                      <Label text="询价单号：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" />
+                      <TextField fx:id="orders" GridPane.columnIndex="4" />
+                      <Button defaultButton="true" mnemonicParsing="false" onMouseClicked="#moreInquiryClick" text="..." GridPane.columnIndex="5" />
+                      <TextField fx:id="suppliername" prefHeight="25.0" prefWidth="176.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+        </Pane>
+        <TabPane layoutY="223.0" prefHeight="487.0" prefWidth="1143.0" stylesheets="@/css/basic.css" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="基本资料">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Pane layoutX="18.0" layoutY="21.0" nodeOrientation="RIGHT_TO_LEFT" />
+
+                                <Pane layoutX="307.0" layoutY="21.0" nodeOrientation="LEFT_TO_RIGHT" />
+                                <Pane layoutX="572.0" layoutY="181.0" nodeOrientation="RIGHT_TO_LEFT" />
+                        <GridPane layoutX="30.0" layoutY="21.0" prefHeight="387.0" prefWidth="1100.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="104.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="126.0" minWidth="10.0" prefWidth="111.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="87.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="10.0" prefWidth="141.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="60.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+      
+                                      <Label text="税别：" GridPane.halignment="RIGHT" />
+                                      <ComboBox fx:id="tax" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+      
+                                      <Label text="币别：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" />
+                                      <ComboBox fx:id="currency" prefHeight="25.0" prefWidth="140.0" GridPane.columnIndex="4" GridPane.columnSpan="2" />
+                              <Label text="回复日期：" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                              <DatePicker fx:id="replydate" prefHeight="23.0" prefWidth="154.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                              <Label text="有效期至：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                              <DatePicker fx:id="validdate" prefHeight="23.0" prefWidth="141.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                              <Label text="采购负责：" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                              <ComboBox fx:id="purpeopletype" prefHeight="25.0" prefWidth="108.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+      
+                              <TextField fx:id="purpeople" prefHeight="25.0" prefWidth="53.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Label prefHeight="24.0" prefWidth="61.0" text="制单人：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                              <TextField fx:id="createpeople" prefHeight="25.0" prefWidth="124.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                              <Label text="审核人：" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                              <TextField fx:id="shpeople" editable="false" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                              <TextField fx:id="shdate" editable="false" prefHeight="25.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                              <Label text="最后修改人：" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+                              <TextField fx:id="updatepeople" editable="false" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                              <TextField fx:id="updatedate" editable="false" prefHeight="25.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                              <Label text="供应商基本资料" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                              <Separator prefHeight="8.0" prefWidth="1039.0" GridPane.columnIndex="1" GridPane.columnSpan="10" GridPane.rowIndex="5" />
+                              <Label text="供应商名称：" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+                              <TextField fx:id="supname" prefHeight="25.0" prefWidth="399.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="6" />
+                              <Label text="联系人：" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+                              <ComboBox fx:id="supcontacts" prefWidth="150.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                              <Label text="联系电话：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+                              <ComboBox fx:id="supohone" prefHeight="25.0" prefWidth="140.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                              <Label prefHeight="24.0" prefWidth="45.0" text="传真：" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
+                              <ComboBox fx:id="suptax" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+                              <Label text="地址：" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
+                              <ComboBox fx:id="supaddress" prefHeight="25.0" prefWidth="402.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="9" />
+                           </children>
+                        </GridPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="询价产品">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+
+                                <TableView fx:id="tableView1" onKeyPressed="#tableView1Key" prefHeight="348.0" prefWidth="1143.0">
+                                    <columns>
+                                        <TableColumn fx:id="editId" prefWidth="50.0" text=" " />
+                                        <TableColumn fx:id="proisnum" prefWidth="150.0" text="产品编号" />
+                                        <TableColumn fx:id="proname" prefWidth="150.0" text="产品名称" />
+                                        <TableColumn fx:id="protype" prefWidth="100.0" text="品类" />
+                                        <TableColumn fx:id="pronum" prefWidth="100.0" text="数量" />
+                                        <TableColumn fx:id="prounit" prefWidth="100.0" text="单位" />
+                                        <TableColumn fx:id="proprice" prefWidth="100.0" text="单价" />
+                                        <TableColumn fx:id="totalprice" prefWidth="100.0" text="金额" />
+                                        <TableColumn fx:id="estimateDeliver" prefWidth="100.0" text="期望交期" />
+                                        <TableColumn fx:id="proremark" prefWidth="100.0" text="备注" />
+                                    </columns>
+                                </TableView>
+                        <Pane layoutY="350.0" prefHeight="97.0" prefWidth="1143.0" style="-fx-background-color: #eee;">
+                           <children>
+
+                               <TextField fx:id="totalnum" editable="false" layoutX="93.0" layoutY="18.0" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #fff;" text="0" />
+                               <Label layoutX="31.0" layoutY="20.0" text="数量总计：" />
+                               <TextField fx:id="totalmoney" layoutX="93.0" layoutY="58.0" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #fff;" text="0.00" />
+                               <TextField fx:id="totalloan" editable="false" layoutX="272.0" layoutY="58.0" prefHeight="25.0" prefWidth="86.0" promptText="0.00" style="-fx-background-color: #fff;" text="0.00" />
+                               <TextField fx:id="totaltax" editable="false" layoutX="450.0" layoutY="58.0" prefHeight="25.0" prefWidth="86.0" promptText="0.00" style="-fx-background-color: #fff;" text="0.00" />
+                               <Label layoutX="31.0" layoutY="62.0" text="金额总计：" />
+                               <Label layoutX="195.0" layoutY="62.0" text="= 贷款合计：" />
+                               <Label layoutX="382.0" layoutY="62.0" text="+ 税款合计：" />
+                           </children>
+                        </Pane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="备注及说明">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="30.0" prefWidth="1144.0" style="-fx-background-color: #E8E7E3;">
+                           <children>
+                              <Label style="-fx-font-weight: bold;" text="备注及说明">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="1.0" layoutY="217.0" prefHeight="30.0" prefWidth="1144.0" style="-fx-background-color: #E8E7E3;">
+                           <children>
+                              <Label style="-fx-font-weight: bold;" text="报表备注（打印至报表）">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <TableView fx:id="tableViewDes" layoutY="30.0" prefHeight="187.0" prefWidth="1143.0">
+                          <columns>
+                            <TableColumn fx:id="desid" prefWidth="75.0" text="" />
+                            <TableColumn fx:id="descontent" prefWidth="500.0" text="正文" />
+                          </columns>
+                        </TableView>
+                        <TableView fx:id="tableViewRem" layoutX="1.0" layoutY="247.0" prefHeight="200.0" prefWidth="1143.0">
+                           <columns>
+                              <TableColumn fx:id="remid" prefWidth="75.0" text="" />
+                              <TableColumn fx:id="remcontent" prefWidth="500.0" text="正文" />
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+
+    </children>
+</AnchorPane>

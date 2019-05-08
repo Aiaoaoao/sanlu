@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?scenebuilder-stylesheet login.css?>
+
+<AnchorPane prefHeight="799.0" prefWidth="1422.0" stylesheets="@/css/login.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.LoginController">
+   <children>
+       <ImageView fitHeight="799.0" fitWidth="1422.0" layoutX="256.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <image>
+               <Image url="@../images/bg.png" />
+           </image>
+       </ImageView>
+
+
+       <Button fx:id="closeButton" layoutX="1358.0" layoutY="21.0" mnemonicParsing="false" onAction="#closeButton" prefHeight="40.0" prefWidth="39.0" stylesheets="@/css/login.css" />
+      <Pane fx:id="loginWin" layoutX="415.0" layoutY="225.0" prefHeight="444.0" prefWidth="593.0">
+         <children>
+      
+             <Label layoutX="90.0" layoutY="128.0" text="公司（C）">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+      
+             <Label layoutX="67.0" layoutY="186.0" text="默认仓库（D）">
+                 <font>
+                     <Font size="14.0" />
+                 </font>
+             </Label>
+      
+             <Label layoutX="74.0" layoutY="244.0" text="用户名（U）">
+                 <font>
+                     <Font size="14.0" />
+                 </font>
+             </Label>
+      
+            <Label layoutX="89.0" layoutY="302.0" text="密码（U）">
+                 <font>
+                     <Font size="14.0" />
+                 </font>
+             </Label>
+      
+            <ComboBox accessibleRole="CHECK_BOX" layoutX="174.0" layoutY="118.0" prefHeight="38.0" prefWidth="170.0" promptText="三禄一企" styleClass="combobox_styles,border_radius" />
+      
+             <TextField layoutX="355.0" layoutY="119.0" prefHeight="38.0" prefWidth="170.0" styleClass="border_radius" text="三禄20080501" />
+      
+             <ComboBox accessibleRole="CHECK_BOX" layoutX="175.0" layoutY="176.0" prefHeight="38.0" prefWidth="170.0" promptText="1A" styleClass="combobox_styles,border_radius" />
+      
+             <TextField layoutX="355.0" layoutY="176.0" prefHeight="38.0" prefWidth="170.0" styleClass="border_radius" text="1号仓库" />
+      
+      
+             <ComboBox fx:id="emporder" accessibleRole="CHECK_BOX" layoutX="173.0" layoutY="234.0" prefHeight="38.0" prefWidth="170.0" promptText="A001" styleClass="combobox_styles,border_radius" />
+      
+             <TextField fx:id="empname" layoutX="355.0" layoutY="235.0" prefHeight="38.0" prefWidth="170.0" styleClass="border_radius" text="Admin" />
+      
+            <PasswordField fx:id="password" layoutX="174.0" layoutY="292.0" prefHeight="38.0" prefWidth="351.0" promptText="在此输入密码" styleClass="border_radius" />
+      
+            <Button layoutX="63.0" layoutY="350.0" mnemonicParsing="false" onAction="#login" prefHeight="55.0" prefWidth="140.0" styleClass="border_radius,button_sizes" text="登入（I）" />
+
+             <Button layoutX="227.0" layoutY="350.0" mnemonicParsing="false" onAction="#closeButton" prefHeight="55.0" prefWidth="140.0" styleClass="border_radius,button_sizes" text="取消（C）" />
+      
+             <Button layoutX="385.0" layoutY="350.0" mnemonicParsing="false" onAction="#networkConfiguration" prefHeight="55.0" prefWidth="140.0" styleClass="border_radius,button_sizes" text="网络配置（L）" />
+      
+            <Label layoutX="180.0" layoutY="38.0" text="三禄进销存系统" textFill="#129253">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="610.0" layoutY="757.0" prefHeight="19.0" prefWidth="251.0" text="上海市三禄刀具有限公司版权所有" textFill="#919494">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+
+    <!--  <ImageView  fitHeight="40.0" fitWidth="39.0" layoutX="618.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true"  >
+
+         <image  >
+            <Image  url="/images/del.png" />
+         </image>
+
+      </ImageView>-->
+   </children>
+</AnchorPane>

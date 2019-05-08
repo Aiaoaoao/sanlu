@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.RolesMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.Roles" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="rolename" property="rolename" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="findRoles" resultMap="BaseResultMap">
+    select * from roles
+  </select>
+
+
+  <select id="findRolesByRoleName" resultMap="BaseResultMap">
+  select * from roles WHERE  rolename = #{roleName}
+  </select>
+
+</mapper>

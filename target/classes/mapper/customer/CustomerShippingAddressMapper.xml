@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.education.mapper.customer.CustomerShippingAddressMapper">
+
+    <resultMap id="BaseResultMap" type="com.yc.education.model.customer.CustomerShippingAddress">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <id column="customerid" jdbcType="BIGINT" property="customerid"></id>
+        <result column="type" jdbcType="VARCHAR" property="type" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="address" jdbcType="VARCHAR" property="address" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="contact" jdbcType="VARCHAR" property="contact" />
+        <result column="setting" jdbcType="BOOLEAN" property="setting" />
+        <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+    </resultMap>
+
+    <update id="updateAddressDefault">
+        update customer_shipping_address set setting = 1 where id = #{id}
+    </update>
+
+    <update id="updateClearAddressDefault" >
+        update customer_shipping_address set setting = 0 where customerid = #{customerid}
+    </update>
+
+
+
+</mapper>

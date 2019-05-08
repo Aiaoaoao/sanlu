@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="850.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.ProductStocksController">
+   <children>
+      <VBox layoutX="77.0" layoutY="130.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="208.0" prefWidth="226.0">
+               <children>
+                  <GridPane layoutY="14.0" prefHeight="184.0" prefWidth="213.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="产品编号：" GridPane.halignment="RIGHT" />
+                        <Label text="产品名称：" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                        <Label text="产品大类：" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                        <Label text="仓库名称：" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                        <Label text="库位名称：" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onMouseClicked="#searchProductStock" prefHeight="23.0" prefWidth="75.0" text="查找" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" onMouseClicked="#clearSearch" prefHeight="23.0" prefWidth="73.0" text="清空" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <TextField fx:id="productOrderSearch" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                        <TextField fx:id="productNameSearch" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                        <TextField fx:id="warehouseNameSearch" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                        <TextField fx:id="depotNameSearch" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                        <ComboBox fx:id="productTypeSearch" prefWidth="150.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+               </children>
+            </Pane>
+            <Pane prefHeight="35.0" prefWidth="226.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="7.0" text="库存查询结果">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="400.0" prefWidth="226.0">
+               <children>
+                  <TableView fx:id="productStockTableView" prefHeight="400.0" prefWidth="250.0">
+                    <columns>
+                        <TableColumn fx:id="productSort" prefWidth="30.0" text="" />
+                        <TableColumn fx:id="productOrder" prefWidth="75.0" text="产品编号" />
+                        <TableColumn fx:id="productName" prefWidth="75.0" text="产品名称" />
+                        <TableColumn fx:id="userNum" prefWidth="75.0" text="可用数量" />
+                        <TableColumn fx:id="stockNum" prefWidth="75.0" text="库存数量" />
+                        <TableColumn fx:id="onthewayNum" prefWidth="75.0" text="在途数量" />
+                        <TableColumn fx:id="price" prefWidth="75.0" text="价格" />
+                        <TableColumn fx:id="floorPrice" prefWidth="75.0" text="最低售价" />
+                        <TableColumn fx:id="productUnit" prefWidth="75.0" text="单位" />
+                        <TableColumn fx:id="warehouse" prefWidth="75.0" text="所属仓库" />
+                        <TableColumn fx:id="depot" prefWidth="75.0" text="所属库位" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane prefHeight="35.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="8.0" text="库位明细">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <TableView fx:id="depotTableView" prefHeight="195.0" prefWidth="250.0">
+              <columns>
+                <TableColumn fx:id="depotSort" prefWidth="30.0" text="" />
+                <TableColumn fx:id="depotOrder" prefWidth="75.0" text="所属库位" />
+                  <TableColumn fx:id="depotNum" prefWidth="75.0" text="库存数量" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

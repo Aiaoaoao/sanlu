@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.RolePermissionsMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.RolePermissions" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="roleid" property="roleid" jdbcType="BIGINT" />
+    <result column="rolename" property="rolename" jdbcType="VARCHAR" />
+    <result column="permissionscodes" property="permissionscodes" jdbcType="VARCHAR" />
+    <result column="permissionsid" property="permissionsid" jdbcType="BIGINT" />
+    <result column="uid" property="uid" jdbcType="BIGINT" />
+    <result column="idnum" property="idnum" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="selectRolePermissions" resultType="java.lang.String">
+    select p.permissionscodes from  roles r,role_permissions p where r.id =  p.roleid and r.rolename = #{role}
+  </select>
+
+  <select id="selectRolePermissionsByEmployee" resultType="java.lang.String">
+    select p.permissionscodes from  employee_basic e,role_permissions p where e.id =  p.uid and e.empname = #{username}
+  </select>
+
+  <select id="selectRolePermissionsByIdAndRoleid" resultMap="BaseResultMap">
+    select * from role_permissions  where roleid = #{roleid} and permissionsid=#{permissionscodes}
+  </select>
+
+  <select id="selectRolePermissionsByUidAndPermiss" resultMap="BaseResultMap">
+    select * from role_permissions  where uid = #{uid} and permissionsid=#{permissionscodes}
+  </select>
+
+</mapper>

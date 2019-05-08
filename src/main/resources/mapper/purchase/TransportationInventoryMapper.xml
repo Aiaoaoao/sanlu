@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.education.mapper.purchase.TransportationInventoryMapper">
+  <resultMap id="BaseResultMap" type="com.yc.education.model.purchase.TransportationInventory">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="orders" jdbcType="VARCHAR" property="orders" />
+    <result column="senddate" jdbcType="DATE" property="senddate" />
+    <result column="invoicenum" jdbcType="VARCHAR" property="invoicenum" />
+    <result column="comedate" jdbcType="DATE" property="comedate" />
+  </resultMap>
+  <!--查询所有在途库存-->
+  <select id="findTransportationInventory" resultMap="BaseResultMap">
+    select * from transportation_inventory order by id DESC
+  </select>
+
+
+  <select id="findTransportationInventoryByBoxNum" resultMap="BaseResultMap">
+    select * from transportation_inventory  where orders = #{boxnum} limit 0,1
+  </select>
+
+  <select id="findTransportationInventoryByOrder" resultMap="BaseResultMap">
+    select * from transportation_inventory
+    <where>
+      <if test="orders != null and orders != ''">
+        and orders like concat(concat('%',#{orders}),'%')
+      </if>
+    </where>
+    order by id DESC
+  </select>
+
+
+</mapper>

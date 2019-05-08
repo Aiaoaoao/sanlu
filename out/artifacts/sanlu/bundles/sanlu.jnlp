@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="sanlu.jnlp">
+  <information>
+    <title>sanlu</title>
+    <vendor>Unknown</vendor>
+    <description>sanlu</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="aopalliance-1.0.jar" size="4467" download="eager" />
+    <jar href="aspectjweaver-1.8.5.jar" size="1863302" download="eager" />
+    <jar href="c3p0-0.9.5-pre9.jar" size="487620" download="eager" />
+    <jar href="castor-1.2.jar" size="864598" download="eager" />
+    <jar href="commons-beanutils-1.9.2.jar" size="233859" download="eager" />
+    <jar href="commons-codec-1.5.jar" size="73098" download="eager" />
+    <jar href="commons-collections-3.2.1.jar" size="575389" download="eager" />
+    <jar href="commons-digester-2.1.jar" size="196768" download="eager" />
+    <jar href="commons-logging-1.1.3.jar" size="62050" download="eager" />
+    <jar href="dom4j-1.6.1.jar" size="313898" download="eager" />
+    <jar href="ecj-4.3.1.jar" size="1830791" download="eager" />
+    <jar href="fastjson-1.2.15.jar" size="402791" download="eager" />
+    <jar href="fontawesomefx-8.9.jar" size="571068" download="eager" />
+    <jar href="groovy-all-2.4.13.jar" size="7042128" download="eager" />
+    <jar href="itext-asian-5.2.0.jar" size="2166560" download="eager" />
+    <jar href="itext-pdfa-5.5.11.jar" size="117324" download="eager" />
+    <jar href="itextpdf-5.5.11.jar" size="2309235" download="eager" />
+    <jar href="jackson-annotations-2.4.0.jar" size="38605" download="eager" />
+    <jar href="jackson-core-2.4.2.jar" size="225316" download="eager" />
+    <jar href="jackson-databind-2.4.2.jar" size="1075759" download="eager" />
+    <jar href="jackson-dataformat-xml-2.4.2.jar" size="90659" download="eager" />
+    <jar href="jackson-module-jaxb-annotations-2.4.2.jar" size="31943" download="eager" />
+    <jar href="jakarta-regexp-1.4.jar" size="28576" download="eager" />
+    <jar href="jasperreports-6.0.0.jar" size="5114391" download="eager" />
+    <jar href="jbarcode-0.2.8.jar" size="59989" download="eager" />
+    <jar href="jcommon-1.0.15.jar" size="309294" download="eager" />
+    <jar href="jfoenix-8.0.7.jar" size="2631271" download="eager" />
+    <jar href="jfreechart-1.0.12.jar" size="1368681" download="eager" />
+    <jar href="jsqlparser-0.9.4.jar" size="302048" download="eager" />
+    <jar href="jxl-2.6.jar" size="660390" download="eager" />
+    <jar href="log4j-api-2.2.jar" size="133518" download="eager" />
+    <jar href="log4j-core-2.2.jar" size="826732" download="eager" />
+    <jar href="lombok-1.16.18.jar" size="1440303" download="eager" />
+    <jar href="lucene-analyzers-common-4.5.1.jar" size="1586103" download="eager" />
+    <jar href="lucene-core-4.5.1.jar" size="2297477" download="eager" />
+    <jar href="lucene-queries-4.5.1.jar" size="205195" download="eager" />
+    <jar href="lucene-queryparser-4.5.1.jar" size="384884" download="eager" />
+    <jar href="lucene-sandbox-4.5.1.jar" size="45578" download="eager" />
+    <jar href="mapper-3.3.6.jar" size="101051" download="eager" />
+    <jar href="mchange-commons-java-0.2.8.jar" size="603146" download="eager" />
+    <jar href="mybatis-3.2.8.jar" size="714073" download="eager" />
+    <jar href="mybatis-spring-1.2.2.jar" size="48783" download="eager" />
+    <jar href="mysql-connector-java-5.1.35.jar" size="968668" download="eager" />
+    <jar href="olap4j-0.9.7.309-JS-3.jar" size="445343" download="eager" />
+    <jar href="pagehelper-4.1.1.jar" size="61312" download="eager" />
+    <jar href="persistence-api-1.0.jar" size="52150" download="eager" />
+    <jar href="poi-3.9.jar" size="1869113" download="eager" />
+    <jar href="poi-ooxml-3.9.jar" size="936648" download="eager" />
+    <jar href="poi-ooxml-schemas-3.9.jar" size="4802621" download="eager" />
+    <jar href="sanlu.jar" size="3199761" download="eager" />
+    <jar href="servlet-api-2.5.jar" size="105112" download="eager" />
+    <jar href="shiro-cache-1.4.0.jar" size="13601" download="eager" />
+    <jar href="shiro-config-core-1.4.0.jar" size="18037" download="eager" />
+    <jar href="shiro-config-ogdl-1.4.0.jar" size="43303" download="eager" />
+    <jar href="shiro-core-1.4.0.jar" size="410541" download="eager" />
+    <jar href="shiro-crypto-cipher-1.4.0.jar" size="24024" download="eager" />
+    <jar href="shiro-crypto-core-1.4.0.jar" size="10873" download="eager" />
+    <jar href="shiro-crypto-hash-1.4.0.jar" size="34298" download="eager" />
+    <jar href="shiro-event-1.4.0.jar" size="19210" download="eager" />
+    <jar href="shiro-lang-1.4.0.jar" size="51122" download="eager" />
+    <jar href="slf4j-api-1.7.21.jar" size="41071" download="eager" />
+    <jar href="spring-aop-4.1.6.RELEASE.jar" size="359014" download="eager" />
+    <jar href="spring-beans-4.1.6.RELEASE.jar" size="708371" download="eager" />
+    <jar href="spring-context-4.1.6.RELEASE.jar" size="1026330" download="eager" />
+    <jar href="spring-core-4.1.6.RELEASE.jar" size="1007922" download="eager" />
+    <jar href="spring-expression-4.1.6.RELEASE.jar" size="259014" download="eager" />
+    <jar href="spring-jdbc-4.1.6.RELEASE.jar" size="426669" download="eager" />
+    <jar href="spring-tx-4.1.6.RELEASE.jar" size="252550" download="eager" />
+    <jar href="stax-api-1.0.1.jar" size="26514" download="eager" />
+    <jar href="stax2-api-3.1.4.jar" size="161867" download="eager" />
+    <jar href="xml-apis-1.0.b2.jar" size="109318" download="eager" />
+    <jar href="xmlbeans-2.3.0.jar" size="2666695" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="600" height="400" main-class="com.yc.education.application.Main"  name="sanlu" />
+  <update check="background"/>
+</jnlp>

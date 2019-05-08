@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.RoleEmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.RoleEmployee" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="uid" property="uid" jdbcType="BIGINT" />
+    <result column="idnum" property="idnum" jdbcType="VARCHAR" />
+    <result column="roleid" property="roleid" jdbcType="BIGINT" />
+    <result column="rolename" property="rolename" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+  <select id="findRoleEmployeeByIdnum" resultMap="BaseResultMap">
+    select * from  role_employee  where idnum = #{idnum}
+  </select>
+
+  <select id="findRoleEmployeeByRoleName" resultMap="BaseResultMap">
+    select e.* from roles r,role_employee e where e.roleid = r.id and r.rolename = #{roleName}
+  </select>
+
+
+</mapper>

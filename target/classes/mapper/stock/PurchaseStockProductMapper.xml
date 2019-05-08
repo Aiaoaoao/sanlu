@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.stock.PurchaseStockProductMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.stock.PurchaseStockProduct" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="sourseorder" property="sourseorder" jdbcType="VARCHAR" />
+    <result column="orders" property="orders" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="seeorder" property="seeorder" jdbcType="VARCHAR" />
+    <result column="pronum" property="pronum" jdbcType="VARCHAR" />
+    <result column="proname" property="proname" jdbcType="VARCHAR" />
+    <result column="stocknum" property="stocknum" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="units" property="units" jdbcType="VARCHAR" />
+    <result column="depotnum" property="depotnum" jdbcType="VARCHAR" />
+    <result column="depotname" property="depotname" jdbcType="VARCHAR" />
+    <result column="floor" property="floor" jdbcType="VARCHAR" />
+    <result column="product_boxnum" property="productBoxnum" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="purchasestockid" property="purchasestockid" jdbcType="BIGINT" />
+    <association property="purchaseStocks"  javaType="com.yc.education.model.stock.PurchaseStock" >
+      <id column="id" property="id" jdbcType="BIGINT" />
+      <result column="createdate" property="createdate" jdbcType="DATE" />
+      <result column="stockorder" property="stockorder" jdbcType="VARCHAR" />
+      <result column="depotnum" property="depotnum" jdbcType="VARCHAR" />
+      <result column="depotname" property="depotname" jdbcType="VARCHAR" />
+      <result column="depotfloor" property="depotfloor" jdbcType="VARCHAR" />
+      <result column="suppliernum" property="suppliernum" jdbcType="VARCHAR" />
+      <result column="suppliername" property="suppliername" jdbcType="VARCHAR" />
+      <result column="boxnum" property="boxnum" jdbcType="VARCHAR" />
+      <result column="inspectnum" property="inspectnum" jdbcType="VARCHAR" />
+      <result column="inspectname" property="inspectname" jdbcType="VARCHAR" />
+      <result column="createname" property="createname" jdbcType="VARCHAR" />
+      <result column="shpeople" property="shpeople" jdbcType="VARCHAR" />
+      <result column="shdate" property="shdate" jdbcType="VARCHAR" />
+      <result column="updatepeople" property="updatepeople" jdbcType="VARCHAR" />
+      <result column="updatedate" property="updatedate" jdbcType="VARCHAR" />
+      <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+      <result column="shstatus" property="shstatus" jdbcType="INTEGER" />
+      <result column="invoiceno" property="invoiceno" jdbcType="VARCHAR" />
+      <result column="invoicedate" property="invoicedate" jdbcType="VARCHAR" />
+      <result column="cost" property="cost" jdbcType="BIT" />
+      <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    </association>
+  </resultMap>
+
+  <select id="listNotOutboundPurchaseStockProduct" resultMap="BaseResultMap">
+      select * from purchase_stock s INNER JOIN purchase_stock_product p on s.id = p.purchasestockid where p.stocknum > p.outnum and p.pronum = #{productNo}  ORDER BY s.addtime asc;
+  </select>
+
+  <select id="listPurchaseStockProductAndPurchaseStockByProdutNo" resultMap="BaseResultMap">
+      select * from purchase_stock_product psp ,purchase_stock ps where  psp.purchasestockid =  ps.id and ps.stockorder =  #{stockOrder}
+  </select>
+
+  <select id="listPurchaseStockProductMoreStockByproductNo" resultMap="BaseResultMap">
+      select p.depotnum from purchase_stock_product p where p.pronum = #{productNo} GROUP BY p.depotnum
+  </select>
+
+  <select id="findStockProductBypurchaseStockId" resultMap="BaseResultMap">
+      select * from  purchase_stock_product where purchasestockid = #{id}
+  </select>
+
+<select id="findPurchaseStockProductByPurchaseOrder" resultMap="BaseResultMap">
+  select * from purchase_stock_product WHERE orders = #{purchaseOrder}
+</select>
+
+  <select id="findPurchaseStockProductPriceSUM" resultType="java.lang.Double">
+    select SUM(psp.stocknum * psp.price) from purchase_stock_product psp where psp.id = #{id};
+  </select>
+
+  <select id="findPurchaseStockProductByProductNameAndStartTimeAndEndTime" resultMap="BaseResultMap">
+
+    select * from purchase_stock_product psp ,purchase_stock ps
+
+     <where>
+
+       and psp.purchasestockid =  ps.id and psp.pronum = #{productName}
+
+       <if test="startTime != null and startTime != ''" >
+         and str_to_date(ps.createdate, '%Y-%m-%d') &gt;= str_to_date(#{startTime}, '%Y-%m-%d')
+       </if>
+       <if test="endTime != null and endTime != ''" >
+         and str_to_date(ps.createdate, '%Y-%m-%d') &lt;= str_to_date(#{endTime}, '%Y-%m-%d')
+       </if>
+     </where>
+
+    order by  ps.createdate
+  </select>
+
+
+</mapper>

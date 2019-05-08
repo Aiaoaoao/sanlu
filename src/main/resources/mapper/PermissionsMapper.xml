@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.PermissionsMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.Permissions" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="codes" property="codes" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="parent" property="parent" jdbcType="BIGINT" />
+    <result column="types" property="types" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="selectPermissionsByParent" resultMap="BaseResultMap">
+    select * from permissions
+    <where>
+
+      and parent = #{parent}
+
+      <if test="types != null and types != '' and types != 0">
+      and types =  #{types}
+      </if>
+
+    </where>
+  </select>
+
+
+
+  <select id="selectPermissionsByTitleAndParent" resultMap="BaseResultMap">
+    select * from permissions WHERE  parent = #{parent} and title = #{title};
+  </select>
+
+
+  <select id="selectPermissionsByParentAndCodes" resultMap="BaseResultMap">
+    select * from permissions  where parent =#{parent} and codes like concat(concat('%_',#{status}))
+  </select>
+
+  <select id="selectPermissionsByTitleAndCodes" resultMap="BaseResultMap">
+    select s.* from permissions s,(select p.* from permissions p where p.title= #{title}) k where  k.id =  s.parent and s.codes like concat(concat('%_',#{status}))
+  </select>
+
+</mapper>

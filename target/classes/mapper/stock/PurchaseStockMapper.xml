@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.stock.PurchaseStockMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.stock.PurchaseStock" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="createdate" property="createdate" jdbcType="DATE" />
+    <result column="stockorder" property="stockorder" jdbcType="VARCHAR" />
+    <result column="depotnum" property="depotnum" jdbcType="VARCHAR" />
+    <result column="depotname" property="depotname" jdbcType="VARCHAR" />
+    <result column="depotfloor" property="depotfloor" jdbcType="VARCHAR" />
+    <result column="suppliernum" property="suppliernum" jdbcType="VARCHAR" />
+    <result column="suppliername" property="suppliername" jdbcType="VARCHAR" />
+    <result column="boxnum" property="boxnum" jdbcType="VARCHAR" />
+    <result column="inspectnum" property="inspectnum" jdbcType="VARCHAR" />
+    <result column="inspectname" property="inspectname" jdbcType="VARCHAR" />
+    <result column="createname" property="createname" jdbcType="VARCHAR" />
+    <result column="shpeople" property="shpeople" jdbcType="VARCHAR" />
+    <result column="shdate" property="shdate" jdbcType="VARCHAR" />
+    <result column="updatepeople" property="updatepeople" jdbcType="VARCHAR" />
+    <result column="updatedate" property="updatedate" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="shstatus" property="shstatus" jdbcType="INTEGER" />
+    <result column="invoiceno" property="invoiceno" jdbcType="VARCHAR" />
+    <result column="invoicedate" property="invoicedate" jdbcType="VARCHAR" />
+    <result column="cost" property="cost" jdbcType="BIT" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="listPurchaseStock" resultMap="BaseResultMap">
+    select * from purchase_stock
+    <where>
+      and cost = 0
+      <if test="orders != null and orders != ''" >
+        and stockorder like concat(concat('%',#{orders}),'%')
+      </if>
+    </where>
+    order by id desc
+  </select>
+
+
+  <select id="selectMaxIdnum"  resultType="java.lang.String" >
+  SELECT MAX(stockorder) FROM purchase_stock where createdate =#{currentDate}
+  </select>
+
+  <select id="findPurchaseStock" resultMap="BaseResultMap">
+  select * from purchase_stock order by id desc
+  </select>
+
+
+  <select id="findPurchaseStockBySupplier" resultMap="BaseResultMap">
+
+    select * from purchase_stock
+
+    <where>
+
+      <if test="supplier != null and supplier != ''" >
+        and  suppliernum = #{supplier}
+      </if>
+      <if test="startTime != null and startTime != ''" >
+        and invoiceno &gt;= str_to_date(#{startTime}, '%Y-%m-%d')
+      </if>
+      <if test="endTime != null and endTime != ''" >
+        and invoiceno &lt;= str_to_date(#{endTime}, '%Y-%m-%d')
+      </if>
+
+    </where>
+
+    order by id DESC
+
+  </select>
+
+  <select id="findPurchaseStockByNo" resultMap="BaseResultMap">
+    select * from purchase_stock
+    <where>
+      <if test="orderno != null and orderno != ''" >
+        and  stockorder = #{orderno}
+      </if>
+    </where>
+    LIMIT 0,1
+  </select>
+
+
+  <select id="listPurchaseStockByPayment" resultMap="BaseResultMap">
+    select * from purchase_stock
+    <where>
+      <if test="supplier != null and supplier != ''" >
+        and suppliername &gt;= #{supplier}
+      </if>
+      <if test="supplierEnd != null and supplierEnd != ''" >
+        and suppliername &lt;= #{supplierEnd}
+      </if>
+      <if test="invoice != null and invoice != ''" >
+        and invoiceno &gt;= #{invoice}
+      </if>
+      <if test="invoiceEnd != null and invoiceEnd != ''" >
+        and invoiceno &lt;= #{invoiceEnd}
+      </if>
+      <if test="invoiceDate != null and invoiceDate != ''" >
+        and invoicedate &gt;= #{invoiceDate}
+      </if>
+      <if test="invoiceDateEnd != null and invoiceDateEnd != ''" >
+        and invoicedate &lt;= #{invoiceDateEnd}
+      </if>
+    </where>
+    order by id desc
+  </select>
+
+
+
+  <select id="findPurchaseStockByOrders" resultMap="BaseResultMap">
+    select * from purchase_stock
+    <where>
+      <if test="orders != null and orders != ''" >
+        and stockorder like concat(concat('%',#{orders}),'%')
+      </if>
+    </where>
+    order by id desc
+  </select>
+
+
+  <select id="findPurchanseStockNotSh" resultMap="BaseResultMap">
+    select * from purchase_stock  where shstatus = 0  order by id desc
+  </select>
+
+  <select id="findPurchanseStockBoxNum" resultMap="BaseResultMap">
+     select * from purchase_stock  where boxnum =  #{boxNum}
+  </select>
+
+</mapper>

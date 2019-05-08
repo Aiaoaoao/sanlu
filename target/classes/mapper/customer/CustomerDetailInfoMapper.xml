@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.customer.CustomerDetailInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.customer.CustomerDetailInfo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <id column="customer_id" property="customerId" jdbcType="BIGINT" />
+    <result column="customer_category" property="customerCategory" jdbcType="INTEGER" />
+    <result column="industry" property="industry" jdbcType="INTEGER" />
+    <result column="customer_source" property="customerSource" jdbcType="INTEGER" />
+    <result column="bank" property="bank" jdbcType="VARCHAR" />
+    <result column="bank_account" property="bankAccount" jdbcType="VARCHAR" />
+    <result column="tax_register" property="taxRegister" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="area_info" property="areaInfo" jdbcType="VARCHAR" />
+    <result column="sent_back" property="sentBack" jdbcType="BOOLEAN" />
+    <result column="region" property="region" jdbcType="VARCHAR" />
+    <result column="customer_level" property="customerLevel" jdbcType="INTEGER" />
+    <result column="Company_affiliation" property="companyAffiliation" jdbcType="VARCHAR" />
+    <result column="account_remark" property="accountRemark" jdbcType="VARCHAR" />
+    <result column="customer_property" property="customerProperty" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="getCustomerDetailInfoByCustomerId" resultMap="BaseResultMap">
+        SELECT * FROM customer_detail_info WHERE customer_id = #{customerid} limit 0,1
+    </select>
+
+  <select id="getCustomerDetailInfoByCustomerNo" resultMap="BaseResultMap">
+        select * from customer c inner join customer_detail_info i on c.id = i.customer_id WHERE c.customer_code = #{customerNo} limit 0,1
+    </select>
+
+</mapper>

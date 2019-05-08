@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="710.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.basic.CodingBasicController">
+   <children>
+       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <Pane fx:id="topPane" layoutX="14.0" layoutY="8.0" prefHeight="36.0" stylesheets="@/css/basic/index.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS">
+               <children>
+                   <Label layoutX="27.0" layoutY="7.0" text="资料编码维护">
+                       <font>
+                           <Font size="16.0" />
+                       </font>
+                   </Label>
+                   <Label layoutX="123.0" layoutY="7.0" text="【待输入】">
+                       <font>
+                           <Font size="16.0" />
+                       </font>
+                   </Label>
+               </children></Pane>
+
+           <Pane prefHeight="670.0" prefWidth="1145.0" style="-fx-background-color: #FFFFFF;" VBox.vgrow="ALWAYS">
+            <children>
+               <Pane layoutX="1.0" layoutY="280.0" prefHeight="39.0" prefWidth="1145.0" style="-fx-background-color: #E9E9E9;">
+                  <children>
+                     <Label layoutX="46.0" layoutY="10.0" style="-fx-font-weight: bold;" text="资料查找结果">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Label>
+                  </children></Pane>
+               <TableView fx:id="itemsView" layoutY="320.0" prefHeight="352.0" prefWidth="1145.0">
+                 <columns>
+                     <TableColumn fx:id="ck" prefWidth="75.0" text="" />
+                     <TableColumn fx:id="code" prefWidth="100.0" text="原编码" />
+                     <TableColumn fx:id="newCode" prefWidth="100.0" text="新编码" />
+                     <TableColumn fx:id="name" prefWidth="100.0" text="名称" />
+                     <TableColumn fx:id="addDate" prefWidth="100.0" text="建档日期" />
+                     <TableColumn fx:id="addPeople" prefWidth="100.0" text="建档人" />
+                     <TableColumn fx:id="stopDate" prefWidth="100.0" text="暂停日期" />
+                     <TableColumn fx:id="remarks" prefWidth="100.0" text="备注" />
+                 </columns>
+               </TableView>
+               <GridPane layoutX="60.0" layoutY="31.0" prefHeight="194.0" prefWidth="500.0">
+                 <columnConstraints>
+                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="153.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="94.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="68.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="85.0" />
+                 </columnConstraints>
+                 <rowConstraints>
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                 </rowConstraints>
+                  <children>
+                     <Label style="-fx-font-weight: bold;" text="原编码">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Label>
+                     <Label text="资料类型：" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                     <ComboBox fx:id="codeType" prefHeight="23.0" prefWidth="161.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     <Label text="编码：" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                     <TextField fx:id="isNum" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                     <Button mnemonicParsing="false" onMouseClicked="#search" prefWidth="70.0" text="查找" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                     <Button mnemonicParsing="false" onMouseClicked="#clear" prefWidth="70.0" text="清空" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                     <Label style="-fx-font-weight: bold;" text="新编码" GridPane.rowIndex="3">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Label>
+                     <Label text="新编码：" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+                     <TextField fx:id="newIsNum" prefHeight="23.0" prefWidth="161.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     <Button mnemonicParsing="false" onMouseClicked="#replace" prefWidth="70.0" text="替换" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                     <Button mnemonicParsing="false" onMouseClicked="#submit" prefWidth="70.0" text="提交" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                      <Button mnemonicParsing="false" prefWidth="70.0" text="取消" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                  </children>
+               </GridPane>
+            </children></Pane>
+
+       </VBox>
+       <Button disable="true" layoutX="11.0" layoutY="411.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="资料编码维护" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+   </children>
+</AnchorPane>

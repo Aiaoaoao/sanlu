@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.customer.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.customer.Customer">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="customer_code" jdbcType="VARCHAR" property="customerCode" />
+    <result column="short_name" jdbcType="VARCHAR" property="shortName" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="register_address" jdbcType="VARCHAR" property="registerAddress" />
+    <result column="useable_money" jdbcType="DECIMAL" property="useableMoney" />
+    <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+      <result column="general_customer" jdbcType="BOOLEAN" property="generalCustomer" />
+      <result column="customer_category" jdbcType="VARCHAR" property="customerType" />
+      <result column="customer_level" jdbcType="VARCHAR" property="customerLevel" />
+      <result column="shipping_address_remark" jdbcType="VARCHAR" property="remark" />
+      <result column="delete_is" jdbcType="BOOLEAN" property="deleteIs" />
+  </resultMap>
+
+    <select id="listGeneralCustomer" resultMap="BaseResultMap">
+       SELECT c.id,c.customer_code,c.general_customer,c.`name`,c.register_address,c.short_name from customer c INNER JOIN customer_basic b on c.id = b.customer_id where stop_use = 0 ORDER BY c.addtime asc
+
+    </select>
+
+    <select id="listExistCustomer" resultMap="BaseResultMap">
+        SELECT c.id,c.customer_code,c.short_name,c.name,c.general_customer,b.shipping_address_remark,d.customer_category,d.customer_level from customer c LEFT JOIN customer_basic b on c.id = b.customer_id LEFT JOIN customer_detail_info d ON c.id = d.customer_id
+        <where>
+            and delete_is = 0
+            <if test="text != null and text != ''">
+                and `name` like concat(concat('%',#{text}),'%') or customer_code like concat(concat('%',#{text}),'%')
+            </if>
+            <if test="stopUse != null and stopUse != ''">
+              and b.stop_use = #{stopUse}
+            </if>
+        </where>
+       ORDER BY c.addtime asc
+    </select>
+
+    <select id="listCustomerAll" resultMap="BaseResultMap">
+        SELECT * FROM customer where delete_is = #{state} ORDER BY addtime asc
+    </select>
+
+    <select id="getCustomer" resultMap="BaseResultMap">
+        SELECT * FROM customer WHERE customer_code = #{code}
+    </select>
+
+
+    <select id="getCustomerCount" resultType="integer">
+       SELECT count(*) FROM customer
+    </select>
+
+</mapper>

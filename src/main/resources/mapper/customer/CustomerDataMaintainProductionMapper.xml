@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.customer.CustomerDataMaintainProductionMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.customer.CustomerDataMaintainProduction" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="maintain_id" property="maintainId" jdbcType="BIGINT" />
+    <result column="production_type" property="productionType" jdbcType="VARCHAR" />
+    <result column="factory" property="factory" jdbcType="VARCHAR" />
+    <result column="vendor" property="vendor" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+    <select id="listCustomerDataMaintainProduction" resultMap="BaseResultMap">
+        SELECT * FROM customer_data_maintain_production ORDER BY addtime desc
+    </select>
+
+    <select id="listCustomerDataMaintainProductionByMaintainId" resultMap="BaseResultMap">
+        SELECT * from customer_data_maintain_production WHERE maintain_id = #{maintainId}
+    </select>
+
+    <delete id="deleteCustomerDataMaintainProductionByMaintainId">
+        DELETE from customer_data_maintain_production where maintain_id = #{maintainId}
+    </delete>
+
+</mapper>

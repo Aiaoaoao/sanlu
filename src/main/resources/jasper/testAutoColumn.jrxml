@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="testAutoColumn" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00ace619-92d1-449f-86e0-60c251f39fb3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[/* 销货明细报表 -- 日期别 */
+select g.create_date,g.sale_no,g.customer_no_str,g.business_leader_str,g.warehouse_out_str,g.currency,p.num*p.price 'sale_money',(
+        CASE g.tax
+        WHEN '外加' THEN
+            p.price*p.num*(g.tax_rate)
+        ELSE
+            0
+        END
+			)  'tax_money',(
+        CASE g.tax
+        WHEN '外加' THEN
+            p.price*p.num*(g.tax_rate+1)
+        ELSE
+            p.price*p.num
+        END
+			)  'calc_money',g.tax,p.product_no,p.product_name,p.num,p.unit,p.price,p.num*p.price 'money' from sale_goods g RIGHT JOIN sale_goods_product p ON g.id=p.sale_goods_id
+			where 1 = 1]]>
+	</queryString>
+	<field name="create_date" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[制单日期]]></fieldDescription>
+	</field>
+	<field name="sale_no" class="java.lang.String">
+		<fieldDescription><![CDATA[销售单号]]></fieldDescription>
+	</field>
+	<field name="customer_no_str" class="java.lang.String">
+		<fieldDescription><![CDATA[客户编号描述]]></fieldDescription>
+	</field>
+	<field name="business_leader_str" class="java.lang.String">
+		<fieldDescription><![CDATA[业务负责描述]]></fieldDescription>
+	</field>
+	<field name="warehouse_out_str" class="java.lang.String">
+		<fieldDescription><![CDATA[出货仓库描述]]></fieldDescription>
+	</field>
+	<field name="currency" class="java.lang.String">
+		<fieldDescription><![CDATA[币别]]></fieldDescription>
+	</field>
+	<field name="sale_money" class="java.math.BigDecimal"/>
+	<field name="tax_money" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[税额]]></fieldDescription>
+	</field>
+	<field name="calc_money" class="java.math.BigDecimal"/>
+	<field name="tax" class="java.lang.String">
+		<fieldDescription><![CDATA[税别]]></fieldDescription>
+	</field>
+	<field name="product_no" class="java.lang.String">
+		<fieldDescription><![CDATA[产品编号]]></fieldDescription>
+	</field>
+	<field name="product_name" class="java.lang.String">
+		<fieldDescription><![CDATA[产品名称]]></fieldDescription>
+	</field>
+	<field name="num" class="java.lang.Integer">
+		<fieldDescription><![CDATA[数量]]></fieldDescription>
+	</field>
+	<field name="unit" class="java.lang.String">
+		<fieldDescription><![CDATA[单位]]></fieldDescription>
+	</field>
+	<field name="price" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[单价]]></fieldDescription>
+	</field>
+	<field name="money" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[金额]]></fieldDescription>
+	</field>
+	<group name="create_date">
+		<groupExpression><![CDATA[$F{create_date}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="53829b22-359c-40dc-9138-93ed1af9833e"/>
+				<text><![CDATA[create_date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="2" width="100" height="20" uuid="2c7f7bc2-7413-4096-b47e-76cceafd62d7"/>
+				<text><![CDATA[sale_no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="2" width="100" height="20" uuid="c83dfc81-5c13-4e07-9ed8-949ff4ecacc7"/>
+				<text><![CDATA[customer_no_str]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="2" width="137" height="20" uuid="159f8b82-23c5-476b-b4da-274d6f73033e"/>
+				<text><![CDATA[business_leader_str]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="3fd14f2e-ba2a-4446-8b61-0a4b510fbe12"/>
+				<textFieldExpression><![CDATA[$F{create_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="d89e9dfa-eadf-47e7-ae33-921774cfdfd4"/>
+				<textFieldExpression><![CDATA[$F{sale_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="1" width="100" height="20" uuid="c1bf8daf-d0e4-44df-baad-05654f144429"/>
+				<textFieldExpression><![CDATA[$F{customer_no_str}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="1" width="137" height="20" uuid="45a86559-280f-4995-8e86-66767cf3e72c"/>
+				<textFieldExpression><![CDATA[$F{business_leader_str}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

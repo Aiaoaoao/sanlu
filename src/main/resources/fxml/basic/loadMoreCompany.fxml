@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="850.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.basic.CompanyBasicController">
+   <children>
+      <VBox layoutX="94.0" layoutY="275.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="801.0" prefWidth="250.0">
+               <children>
+                  <TableView fx:id="rightSupplierTableView" prefHeight="800.0" prefWidth="250.0">
+                    <columns>
+                        <TableColumn fx:id="rightSupplierSort" prefWidth="30.0" text="" />
+                        <TableColumn fx:id="rightSupplierOrder" prefWidth="75.0" text="编号" />
+                        <TableColumn fx:id="rightSupplierDes" prefWidth="75.0" text="简称" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane prefHeight="51.0" prefWidth="250.0">
+               <children>
+                  <CheckBox fx:id="rightCheckBox" layoutX="22.0" layoutY="17.0" mnemonicParsing="false" text="显示暂停来往的供应商" />
+               </children></Pane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.education.mapper.sale.SaleQuotationMapper">
+  <resultMap id="BaseResultMap" type="com.yc.education.model.sale.SaleQuotation">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="offer_no" jdbcType="VARCHAR" property="offerNo" />
+    <result column="enquiry_date" jdbcType="TIMESTAMP" property="enquiryDate" />
+    <result column="customer_no" jdbcType="VARCHAR" property="customerNo" />
+    <result column="customer_no_str" jdbcType="VARCHAR" property="customerNoStr" />
+    <result column="business" jdbcType="VARCHAR" property="business" />
+    <result column="business_str" jdbcType="VARCHAR" property="businessStr" />
+    <result column="tax" jdbcType="VARCHAR" property="tax" />
+    <result column="discount" jdbcType="VARCHAR" property="discount" />
+    <result column="special_offer" jdbcType="BIT" property="specialOffer" />
+    <result column="amount_receivable" jdbcType="VARCHAR" property="amountReceivable" />
+    <result column="valid_until" jdbcType="TIMESTAMP" property="validUntil" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="single_people" jdbcType="VARCHAR" property="singlePeople" />
+    <result column="audit" jdbcType="VARCHAR" property="audit" />
+    <result column="audit_str" jdbcType="VARCHAR" property="auditStr" />
+    <result column="last_modifier" jdbcType="VARCHAR" property="lastModifier" />
+    <result column="last_modifier_str" jdbcType="VARCHAR" property="lastModifierStr" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="customer_category" jdbcType="VARCHAR" property="customerCategory" />
+    <result column="contact" jdbcType="VARCHAR" property="contact" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+    <result column="order_audit" property="orderAudit" jdbcType="BIT" />
+  </resultMap>
+
+  <select id="listOrderNoLike" resultMap="BaseResultMap">
+    SELECT * FROM sale_quotation
+    <where>
+      <if test="orderNo != null and orderNo != ''">
+        and sale_no like concat(concat('%',#{orderNo}),'%') or customer_no_str like concat(concat('%',#{orderNo}),'%')
+      </if>
+    </where>
+    ORDER BY addtime desc
+  </select>
+
+  <select id="listTimeWhere" resultMap="BaseResultMap">
+        SELECT * FROM sale_quotation
+        <where>
+          <if test="ben != null and ben != ''">
+            and addtime &gt;= #{ben}
+          </if>
+          <if test="end != null and end != ''">
+            and addtime &lt;= #{end}
+          </if>
+        </where>
+        ORDER BY addtime desc
+    </select>
+
+  <!--查询最订单号-->
+  <select id="getMaxOrderNo" resultType="java.lang.String">
+  SELECT MAX(offer_no) FROM sale_quotation
+  </select>
+
+
+  <select id="listSaleQuotationAll" resultMap="BaseResultMap">
+    SELECT * FROM sale_quotation
+    <where>
+      <if test="audit != null and audit != '' and audit == '1'.toString()">
+        and order_audit = #{audit}
+      </if>
+      <if test="text != null and text != ''">
+        and offer_no like concat(concat('%',#{text}),'%') or customer_no_str like concat(concat('%',#{text}),'%')
+      </if>
+    </where>
+    ORDER BY addtime desc
+  </select>
+
+  <select id="getSaleQuotation" resultMap="BaseResultMap">
+        SELECT * FROM sale_quotation WHERE offer_no = #{offerno}
+    </select>
+
+  <select id="getLastSaleQuotation" resultMap="BaseResultMap">
+        SELECT * FROM sale_quotation  ORDER BY id desc  limit 0,1
+    </select>
+
+  <select id="getFirstSaleQuotation" resultMap="BaseResultMap">
+        SELECT * FROM sale_quotation  ORDER BY id asc  limit 0,1
+    </select>
+
+  <select id="getSaleQuotationByPage" resultMap="BaseResultMap">
+       SELECT * FROM sale_quotation limit #{page},#{rows}
+    </select>
+
+  <select id="getSaleQuotationCount" resultType="integer">
+       SELECT count(*) FROM sale_quotation
+    </select>
+
+  <select id="listSaleQuotationAllByStatus" resultMap="BaseResultMap">
+   SELECT * FROM sale_quotation
+
+    <where>
+
+      <if test=" status != null and status != '' and status != 0">
+        and order_audit = #{status}
+      </if>
+
+    </where>
+
+    ORDER BY addtime desc
+  </select>
+
+
+  <select id="listSaleQuotationNotSh" resultMap="BaseResultMap">
+    SELECT * FROM sale_quotation where  order_audit = 0 order by id desc
+  </select>
+
+</mapper>

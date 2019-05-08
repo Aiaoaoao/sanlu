@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- 应付账款 -->
+
+<AnchorPane maxWidth="1143.0" prefHeight="710.0" prefWidth="1143.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.purchase.PurchaseInvoiceController">
+    <children>
+        <HBox prefHeight="30.0" prefWidth="1143.0" styleClass="title_bar_background" stylesheets="@/css/basic.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label prefHeight="30.0" prefWidth="77.0" styleClass="title_bar_words" text="应付账款">
+                </Label>
+            </children>
+        </HBox>
+      <HBox layoutX="152.0" layoutY="32.0" prefHeight="678.0" prefWidth="1143.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <Pane prefHeight="680.0" prefWidth="200.0" stylesheets="@/css/basic.css">
+               <children>
+                  <GridPane layoutX="22.0" layoutY="22.0" prefHeight="378.0" prefWidth="158.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.0" minWidth="2.0" prefWidth="71.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="63.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="24.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="供应商编号从：" GridPane.columnSpan="2" />
+                        <TextField fx:id="supplierOrderStart" prefHeight="23.0" prefWidth="135.0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+      
+                         <Button  mnemonicParsing="false" onMouseClicked="#OpenSupplierQueryBen" text="..." GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label text="到：" GridPane.rowIndex="2" />
+                        <TextField fx:id="supplierOrderEnd" prefHeight="25.0" prefWidth="135.0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onMouseClicked="#OpenSupplierQueryEnd" text="..." GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Label text="进项发票号从：" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                        <TextField  fx:id="invoiceNumberStart" prefHeight="25.0" prefWidth="135.0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                        <Button  onMouseClicked="#moreInvoiceOrderBen" mnemonicParsing="false"  text="..." GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <Label text="到：" GridPane.rowIndex="6" />
+                        <TextField  fx:id="invoiceNumberEnd" prefHeight="25.0" prefWidth="135.0" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                        <Button  onMouseClicked="#moreInvoiceOrderEnd" mnemonicParsing="false"  prefHeight="0.0" prefWidth="25.0" text="..." GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                        <Label text="发票日期从：" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+                        <DatePicker fx:id="invoiceDateStart" prefHeight="25.0" prefWidth="163.0" GridPane.columnSpan="3" GridPane.rowIndex="9" />
+                        <Label text="到：" GridPane.rowIndex="10" />
+                        <DatePicker fx:id="invoiceDateEnd" prefHeight="25.0" prefWidth="179.0" GridPane.columnSpan="3" GridPane.rowIndex="11" />
+                        <Button fx:id="seach" mnemonicParsing="false" onAction="#seachBtn" prefHeight="23.0" prefWidth="61.0" text="查找" GridPane.rowIndex="12" />
+                        <Button fx:id="clear" mnemonicParsing="false" onAction="#clearBtn" prefHeight="23.0" prefWidth="61.0" text="清除" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                     </children>
+                  </GridPane>
+
+               </children>
+            </Pane>
+            <Pane prefHeight="680.0" prefWidth="945.0" style="-fx-background-color: #FFF" stylesheets="@/css/basic.css">
+               <children>
+                   <VBox prefHeight="680.0" prefWidth="944.0" style="-fx-background-color: #FFF" stylesheets="@/css/basic.css">
+                       <children>
+
+                           <HBox layoutY="67.0" prefHeight="31.0" prefWidth="600.0" style="-fx-background-color: #FFF;" styleClass="items">
+                               <children>
+                                   <VBox fx:id="menu_first" onMouseClicked="#pages" prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">
+                                       <children>
+                                           <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                               <image>
+                                                   <Image url="@../../images/basic/fast.png" />
+                                               </image>
+                                               <VBox.margin>
+                                                   <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                                               </VBox.margin>
+                                           </ImageView>
+                                       </children>
+                                   </VBox>
+                                   <VBox fx:id="menu_prev" onMouseClicked="#pages"  prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">
+                                       <children>
+                                           <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                               <image>
+                                                   <Image url="@../../images/basic/prev.png" />
+                                               </image>
+                                               <VBox.margin>
+                                                   <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                               </VBox.margin>
+                                           </ImageView>
+                                       </children>
+                                   </VBox>
+                                   <VBox fx:id="menu_next" onMouseClicked="#pages"  prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">
+                                       <children>
+                                           <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                               <image>
+                                                   <Image url="@../../images/basic/next.png" />
+                                               </image>
+                                               <VBox.margin>
+                                                   <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                               </VBox.margin>
+                                           </ImageView>
+                                       </children>
+                                   </VBox>
+                                   <VBox fx:id="menu_last" onMouseClicked="#pages"  prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">
+                                       <children>
+                                           <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                               <image>
+                                                   <Image url="@../../images/basic/last.png" />
+                                               </image>
+                                               <VBox.margin>
+                                                   <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                               </VBox.margin>
+                                           </ImageView>
+                                       </children>
+                                   </VBox>
+                                   <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                                       <!--<children>-->
+                                           <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                               <!--<image>-->
+                                                   <!--<Image url="@../../images/basic/commit.png" />-->
+                                               <!--</image>-->
+                                               <!--<VBox.margin>-->
+                                                   <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                               <!--</VBox.margin>-->
+                                           <!--</ImageView>-->
+                                       <!--</children>-->
+                                   <!--</VBox>-->
+                                   <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                                       <!--<children>-->
+                                           <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                               <!--<image>-->
+                                                   <!--<Image url="@../../images/basic/copy.png" />-->
+                                               <!--</image>-->
+                                               <!--<VBox.margin>-->
+                                                   <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                               <!--</VBox.margin>-->
+                                           <!--</ImageView>-->
+                                       <!--</children>-->
+                                   <!--</VBox>-->
+                                   <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                                       <!--<children>-->
+                                           <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                               <!--<image>-->
+                                                   <!--<Image url="@../../images/basic/clear.png" />-->
+                                               <!--</image>-->
+                                               <!--<VBox.margin>-->
+                                                   <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                               <!--</VBox.margin>-->
+                                           <!--</ImageView>-->
+                                       <!--</children>-->
+                                   <!--</VBox>-->
+                                   <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                                       <!--<children>-->
+                                           <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                               <!--<image>-->
+                                                   <!--<Image url="@../../images/basic/copy.png" />-->
+                                               <!--</image>-->
+                                               <!--<VBox.margin>-->
+                                                   <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                               <!--</VBox.margin>-->
+                                           <!--</ImageView>-->
+                                       <!--</children>-->
+                                   <!--</VBox>-->
+                                   <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                                       <!--<children>-->
+                                           <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                               <!--<image>-->
+                                                   <!--<Image url="@../../images/u85.png" />-->
+                                               <!--</image>-->
+                                               <!--<VBox.margin>-->
+                                                   <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                               <!--</VBox.margin>-->
+                                           <!--</ImageView>-->
+                                       <!--</children>-->
+                                   <!--</VBox>-->
+                                   <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                                       <!--<children>-->
+                                           <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                               <!--<image>-->
+                                                   <!--<Image url="@../../images/u80.png" />-->
+                                               <!--</image>-->
+                                               <!--<VBox.margin>-->
+                                                   <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                               <!--</VBox.margin>-->
+                                           <!--</ImageView>-->
+                                       <!--</children>-->
+                                   <!--</VBox>-->
+                                   <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                                       <!--<children>-->
+                                           <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                               <!--<image>-->
+                                                   <!--<Image url="@../../images/basic/delete.png" />-->
+                                               <!--</image>-->
+                                               <!--<VBox.margin>-->
+                                                   <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                               <!--</VBox.margin>-->
+                                           <!--</ImageView>-->
+                                       <!--</children>-->
+                                   <!--</VBox>-->
+                                   <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                                       <!--<children>-->
+                                           <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                               <!--<image>-->
+                                                   <!--<Image url="@../../images/basic/insert.png" />-->
+                                               <!--</image>-->
+                                               <!--<VBox.margin>-->
+                                                   <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                               <!--</VBox.margin>-->
+                                           <!--</ImageView>-->
+                                       <!--</children>-->
+                                   <!--</VBox>-->
+                                   <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                                       <!--<children>-->
+                                           <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                               <!--<image>-->
+                                                   <!--<Image url="@../../images/basic/insertdepot.png" />-->
+                                               <!--</image>-->
+                                               <!--<VBox.margin>-->
+                                                   <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                               <!--</VBox.margin>-->
+                                           <!--</ImageView>-->
+                                       <!--</children>-->
+                                   <!--</VBox>-->
+                               </children>
+                           </HBox>
+                        <TableView fx:id="tableView1" prefHeight="649.0" prefWidth="944.0">
+                          <columns>
+                            <TableColumn fx:id="no" maxWidth="30.0" prefWidth="50.0" text="序号" />
+                            <TableColumn fx:id="supplierOrder" prefWidth="130.0" text="供应商编号" />
+                              <TableColumn fx:id="supplierDes" prefWidth="130.0" text="供应商简称" />
+                              <TableColumn fx:id="invoiceNumber" prefWidth="130.0" text="发票号码" />
+                              <TableColumn fx:id="invoiceDate" prefWidth="130.0" text="发票日期" />
+                              <TableColumn fx:id="invoicePrice" prefWidth="130.0" text="开票金额" />
+                              <TableColumn fx:id="offsetPrice" prefWidth="130.0" text="已冲金额" />
+                              <TableColumn fx:id="meetPrice" prefWidth="130.0" text="应付金额" />
+                          </columns>
+                        </TableView>
+                       </children>
+                   </VBox>
+               </children></Pane>
+         </children>
+      </HBox>
+
+
+
+
+    </children>
+</AnchorPane>

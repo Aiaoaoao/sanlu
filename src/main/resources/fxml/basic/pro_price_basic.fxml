@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="710.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.basic.ProPriceBasicController">
+   <children>
+       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <Pane fx:id="topPane" layoutX="14.0" layoutY="8.0" prefHeight="89.0" prefWidth="1145.0" stylesheets="@/css/basic/index.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS">
+               <children>
+                   <Label layoutX="27.0" layoutY="7.0" text="产品价格设定">
+                       <font>
+                           <Font size="16.0" />
+                       </font>
+                   </Label>
+                   <Label fx:id="fxmlStatus" layoutX="129.0" layoutY="8.0" text="【待输入】">
+                       <font>
+                           <Font size="16.0" />
+                       </font>
+                   </Label>
+               </children></Pane>
+
+           <Pane prefHeight="115.0" prefWidth="1145.0">
+               <children>
+                   <VBox prefHeight="59.0" onMouseClicked="#importEx" prefWidth="62.0" styleClass="mouse_hover,import_menu" stylesheets="@/css/basic.css" userData="">
+
+                       <children>
+                           <Pane prefHeight="20.0" prefWidth="16.0">
+                               <children>
+                               </children>
+                               <VBox.margin>
+                                   <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                               </VBox.margin>
+                           </Pane>
+                           <Label styleClass="menu_words" text="批量导入" textAlignment="CENTER">
+
+                               <padding>
+                                   <Insets left="5.0" />
+                               </padding>
+                               <VBox.margin>
+                                   <Insets />
+                               </VBox.margin>
+                           </Label>
+                       </children>
+                       <opaqueInsets>
+                           <Insets />
+                       </opaqueInsets>
+                   </VBox>
+               </children>
+           </Pane>
+
+           <Pane prefHeight="675.0" prefWidth="1145.0" style="-fx-background-color: #FFFFFF;" VBox.vgrow="ALWAYS">
+            <children>
+               <Pane layoutY="327.0" prefHeight="39.0" prefWidth="1145.0" style="-fx-background-color: #E9E9E9;">
+                  <children>
+                     <Label layoutX="24.0" layoutY="10.0" style="-fx-font-weight: bold;" text="价格设定">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Label>
+                  </children></Pane>
+               <TableView fx:id="proTableView" layoutY="366.0" prefHeight="306.0" prefWidth="1145.0">
+                 <columns>
+                   <TableColumn fx:id="ck" prefWidth="75.0" text="" />
+                     <TableColumn fx:id="idnum" prefWidth="100.0" text="产品编号" />
+                     <TableColumn fx:id="pname" prefWidth="100.0" text="产品名称" />
+                     <TableColumn fx:id="bigtype" prefWidth="100.0" text="产品大类" />
+                     <TableColumn fx:id="basictype" prefWidth="100.0" text="基本单位" />
+                     <TableColumn fx:id="bzprice" prefWidth="100.0" text="标准售价" />
+                     <TableColumn fx:id="lowprice" prefWidth="100.0" text="最低售价" />
+                     <TableColumn fx:id="remarks" prefWidth="100.0" text="备注" />
+                 </columns>
+               </TableView>
+               <GridPane layoutX="60.0" layoutY="14.0" prefHeight="299.0" prefWidth="600.0">
+                 <columnConstraints>
+                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="174.0" minWidth="10.0" prefWidth="102.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="98.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+
+                 </columnConstraints>
+                 <rowConstraints>
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                 </rowConstraints>
+                  <children>
+                     <Label style="-fx-font-weight: bold;" text="产品查找">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Label>
+                     <Label text="产品编号：" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="isnum" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     <Button mnemonicParsing="false" onMouseClicked="#moreProductButtonClick" prefHeight="20.0" prefWidth="20.0" text="..." GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                     <Label text="产品名称：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="proname" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                     <Label text="基本单位：" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Label>
+                     <ComboBox fx:id="basicunit" prefHeight="23.0" prefWidth="197.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                     <Label text="产品大类：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Label>
+                     <ComboBox fx:id="protype" prefHeight="23.0" prefWidth="199.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                     <Button mnemonicParsing="false" onMouseClicked="#search" prefWidth="70.0" text="搜索" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                     <Button mnemonicParsing="false" onMouseClicked="#clear" prefWidth="70.0" text="清空" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                     <Label style="-fx-font-weight: bold;" text="价格设定" GridPane.rowIndex="4">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Label>
+                     <Label text="标准售价：" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Label>
+                     <ComboBox fx:id="bzcm" prefHeight="23.0" prefWidth="113.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                     <TextField fx:id="bzprc" prefHeight="23.0" prefWidth="87.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                     <Label text="最低售价：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Label>
+                     <ComboBox fx:id="zdcm" prefHeight="23.0" prefWidth="101.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                     <TextField fx:id="zdprc" prefHeight="23.0" prefWidth="87.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                     <Button fx:id="subimtBtn" mnemonicParsing="false" onMouseClicked="#okButton" prefWidth="70.0" text="确定" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                     <Button mnemonicParsing="false" prefWidth="70.0" text="关闭" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                  </children>
+               </GridPane>
+            </children></Pane>
+
+       </VBox>
+       <Button disable="true" layoutX="11.0" layoutY="411.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="产品价格设定" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,55 @@
+#closeButton {
+    /*按钮图片*/
+    -fx-graphic: url("../images/u20890.png");
+
+    /*按钮背景颜色*/
+    -fx-background-color:transparent;
+}
+#loginWin{
+
+    /*设置背景颜色渐变*/
+    -fx-background-color: linear-gradient(to bottom,#F7F7F7,#DBDBDB);
+
+    /*设置圆角*/
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+}
+
+.border_radius{
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+
+#newtworkConfig{
+    -fx-background-color: #FFF;
+}
+
+.combobox_styles{
+    -fx-background-color:#FFF;
+    -fx-border-color: #C1C1C1;
+}
+
+
+
+
+.login_button{
+    -fx-background-color: linear-gradient(to bottom,#3FC27C,#129253);
+    -fx-text-fill:#FFF;
+    -fx-border-color:#10854C;
+}
+
+.button_sizes{
+    -fx-font-size: 16px;
+}
+
+.button_sizes:hover{
+    -fx-background-color: linear-gradient(to bottom,#3FC27C,#129253);
+    -fx-text-fill:#FFF;
+    -fx-border-color:#10854C;
+}
+
+
+
+

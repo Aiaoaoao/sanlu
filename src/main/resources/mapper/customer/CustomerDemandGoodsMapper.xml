@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.customer.CustomerDemandGoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.customer.CustomerDemandGoods" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+      <result column="customer_id" property="customerId" jdbcType="BIGINT" />
+      <result column="customer_no" property="customerNo" jdbcType="BIGINT" />
+      <result column="customer_no_str" property="customerNoStr" jdbcType="VARCHAR" />
+      <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_no" property="createNo" jdbcType="VARCHAR" />
+    <result column="customer_type" property="customerType" jdbcType="VARCHAR" />
+    <result column="zip" property="zip" jdbcType="VARCHAR" />
+    <result column="contacts" property="contacts" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="create_people" property="createPeople" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+
+    <select id="listCustomerDemandGoodsByManyCondition" resultMap="BaseResultMap">
+        SELECT * FROM customer_demand_goods
+        where 1=1
+        <choose>
+            <when test="createNoBen != null and createNoBen != '' and createNoEnd != null and createNoEnd != ''">
+                and #{createNoBen} &lt;= create_no and create_no &lt;= #{createNoEnd}
+            </when>
+            <otherwise>
+                <choose>
+                    <when test="createNoBen != null and createNoBen != ''">
+                        and #{createNoBen} &lt;= create_no
+                    </when>
+                    <when test="createNoEnd != null and createNoEnd != ''">
+                        and create_no &lt;= #{createNoEnd}
+                    </when>
+                </choose>
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="createDateBen != null and createDateBen != '' and createDateEnd != null and createDateEnd != ''">
+                and #{createDateBen} &lt;= create_date and create_date &lt;= #{createDateEnd}
+            </when>
+            <otherwise>
+                <choose>
+                    <when test="createDateBen != null and createDateBen != ''">
+                        and #{createDateBen} &lt;= create_no
+                    </when>
+                    <when test="createDateEnd != null and createDateEnd != ''">
+                        and create_date &lt;= #{createDateEnd}
+                    </when>
+                </choose>
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="customerNoBen != null and customerNoBen != '' and customerNoEnd != null and customerNoEnd != ''">
+                and #{customerNoBen} &lt;= customer_no and customer_no &lt;= #{customerNoEnd}
+            </when>
+            <otherwise>
+                <choose>
+                    <when test="customerNoBen != null and customerNoBen != ''">
+                        and #{customerNoBen} &lt;= customer_no
+                    </when>
+                    <when test="customerNoEnd != null and customerNoEnd != ''">
+                        and customer_no &lt;= #{customerNoEnd}
+                    </when>
+                </choose>
+            </otherwise>
+        </choose>
+        ORDER BY id desc
+    </select>
+
+    <select id="listCustomerDemandGoods" resultMap="BaseResultMap">
+        SELECT * FROM customer_demand_goods
+        <where>
+            <if test="customerName!=''">
+                AND customer_name  like concat(concat('%',#{customerName}),'%')
+            </if>
+        </where>
+        ORDER BY create_date asc
+    </select>
+
+    <select id="getFirstCustomerDemandGoods" resultMap="BaseResultMap">
+        SELECT * FROM customer_demand_goods  ORDER BY id asc  limit 0,1
+    </select>
+
+    <select id="getLastCustomerDemandGoods" resultMap="BaseResultMap">
+        SELECT * FROM customer_demand_goods  ORDER BY id desc  limit 0,1
+    </select>
+
+    <select id="getCustomerDemandGoodsByPage" resultMap="BaseResultMap">
+        SELECT * FROM customer_demand_goods ORDER BY id asc limit #{page},#{rows}
+    </select>
+
+    <select id="getCustomerDemandGoodsCount" resultType="integer">
+        SELECT count(*) FROM customer_demand_goods
+    </select>
+
+</mapper>

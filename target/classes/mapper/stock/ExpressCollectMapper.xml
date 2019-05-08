@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.stock.ExpressCollectMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.stock.ExpressCollect" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="collectdate" property="collectdate" jdbcType="DATE" />
+    <result column="collectorder" property="collectorder" jdbcType="VARCHAR" />
+    <result column="seeorder" property="seeorder" jdbcType="VARCHAR" />
+    <result column="stockorder" property="stockorder" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="freighttype" property="freighttype" jdbcType="INTEGER" />
+    <result column="freightprice" property="freightprice" jdbcType="DOUBLE" />
+    <result column="ispay" property="ispay" jdbcType="INTEGER" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="createpeople" property="createpeople" jdbcType="VARCHAR" />
+    <result column="createdate" property="createdate" jdbcType="VARCHAR" />
+    <result column="updatepeople" property="updatepeople" jdbcType="VARCHAR" />
+    <result column="updatedate" property="updatedate" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+  <select id="selectMaxIdnum"  resultType="java.lang.String" >
+    SELECT MAX(collectorder) FROM express_collect where collectdate =#{currentDate}
+  </select>
+
+  <select id="findExpressCollect" resultMap="BaseResultMap">
+    select * from express_collect
+  </select>
+
+  <select id="findExpressCollectByOrders" resultMap="BaseResultMap">
+    select * from express_collect
+    <where>
+      <if test="orders != null and orders != ''" >
+        and collectorder like concat(concat('%',#{orders}),'%')
+      </if>
+    </where>
+    order  by id desc
+  </select>
+
+  <select id="findExpressCollectOrders" resultMap="BaseResultMap">
+    select * from express_collect where collectorder = #{orders}
+  </select>
+
+</mapper>

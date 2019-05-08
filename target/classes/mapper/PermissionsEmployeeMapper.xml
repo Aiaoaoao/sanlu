@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.PermissionsEmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.PermissionsEmployee" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="uid" property="uid" jdbcType="BIGINT" />
+    <result column="idnum" property="idnum" jdbcType="VARCHAR" />
+    <result column="uname" property="uname" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+  <select id="findPermissionsEmployee" resultMap="BaseResultMap">
+    select * from permissions_employee
+  </select>
+
+  <select id="findPermissionsEmployeeByUname" resultMap="BaseResultMap">
+    select p.* from permissions_employee p ,employee_basic e where p.uid = e.id and e.empname = #{uname}
+  </select>
+
+  
+</mapper>

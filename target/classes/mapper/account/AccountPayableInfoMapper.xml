@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.account.AccountPayableInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.account.AccountPayableInfo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="otherid" property="otherid" jdbcType="BIGINT" />
+    <result column="payment_method" property="paymentMethod" jdbcType="VARCHAR" />
+    <result column="payment_money" property="paymentMoney" jdbcType="DECIMAL" />
+    <result column="supplier" property="supplier" jdbcType="VARCHAR" />
+    <result column="invoice_no" property="invoiceNo" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="listAccountPayableInfo" resultMap="BaseResultMap">
+    select  * from account_payable_info where otherid = #{otherid} order by addtime desc
+  </select>
+
+  <delete id="deleteAccountPayableInfoByParentId">
+    delete from account_payable_info where otherid = #{otherid}
+  </delete>
+</mapper>

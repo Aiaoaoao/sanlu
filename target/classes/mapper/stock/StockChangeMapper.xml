@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.education.mapper.stock.StockChangeMapper">
+  <resultMap id="BaseResultMap" type="com.yc.education.model.stock.StockChange">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="changedate" jdbcType="DATE" property="changedate" />
+    <result column="changeorder" jdbcType="VARCHAR" property="changeorder" />
+    <result column="depotorder" jdbcType="VARCHAR" property="depotorder" />
+    <result column="depotname" jdbcType="VARCHAR" property="depotname" />
+    <result column="changetype" jdbcType="INTEGER" property="changetype" />
+    <result column="peopleorder" jdbcType="VARCHAR" property="peopleorder" />
+    <result column="peoplename" jdbcType="VARCHAR" property="peoplename" />
+    <result column="changecurrency" jdbcType="INTEGER" property="changecurrency" />
+    <result column="changesourse" jdbcType="VARCHAR" property="changesourse" />
+    <result column="createpeople" jdbcType="VARCHAR" property="createpeople" />
+    <result column="shpeople" jdbcType="VARCHAR" property="shpeople" />
+    <result column="shdate" jdbcType="VARCHAR" property="shdate" />
+    <result column="updatepeople" jdbcType="VARCHAR" property="updatepeople" />
+    <result column="updatedate" jdbcType="VARCHAR" property="updatedate" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="shstatus" jdbcType="INTEGER" property="shstatus" />
+  </resultMap>
+
+  <select id="selectMaxIdnum"  resultType="java.lang.String" >
+    SELECT MAX(changeorder) FROM stock_change where changedate =#{currentDate}
+  </select>
+
+  <select id="findStockChange" resultMap="BaseResultMap">
+    select * from stock_change order by id desc
+  </select>
+
+  <select id="findStockChangeByOrders" resultMap="BaseResultMap" >
+select * from stock_change
+<where>
+  <if test="orders != null and orders != ''" >
+    and changeorder like concat(concat('%',#{orders}),'%')
+  </if>
+
+</where>
+order by id desc
+  </select>
+
+
+  <select id="findStockChangeNotSh" resultMap="BaseResultMap">
+    select * from stock_change where shstatus =0  order by id desc
+  </select>
+
+  <select id="findStockChangeOrders" resultMap="BaseResultMap">
+    select * from stock_change where changeorder = #{orders}
+  </select>
+
+</mapper>

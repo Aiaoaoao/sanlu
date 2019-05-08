@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.account.AccountReceivableMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.account.AccountReceivable" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="rush_date" property="rushDate" jdbcType="TIMESTAMP" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="early_order" property="earlyOrder" jdbcType="BIT" />
+    <result column="early_balance" property="earlyBalance" jdbcType="VARCHAR" />
+    <result column="customer_no" property="customerNo" jdbcType="VARCHAR" />
+    <result column="customer_str" property="customerStr" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="INTEGER" />
+    <result column="rush_currency" property="rushCurrency" jdbcType="INTEGER" />
+    <result column="exchange_rate" property="exchangeRate" jdbcType="VARCHAR" />
+    <result column="receive_people" property="receivePeople" jdbcType="BIGINT" />
+    <result column="receive_people_str" property="receivePeopleStr" jdbcType="VARCHAR" />
+    <result column="made_people" property="madePeople" jdbcType="VARCHAR" />
+    <result column="receive_method" property="receiveMethod" jdbcType="INTEGER" />
+    <result column="receive_money" property="receiveMoney" jdbcType="DECIMAL" />
+    <result column="audit" property="audit" jdbcType="VARCHAR" />
+    <result column="audit_str" property="auditStr" jdbcType="VARCHAR" />
+    <result column="last_update" property="lastUpdate" jdbcType="VARCHAR" />
+    <result column="last_update_str" property="lastUpdateStr" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="order_audit" property="orderAudit" jdbcType="BIT" />
+    <result column="can_rush" property="canRush" jdbcType="DECIMAL" />
+  </resultMap>
+
+  <select id="listAccountReceivableByTime" resultMap="BaseResultMap">
+    select * from account_receivable
+    <where>
+      and order_audit = 0
+      <if test="benTime != null and benTime != ''">
+        and #{benTime} &lt;= addtime
+      </if>
+      <if test="endTime != null and endTime != ''">
+        and #{endTime}  &gt;= addtime
+      </if>
+    </where>
+    order by addtime desc
+  </select>
+
+  <select id="listAccountReceivableByNum" resultMap="BaseResultMap">
+    select * from account_receivable where order_audit = 1 order by addtime desc  LIMIT 0,#{num}
+  </select>
+
+  <!--查询最订单号-->
+  <select id="getMaxOrderNo" resultType="java.lang.String">
+  SELECT MAX(order_no) FROM account_receivable
+  </select>
+
+  <select id="listAccountReceivable" resultMap="BaseResultMap">
+    select * from account_receivable
+    <where>
+      <if test="text != null and text != ''">
+        and order_no like concat(concat('%',#{text}),'%') or customer_str like concat(concat('%',#{text}),'%')
+      </if>
+    </where>
+    order by addtime desc
+  </select>
+
+  <select id="getByOrderNo" resultMap="BaseResultMap">
+    select * from account_receivable where order_no = #{orderno} limit 0,1
+  </select>
+
+  <select id="listAccountReceivableNotSh" resultMap="BaseResultMap">
+    select * from account_receivable where order_audit = 0 order by id desc
+  </select>
+
+</mapper>

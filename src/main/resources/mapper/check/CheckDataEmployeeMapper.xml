@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.check.CheckDataEmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.check.CheckDataEmployee" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="jobnumber" property="jobnumber" jdbcType="VARCHAR" />
+    <result column="workname" property="workname" jdbcType="VARCHAR" />
+    <result column="workday" property="workday" jdbcType="VARCHAR" />
+    <result column="checkday" property="checkday" jdbcType="VARCHAR" />
+    <result column="normalovertime" property="normalovertime" jdbcType="VARCHAR" />
+    <result column="weekendovertime" property="weekendovertime" jdbcType="VARCHAR" />
+    <result column="festivalovertime" property="festivalovertime" jdbcType="VARCHAR" />
+    <result column="outworkday" property="outworkday" jdbcType="VARCHAR" />
+    <result column="thingvacationday" property="thingvacationday" jdbcType="VARCHAR" />
+    <result column="illnessvacationday" property="illnessvacationday" jdbcType="VARCHAR" />
+    <result column="paidvacationday" property="paidvacationday" jdbcType="VARCHAR" />
+    <result column="absenteeismday" property="absenteeismday" jdbcType="VARCHAR" />
+    <result column="latetime" property="latetime" jdbcType="VARCHAR" />
+    <result column="lateminute" property="lateminute" jdbcType="VARCHAR" />
+    <result column="leaveearlytime" property="leaveearlytime" jdbcType="VARCHAR" />
+    <result column="leaveearlyminute" property="leaveearlyminute" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="checkdataid" property="checkdataid" jdbcType="BIGINT" />
+  </resultMap>
+
+  <select id="findCheckDataEmployee" resultMap="BaseResultMap">
+      select * from check_data_employee WHERE  checkdataid = #{checkDataid}
+  </select>
+
+</mapper>

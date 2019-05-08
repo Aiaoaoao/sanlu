@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane prefHeight="710.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.basic.EmployeeBasicController">
+   <children>
+       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="topPane" layoutX="14.0" layoutY="8.0" prefHeight="36.0" stylesheets="@/css/basic/index.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label layoutX="27.0" layoutY="7.0" text="员工档案">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="fxmlStatus" layoutX="91.0" layoutY="8.0" text="【待输入】" userData="">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children></Pane>
+
+           <HBox layoutY="30.0" prefHeight="56.0" prefWidth="1143.0" stylesheets="@/css/basic.css">
+               <children>
+
+                   <VBox fx:id="first" onMouseClicked="#pages" prefHeight="40.0" styleClass="menu_tools,mouse_hover" stylesheets="@/css/basic.css" userData="">
+                       <HBox.margin>
+                           <Insets left="10.0" right="2.5" />
+                       </HBox.margin>
+                       <children>
+                           <Pane fx:id="firstimg" prefHeight="20.0" prefWidth="16.0">
+                               <children>
+                               </children>
+                               <VBox.margin>
+                                   <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                               </VBox.margin>
+                           </Pane>
+                           <Label styleClass="menu_words" text="第一笔" textAlignment="CENTER">
+
+                               <padding>
+                                   <Insets left="5.0" />
+                               </padding>
+                               <VBox.margin>
+                                   <Insets />
+                               </VBox.margin>
+                           </Label>
+                       </children>
+                       <opaqueInsets>
+                           <Insets />
+                       </opaqueInsets>
+                   </VBox>
+                   <VBox fx:id="prev" onMouseClicked="#pages" styleClass="menu_tools,mouse_hover" stylesheets="@/css/basic.css" userData="">
+                       <children>
+                           <Pane fx:id="previmg" prefHeight="20.0" prefWidth="16.0">
+                               <padding>
+                                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                               </padding>
+                               <children>
+                               </children>
+                               <VBox.margin>
+                                   <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                               </VBox.margin>
+                           </Pane>
+                           <Label styleClass="menu_words" text="前一笔" textAlignment="CENTER">
+
+                               <padding>
+                                   <Insets left="5.0" />
+                               </padding>
+                           </Label>
+                       </children>
+                       <opaqueInsets>
+                           <Insets />
+                       </opaqueInsets>
+                       <HBox.margin>
+                           <Insets left="2.5" right="2.5" />
+                       </HBox.margin>
+                   </VBox>
+                   <VBox fx:id="next" onMouseClicked="#pages" styleClass="menu_tools,mouse_hover" userData="">
+                       <children>
+                           <Pane fx:id="nextimg" prefHeight="20.0" prefWidth="27.0">
+                               <padding>
+                                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                               </padding>
+                               <children>
+                               </children>
+                               <VBox.margin>
+                                   <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                               </VBox.margin>
+                           </Pane>
+                           <Label styleClass="menu_words" text="后一笔" textAlignment="CENTER">
+
+                               <padding>
+                                   <Insets left="5.0" />
+                               </padding>
+                           </Label>
+                       </children>
+                       <opaqueInsets>
+                           <Insets />
+                       </opaqueInsets>
+                       <HBox.margin>
+                           <Insets left="2.5" right="2.5" />
+                       </HBox.margin>
+                   </VBox>
+                   <VBox fx:id="last" onMouseClicked="#pages" styleClass="menu_tools,mouse_hover" userData="">
+                       <children>
+                           <Pane fx:id="lastimg" prefHeight="20.0" prefWidth="21.0">
+                               <padding>
+                                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                               </padding>
+                               <children>
+                               </children>
+                               <VBox.margin>
+                                   <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                               </VBox.margin>
+                           </Pane>
+                           <Label styleClass="menu_words" text="最末尾" textAlignment="CENTER">
+
+
+                               <padding>
+                                   <Insets left="5.0" />
+                               </padding>
+                           </Label>
+                       </children>
+                       <opaqueInsets>
+                           <Insets />
+                       </opaqueInsets>
+                       <HBox.margin>
+                           <Insets left="2.5" right="2.5" />
+                       </HBox.margin>
+                   </VBox>
+                   <VBox fx:id="clearvbox" onMouseClicked="#clearValue" styleClass="menu_tools,mouse_hover">
+                       <children>
+                           <Pane fx:id="clearvboximg" prefHeight="20.0" prefWidth="20.0">
+                               <padding>
+                                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                               </padding>
+                               <children>
+                               </children>
+                               <VBox.margin>
+                                   <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                               </VBox.margin>
+                           </Pane>
+                           <Label styleClass="menu_words" text="清空" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+
+                               <VBox.margin>
+                                   <Insets left="5.0" />
+                               </VBox.margin>
+                               <padding>
+                                   <Insets left="5.0" />
+                               </padding>
+                           </Label>
+                       </children>
+                       <opaqueInsets>
+                           <Insets />
+                       </opaqueInsets>
+                       <HBox.margin>
+                           <Insets left="2.5" right="2.5" />
+                       </HBox.margin>
+                   </VBox>
+                   <VBox fx:id="submitvbox" onMouseClicked="#submit" styleClass="menu_tools,mouse_hover">
+                       <children>
+                           <Pane fx:id="submitvboximg" prefHeight="20.0" prefWidth="27.0">
+                               <padding>
+                                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                               </padding>
+                               <children>
+
+                               </children>
+                               <VBox.margin>
+                                   <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                               </VBox.margin>
+                           </Pane>
+                           <Label styleClass="menu_words" text="提交" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+
+                               <padding>
+                                   <Insets left="5.0" />
+                               </padding>
+                               <VBox.margin>
+                                   <Insets left="5.0" />
+                               </VBox.margin>
+                           </Label>
+                       </children>
+                       <opaqueInsets>
+                           <Insets />
+                       </opaqueInsets>
+                       <HBox.margin>
+                           <Insets left="2.5" right="2.5" />
+                       </HBox.margin>
+                   </VBox>
+                   <VBox fx:id="insertvbox" onMouseClicked="#insert" styleClass="menu_tools,mouse_hover">
+                       <children>
+                           <Pane fx:id="insertvboximg" prefHeight="21.0" prefWidth="28.0">
+                               <padding>
+                                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                               </padding>
+                               <children>
+                               </children>
+                               <VBox.margin>
+                                   <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                               </VBox.margin>
+                           </Pane>
+                           <Label styleClass="menu_words" text="新增" textAlignment="CENTER">
+
+                               <padding>
+                                   <Insets left="5.0" />
+                               </padding>
+                               <VBox.margin>
+                                   <Insets left="5.0" />
+                               </VBox.margin>
+                           </Label>
+                       </children>
+                       <opaqueInsets>
+                           <Insets />
+                       </opaqueInsets>
+                       <HBox.margin>
+                           <Insets left="2.5" right="2.5" />
+                       </HBox.margin>
+                   </VBox>
+                   <VBox fx:id="updatevbox" onMouseClicked="#update" styleClass="menu_tools,mouse_hover">
+                       <children>
+                           <Pane fx:id="updatevboximg" prefHeight="20.0" prefWidth="22.0">
+                               <padding>
+                                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                               </padding>
+                               <children>
+                               </children>
+                               <VBox.margin>
+                                   <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                               </VBox.margin>
+                           </Pane>
+                           <Label styleClass="menu_words" text="修改" textAlignment="CENTER">
+
+                               <padding>
+                                   <Insets left="5.0" />
+                               </padding>
+                               <VBox.margin>
+                                   <Insets left="5.0" />
+                               </VBox.margin>
+                           </Label>
+                       </children>
+                       <opaqueInsets>
+                           <Insets />
+                       </opaqueInsets>
+                       <HBox.margin>
+                           <Insets left="2.5" right="2.5" />
+                       </HBox.margin>
+                   </VBox>
+                   <VBox fx:id="deletevbox" onMouseClicked="#delete" styleClass="menu_tools,mouse_hover">
+                       <children>
+                           <Pane fx:id="deletevboximg" prefHeight="20.0" prefWidth="26.0">
+                               <padding>
+                                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                               </padding>
+                               <children>
+
+                               </children>
+                               <VBox.margin>
+                                   <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                               </VBox.margin>
+                           </Pane>
+                           <Label styleClass="menu_words" text="删除" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+
+                               <padding>
+                                   <Insets left="5.0" />
+                               </padding>
+                               <VBox.margin>
+                                   <Insets left="5.0" />
+                               </VBox.margin>
+                           </Label>
+                       </children>
+                       <opaqueInsets>
+                           <Insets />
+                       </opaqueInsets>
+                       <HBox.margin>
+                           <Insets left="2.5" right="2.5" />
+                       </HBox.margin>
+                   </VBox>
+                   <VBox fx:id="printingvbox" styleClass="menu_tools,mouse_hover">
+                       <children>
+                           <Pane fx:id="copyimg" prefHeight="20.0" prefWidth="26.0">
+                               <padding>
+                                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                               </padding>
+                               <children>
+                               </children>
+                               <VBox.margin>
+                                   <Insets bottom="5.0" left="15.0" right="10.0" top="10.0" />
+                               </VBox.margin>
+                           </Pane>
+                           <Label styleClass="menu_words" text="打印" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+
+                               <padding>
+                                   <Insets left="5.0" />
+                               </padding>
+                               <VBox.margin>
+                                   <Insets left="5.0" />
+                               </VBox.margin>
+                           </Label>
+                       </children>
+                       <opaqueInsets>
+                           <Insets />
+                       </opaqueInsets>
+                       <HBox.margin>
+                           <Insets left="2.5" right="2.5" />
+                       </HBox.margin>
+                   </VBox>
+                   <Pane prefHeight="56.0" prefWidth="570.0">
+                       <children>
+                           <Pane layoutX="510.0" onMouseClicked="#shoRightPane" prefHeight="56.0" prefWidth="60.0" styleClass="rightSelectHover">
+                               <children>
+                                   <!--<Pane fx:id="rightImg" layoutX="1.0" layoutY="-2.0" prefHeight="56.0" prefWidth="60.0" />-->
+                                   <ImageView fx:id="rightImage" fitHeight="30.0" fitWidth="36.0" layoutX="15.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                       <Image url="@/images/leftgo.png" />
+                                   </ImageView>
+                               </children>
+                           </Pane>
+                       </children>
+                   </Pane>
+               </children>
+           </HBox>
+
+           <VBox layoutY="84.0" prefHeight="1.0" prefWidth="1145.0" styleClass="menu_underline" stylesheets="@/css/basic.css" AnchorPane.bottomAnchor="625.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="84.0" />
+      <Pane fx:id="downPane" layoutX="14.0" layoutY="96.0" prefHeight="607.0" prefWidth="1145.0" stylesheets="@/css/basic.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TabPane layoutX="1.0" layoutY="95.0" prefHeight="517.0" prefWidth="1140.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="详细资料">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="378.0" prefWidth="600.0">
+                           <children>
+                                 <GridPane layoutX="42.0" layoutY="27.0" prefHeight="351.0" prefWidth="561.0">
+                                   <columnConstraints>
+                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" prefWidth="77.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="249.0" minWidth="10.0" prefWidth="129.0" />
+                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.0" minWidth="10.0" prefWidth="137.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="1.0" prefWidth="92.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="146.0" />
+                                   </columnConstraints>
+                                   <rowConstraints>
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                   </rowConstraints>
+                                    <children>
+                                    <Label text="身份证号：" GridPane.halignment="RIGHT">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="empcard" prefHeight="23.0" prefWidth="140.0" GridPane.columnIndex="1" GridPane.columnSpan="2">
+                                          <opaqueInsets>
+                                             <Insets />
+                                          </opaqueInsets>
+                                       </TextField>
+                                    <Label text="英文姓名：" GridPane.columnIndex="3" GridPane.halignment="RIGHT">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="englishname" prefHeight="23.0" prefWidth="130.0" GridPane.columnIndex="4" />
+                                    <CheckBox fx:id="isstop" mnemonicParsing="false" text="暂停使用" GridPane.rowIndex="9">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <TextField fx:id="stopdes" editable="false" prefHeight="23.0" prefWidth="112.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                       <Label text="Email：" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <TextField fx:id="email" prefHeight="23.0" prefWidth="452.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="6" />
+                                    <Label text="国籍：" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="country" prefHeight="23.0" prefWidth="112.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="area" prefHeight="23.0" prefWidth="154.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Label text="护照号码：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="passportnum" prefHeight="23.0" prefWidth="130.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                       <Label text="出身地：" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                    <ComboBox fx:id="birthplace" prefHeight="23.0" prefWidth="208.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                       <Label text="民族：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <ComboBox fx:id="nation" prefHeight="23.0" prefWidth="145.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                       <Label text="婚姻状态：" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <ComboBox fx:id="marital" prefHeight="23.0" prefWidth="101.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                       <Label text="联系电话：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <TextField fx:id="phone" prefHeight="23.0" prefWidth="130.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                       <Label text="联络地址：" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <TextField fx:id="address" prefHeight="23.0" prefWidth="440.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="4" />
+                                    <Label text="备注：" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="remarks" prefHeight="23.0" prefWidth="441.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="5" />
+                                    <Label text="建档人：" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+      
+                                    <TextField fx:id="addpeople" editable="false" prefHeight="23.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <Label text="建档日期：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="最修改人：" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="updatepeople" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                    <Label text="最后修改日期：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                       <TextField fx:id="adddate" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+                                       <TextField fx:id="updatedate" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+                                    </children>
+                                 </GridPane>
+
+
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="任职资料">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="455.0">
+                           <children>
+                                 <GridPane layoutX="14.0" layoutY="29.0" prefHeight="204.0" prefWidth="500.0">
+                                   <columnConstraints>
+                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.0" minWidth="10.0" prefWidth="115.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="29.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.0" minWidth="10.0" prefWidth="114.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="142.0" />
+                                   </columnConstraints>
+                                   <rowConstraints>
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
+                                   </rowConstraints>
+                                    <children>
+                                  <Label text="任职部门：" GridPane.halignment="RIGHT">
+                                      <font>
+                                          <Font size="12.0" />
+                                      </font>
+                                  </Label>
+                                       <Label text="试用期长：" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <Label text="转正日期：" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <Label text="任职状况：" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <Label text="考勤卡号：" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <Label text="工资等级：" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <ComboBox fx:id="department" prefHeight="23.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                                       <TextField fx:id="usedate" prefHeight="23.0" prefWidth="123.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                       <Label text="个月" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <DatePicker fx:id="okdate" prefHeight="23.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                       <ComboBox fx:id="dutystatus" prefHeight="23.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                                       <TextField fx:id="checknum" prefHeight="23.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                                       <ComboBox fx:id="grade" prefHeight="23.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                                       <Label text="职位：" GridPane.columnIndex="3" GridPane.halignment="RIGHT">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <ComboBox fx:id="duty" prefHeight="23.0" prefWidth="166.0" GridPane.columnIndex="4" />
+                                       <Label text="到职日期：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <DatePicker fx:id="comedate" prefHeight="23.0" prefWidth="166.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                       <Label text="停职/留职日期：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <TextField fx:id="outdate" prefHeight="23.0" prefWidth="159.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                       <Label text="职务津贴：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <TextField fx:id="subsdiy" prefHeight="23.0" prefWidth="169.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                                       <Label text="缴纳保修：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                                          <font>
+                                             <Font size="12.0" />
+                                          </font>
+                                       </Label>
+                                       <ComboBox fx:id="insurance" prefHeight="23.0" prefWidth="170.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                                    </children>
+                                 </GridPane>
+
+
+
+
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+
+              </tabs>
+            </TabPane>
+               <GridPane layoutX="15.0" layoutY="14.0">
+                 <columnConstraints>
+                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.0" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="3.0" prefWidth="100.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                 </columnConstraints>
+                 <rowConstraints>
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                 </rowConstraints>
+                  <children>
+                  <Label text="员工编号：" GridPane.halignment="RIGHT" />
+                  <TextField fx:id="idnum" onKeyPressed="#isNumKey" prefHeight="23.0" prefWidth="31.0" userData="" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onMouseClicked="#moreEmployeeButtonClick" prefHeight="20.0" prefWidth="20.0" text="..." GridPane.columnIndex="2" />
+                  <Label text="员工工号：" GridPane.columnIndex="3" GridPane.halignment="RIGHT">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="jobnum" prefWidth="130.0" GridPane.columnIndex="4" />
+                  <Label text="员工姓名：" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="empname" prefHeight="23.0" prefWidth="159.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                  <Label text="性别：" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+      
+                      <Group GridPane.columnIndex="4" GridPane.rowIndex="1">
+                          <RadioButton fx:id="na" layoutX="417.0" layoutY="52.0" mnemonicParsing="false" text="男" userData="1" />
+                          <RadioButton fx:id="nv" layoutX="469.0" layoutY="52.0" mnemonicParsing="false" text="女" userData="2" />
+                      </Group>
+                  </children>
+               </GridPane>
+
+         </children>
+            <VBox.margin>
+               <Insets top="1.0" />
+            </VBox.margin></Pane>
+       </VBox>
+       <Button disable="true" layoutX="11.0" layoutY="411.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="员工档案" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+   </children>
+</AnchorPane>

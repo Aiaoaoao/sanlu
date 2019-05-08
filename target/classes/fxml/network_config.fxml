@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="newtworkConfig" stylesheets="@/css/login.css" prefHeight="269.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.LoginController">
+
+
+    <children>
+
+
+
+        <Button fx:id="closeButton" layoutX="395.0" layoutY="6.0" mnemonicParsing="false" onAction="#closeWin" prefHeight="40.0" prefWidth="39.0" stylesheets="@/css/login.css" />
+      <Text layoutX="30.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="客户端配置工具">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="30.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="网络连接设置">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="131.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="请在网络管理员指导下更改下面的网络连接配置！" />
+      <Label layoutX="44.0" layoutY="97.0" text="服务器">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="94.0" layoutY="91.0" prefHeight="32.0" prefWidth="96.0" text="127.0.0.1" />
+
+
+
+        <Label layoutX="263.0" layoutY="149.0" text="协议">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+
+        
+
+        <Label layoutX="30.0" layoutY="149.0" text="下载端口">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <TextField layoutX="94.0" layoutY="142.0" prefHeight="32.0" prefWidth="96.0" text="80" />
+
+
+
+        <Label layoutX="235.0" layoutY="98.0" text="通信协议">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <TextField layoutX="299.0" layoutY="91.0" prefHeight="32.0" prefWidth="96.0" text="80" />
+
+        <Button  onAction="#relyConfig" layoutX="131.0" layoutY="197.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="74.0" text="确定" />
+
+        <Button  onAction="#closeWin" layoutX="240.0"  layoutY="197.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="74.0" text="取消" />
+
+        <ComboBox fx:id="networkComboBox" layoutX="299.0" layoutY="143.0" prefHeight="32.0" prefWidth="96.0" promptText="http"  />
+
+
+    </children>
+
+</AnchorPane>

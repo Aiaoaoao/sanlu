@@ -1,0 +1,8 @@
+.btn_hover:hover{
+    -fx-background-color:#eee;
+    -fx-cursor: hand;
+}
+.rows_title_font{
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}

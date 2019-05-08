@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.purchase.InquiryOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.purchase.InquiryOrder" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="createdate" property="createdate" jdbcType="DATE" />
+    <result column="orders" property="orders" jdbcType="VARCHAR" />
+    <result column="suppliernum" property="suppliernum" jdbcType="VARCHAR" />
+    <result column="suppliername" property="suppliername" jdbcType="VARCHAR" />
+    <result column="taxs" property="taxs" jdbcType="INTEGER" />
+    <result column="currencys" property="currencys" jdbcType="INTEGER" />
+    <result column="replydate" property="replydate" jdbcType="DATE" />
+    <result column="validdate" property="validdate" jdbcType="DATE" />
+    <result column="purpeopletype" property="purpeopletype" jdbcType="INTEGER" />
+    <result column="purpeople" property="purpeople" jdbcType="VARCHAR" />
+    <result column="createpeople" property="createpeople" jdbcType="VARCHAR" />
+    <result column="shpeople" property="shpeople" jdbcType="VARCHAR" />
+    <result column="shdate" property="shdate" jdbcType="VARCHAR" />
+    <result column="updatepeople" property="updatepeople" jdbcType="VARCHAR" />
+    <result column="updatedate" property="updatedate" jdbcType="VARCHAR" />
+    <result column="supplierinfo" jdbcType="VARCHAR" property="supplierinfo" />
+    <result column="supplierconcat" jdbcType="VARCHAR" property="supplierconcat" />
+    <result column="supplierphone" jdbcType="VARCHAR" property="supplierphone" />
+    <result column="supplierfax" jdbcType="VARCHAR" property="supplierfax" />
+    <result column="supplieraddress" jdbcType="VARCHAR" property="supplieraddress" />
+    <result column="shstatus" property="shstatus" jdbcType="INTEGER" />
+    <result column="isdel" property="isdel" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="selectMaxIdnum" resultType="java.lang.String">
+    SELECT MAX(orders) FROM inquiry_order where createdate =#{currentDate}
+  </select>
+
+
+  <select id="findInquiryOrder" resultMap="BaseResultMap" >
+
+    select * from inquiry_order order by id DESC
+
+  </select>
+
+  <select id="findInquiryOrderByOrder" resultMap="BaseResultMap">
+
+    select * from inquiry_order
+
+    <where>
+      <if test="orders != null and orders != ''">
+        and orders like concat(concat('%',#{orders}),'%')
+      </if>
+    </where>
+
+    order by id DESC
+
+  </select>
+
+
+
+  <select id="findInquiryOrderBySupplier" resultMap="BaseResultMap">
+
+    select * from inquiry_order
+
+    <where>
+
+      <if test="supplier != null and supplier != ''" >
+        and  suppliernum = #{supplier}
+      </if>
+      <if test="startTime != null and startTime != ''" >
+        and str_to_date(createdate, '%Y-%m-%d') &gt;= str_to_date(#{startTime}, '%Y-%m-%d')
+      </if>
+      <if test="endTime != null and endTime != ''" >
+        and str_to_date(createdate, '%Y-%m-%d') &lt;= str_to_date(#{endTime}, '%Y-%m-%d')
+      </if>
+
+    </where>
+
+    order by id DESC
+
+
+  </select>
+
+  <select id="findInquiryOrderByStatus" resultMap="BaseResultMap">
+    select * from inquiry_order
+
+    <where>
+      <if test="status != null and status != '' and status != 0 ">
+        and shstatus  = #{status}
+      </if>
+    </where>
+
+    order by id DESC
+  </select>
+
+  <select id="findInquiryOrderNotSh" resultMap="BaseResultMap">
+    select * from inquiry_order where shstatus = 0 order by id desc
+  </select>
+
+  <select id="findInquiryOrderByOrders" resultMap="BaseResultMap">
+    select * from inquiry_order where orders = #{orders}
+  </select>
+
+</mapper>

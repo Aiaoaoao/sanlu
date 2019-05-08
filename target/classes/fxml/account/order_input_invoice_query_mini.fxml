@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!-- 账款 - 供应商查询 - 进项发票 小窗口 -->
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../css/basic.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.account.AccountInputInvoiceMiniController">
+   <children>
+      <Pane layoutY="28.0" prefHeight="39.0" prefWidth="200.0" style="-fx-background-color: #e0e0e0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+         <children>
+            
+            <Label layoutX="155.0" layoutY="13.0" text="笔" />
+            <Button onMouseClicked="#textQuery" layoutX="511.0" layoutY="8.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="68.0" text="查询" />
+            <CheckBox fx:id="che_recently" layoutX="18.0" layoutY="12.0" mnemonicParsing="false" text="显示最近" />
+            <TextField  fx:id="findOrder" layoutX="393.0" layoutY="7.0" prefHeight="23.0" prefWidth="113.0" />
+            <TextField fx:id="num" layoutX="98.0" layoutY="9.0" prefHeight="23.0" prefWidth="51.0" />
+            <Label layoutX="331.0" layoutY="13.0" text="单据编号：" />
+         </children>
+      </Pane>
+       <HBox layoutY="67.0" prefHeight="31.0" prefWidth="600.0" style="-fx-background-color: #e8e7e3;" styleClass="items">
+           <children>
+               <VBox  fx:id="menu_first" onMouseClicked="#pages" prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">
+                   <children>
+                       <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../../images/basic/fast.png" />
+                           </image>
+                           <VBox.margin>
+                               <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                       </ImageView>
+                   </children>
+               </VBox>
+               <VBox  fx:id="menu_prev" onMouseClicked="#pages"  prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">
+                   <children>
+                       <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../../images/basic/prev.png" />
+                           </image>
+                           <VBox.margin>
+                               <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                       </ImageView>
+                   </children>
+               </VBox>
+               <VBox  fx:id="menu_next" onMouseClicked="#pages" prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">
+                   <children>
+                       <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../../images/basic/next.png" />
+                           </image>
+                           <VBox.margin>
+                               <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                       </ImageView>
+                   </children>
+               </VBox>
+               <VBox  fx:id="menu_last" onMouseClicked="#pages" prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">
+                   <children>
+                       <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../../images/basic/last.png" />
+                           </image>
+                           <VBox.margin>
+                               <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                       </ImageView>
+                   </children>
+               </VBox>
+           </children>
+       </HBox>
+      <VBox layoutY="98.0" prefHeight="261.0" prefWidth="600.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="98.0">
+         <children>
+            <TableView fx:id="tableView" prefHeight="262.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+              <columns>
+                 <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="order_no" prefWidth="37.0" text="单号" />
+                  <TableColumn fx:id="order_date" minWidth="1.0" prefWidth="63.0" text="制单日期" />
+                  <TableColumn fx:id="customer_no" prefWidth="75.0" text="供应商编号" />
+                  <TableColumn fx:id="customer_name" prefWidth="75.0" text="供应商名称" />
+                  <TableColumn fx:id="invoice_no" prefWidth="75.0" text="发票号码" />
+                  <TableColumn fx:id="made_people" prefWidth="75.0" text="制单人" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </VBox>
+      <Group layoutX="403.0" layoutY="368.0">
+         <children>
+            <Button fx:id="client_sure" mnemonicParsing="false" onAction="#closeSureWin" prefHeight="23.0" prefWidth="68.0" text="确定(S)" />
+            <Button layoutX="88.0" mnemonicParsing="false" onAction="#closeWin" prefHeight="23.0" prefWidth="68.0" text="返回(Q)" />
+         </children>
+      </Group>
+      <Pane layoutY="-2.0" prefHeight="31.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="15.0" layoutY="6.0" text="进项发票查询">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

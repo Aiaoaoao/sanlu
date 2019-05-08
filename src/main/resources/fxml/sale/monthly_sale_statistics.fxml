@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<!-- 月度销售统计 -->
+
+<AnchorPane maxWidth="1143.0" prefHeight="710.0" prefWidth="1143.0" stylesheets="@../../css/basic.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+      <Pane layoutY="646.0" prefHeight="63.0" prefWidth="1143.0" style="-fx-background-color: #eee;">
+         <children>
+            <Button layoutX="353.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="预览" />
+            <Button layoutX="446.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="Excel" />
+            <Button layoutX="634.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="打印" />
+            <Button layoutX="541.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="Word" />
+            <Button layoutX="724.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="退出" />
+         </children>
+      </Pane>
+      <Label layoutX="50.0" layoutY="54.0" text="条件" />
+      <HBox layoutY="-1.0" prefHeight="30.0" prefWidth="1143.0" styleClass="title_bar_background" stylesheets="@/css/basic.css">
+         <children>
+            <Label prefHeight="30.0" prefWidth="109.0" styleClass="title_bar_words" text="月度销售统计" />
+         </children>
+      </HBox>
+      <GridPane layoutX="7.0" layoutY="87.0" prefHeight="180.0" prefWidth="648.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="84.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="71.0" minWidth="0.0" prefWidth="45.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="110.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="54.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="97.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="56.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="140.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="37.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="0.0" prefWidth="0.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="记账日：" GridPane.halignment="RIGHT" />
+            <DatePicker prefHeight="23.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+            <Label text="公司别：" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+            <TextField prefHeight="23.0" prefWidth="42.0" text="05" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField prefHeight="23.0" prefWidth="99.0" text="三禄" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+            <Label text="客户编号：" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <TextField prefHeight="23.0" prefWidth="119.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="8.0" text="..." GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField prefHeight="23.0" prefWidth="119.0" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+            <Label text="客户地区：" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+            <ComboBox prefHeight="23.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="8.0" text="..." GridPane.columnIndex="8" GridPane.rowIndex="2" />
+            <ComboBox prefHeight="23.0" prefWidth="167.0" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+            <Label text="负责业务：" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+            <ComboBox prefHeight="23.0" prefWidth="179.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+            <ComboBox prefHeight="23.0" prefWidth="168.0" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+            <CheckBox text="扣减退货数量" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5" />
+         </children>
+      </GridPane>
+
+
+    </children>
+</AnchorPane>

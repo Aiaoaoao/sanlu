@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.check.CheckOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.check.CheckOrder" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="checkdate" property="checkdate" jdbcType="DATE" />
+    <result column="checkorder" property="checkorder" jdbcType="VARCHAR" />
+    <result column="depotorder" property="depotorder" jdbcType="VARCHAR" />
+    <result column="depotname" property="depotname" jdbcType="VARCHAR" />
+    <result column="applicantorder" property="applicantorder" jdbcType="VARCHAR" />
+    <result column="applicantname" property="applicantname" jdbcType="VARCHAR" />
+    <result column="applytype" property="applytype" jdbcType="VARCHAR" />
+    <result column="applydes" property="applydes" jdbcType="VARCHAR" />
+    <result column="startdate" property="startdate" jdbcType="TIMESTAMP" />
+    <result column="enddate" property="enddate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="createpeople" property="createpeople" jdbcType="VARCHAR" />
+    <result column="shpeople" property="shpeople" jdbcType="VARCHAR" />
+    <result column="shdate" property="shdate" jdbcType="VARCHAR" />
+    <result column="updatepeople" property="updatepeople" jdbcType="VARCHAR" />
+    <result column="updatedate" property="updatedate" jdbcType="VARCHAR" />
+    <result column="shstatus" property="shstatus" jdbcType="INTEGER" />
+  </resultMap>
+
+
+  <select id="selectMaxIdnum"  resultType="java.lang.String" >
+    SELECT MAX(checkorder) FROM check_order
+  </select>
+
+  <select id="findCheckOrder" resultMap="BaseResultMap">
+    select * from check_order
+  </select>
+
+</mapper>

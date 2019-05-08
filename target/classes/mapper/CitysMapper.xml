@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.CitysMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.Citys" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="districts_id" property="districtsId" jdbcType="INTEGER" />
+    <result column="addr_code" property="addrCode" jdbcType="VARCHAR" />
+    <result column="addr_name" property="addrName" jdbcType="VARCHAR" />
+    <result column="father_code" property="fatherCode" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="selectCitysByFatherCode" resultMap="BaseResultMap">
+    select * from citys where  father_code = #{fatherCode}
+  </select>
+
+  <select id="selectCitysByAddrName"  resultMap="BaseResultMap">
+  select * from citys where  addr_name = #{name} and type = #{type} limit 0,1
+  </select>
+
+</mapper>

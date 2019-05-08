@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.sale.SaleOnlineOrderProductMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.sale.SaleOnlineOrderProduct" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="online_order_id" property="onlineOrderId" jdbcType="BIGINT" />
+    <result column="customer_no" property="customerNo" jdbcType="VARCHAR" />
+    <result column="product_no" property="productNo" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="usable_num" property="usableNum" jdbcType="INTEGER" />
+    <result column="stock" property="stock" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+
+  <select id="listByOnlineOrderAll" resultMap="BaseResultMap">
+    SELECT * from sale_online_order_product where online_order_id = #{orderid}
+  </select>
+
+  <delete id="deleteSaleOnlineOrderProductByParentId">
+    DELETE from sale_online_order_product where online_order_id = #{otherid}
+  </delete>
+
+</mapper>

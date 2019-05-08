@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.basic.DepotBasicMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.basic.DepotBasic" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="isnum" property="isnum" jdbcType="VARCHAR" />
+    <result column="depname" property="depname" jdbcType="VARCHAR" />
+    <result column="depfloor" property="depfloor" jdbcType="VARCHAR" />
+    <result column="parentid" property="parentid" jdbcType="BIGINT" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="addpeople" property="addpeople" jdbcType="VARCHAR" />
+    <result column="adddate" property="adddate" jdbcType="DATE" />
+    <result column="updatepeople" property="updatepeople" jdbcType="VARCHAR" />
+    <result column="updatedate" property="updatedate" jdbcType="DATE" />
+  </resultMap>
+
+
+
+  <select id="selectMaxIdnum" resultType="java.lang.String">
+    SELECT MAX(ISNUM) FROM DEPOT_BASIC
+  </select>
+
+  <select id="selectDepotBasic" resultMap="BaseResultMap">
+    SELECT * FROM DEPOT_BASIC
+    <where>
+    <if test="orderOrName != null and orderOrName != ''">
+      and isnum like concat(concat('%',#{orderOrName}),'%') or  depname like concat(concat('%',#{orderOrName}),'%')
+    </if>
+    </where>
+    order by id desc
+  </select>
+
+  <select id="selectDepotBasicByIsnum" resultMap="BaseResultMap">
+    SELECT * FROM DEPOT_BASIC WHERE isnum = #{idnum} limit 0,1
+  </select>
+
+  <select id="selectDepotBasicByParentId"  resultMap="BaseResultMap">
+    SELECT * FROM DEPOT_BASIC WHERE  parentid=#{parentid}
+  </select>
+
+  <select id="selectDepotBasicByDepName" resultMap="BaseResultMap">
+    SELECT * FROM DEPOT_BASIC WHERE  depname=#{depname} limit 0,1
+  </select>
+
+
+  <select id="selectDepotBasicByParentIdAndOrderOrName" resultMap="BaseResultMap">
+    SELECT * FROM DEPOT_BASIC
+    <where>
+    and  parentid=#{parentid}
+
+      <if test="orderOrName != null and orderOrName != ''">
+        and isnum like concat(concat('%',#{orderOrName}),'%') or  depname like concat(concat('%',#{orderOrName}),'%')
+      </if>
+    </where>
+    order by id desc
+  </select>
+
+<select id="selectDepotBasicByIsnumAndorderOrName" resultMap="BaseResultMap">
+  SELECT * FROM DEPOT_BASIC
+  <where>
+    and isnum = #{idnum}
+    <if test="orderOrName != null and orderOrName != ''">
+        and isnum like concat(concat('%',#{orderOrName}),'%') or  isnum = #{idnum} and  depname like concat(concat('%',#{orderOrName}),'%')
+    </if>
+  </where>
+</select>
+
+</mapper>

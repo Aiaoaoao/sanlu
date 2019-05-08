@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.RelationMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.Relation" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="relation_name" property="relationName" jdbcType="VARCHAR" />
+    <result column="relation_id" property="relationId" jdbcType="BIGINT" />
+    <result column="be_relation_name" property="beRelationName" jdbcType="VARCHAR" />
+    <result column="be_relation_id" property="beRelationId" jdbcType="BIGINT" />
+  </resultMap>
+
+
+  <select id="isRelation" resultType="java.lang.Boolean">
+    select count(1) from relation where be_relation_name = #{beRelationName} and be_relation_id = #{beRelationId}
+  </select>
+
+  <delete id="deleteRelation">
+    delete  from  relation where relation_name = #{relationName} and relation_id = #{relationId}
+  </delete>
+
+  <select id="selectRelations" resultMap="BaseResultMap">
+    select *
+    from relation
+    where be_relation_name = #{beRelationName} and be_relation_id = #{beRelationId}
+    or relation_name = #{beRelationName} and relation_id = #{beRelationId}
+  </select>
+
+
+</mapper>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.account.AccountInputInvoiceMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.account.AccountInputInvoice" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="invoice_type" property="invoiceType" jdbcType="VARCHAR" />
+    <result column="invoice_date" property="invoiceDate" jdbcType="TIMESTAMP" />
+    <result column="invoce_no" property="invoceNo" jdbcType="VARCHAR" />
+    <result column="made_people" property="madePeople" jdbcType="VARCHAR" />
+    <result column="supplier_no" property="supplierNo" jdbcType="VARCHAR" />
+    <result column="supplier_no_str" property="supplierNoStr" jdbcType="VARCHAR" />
+    <result column="payment_date" property="paymentDate" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="audit" property="audit" jdbcType="VARCHAR" />
+    <result column="audit_str" property="auditStr" jdbcType="VARCHAR" />
+    <result column="last_update" property="lastUpdate" jdbcType="VARCHAR" />
+    <result column="last_update_str" property="lastUpdateStr" jdbcType="VARCHAR" />
+    <result column="order_audit" property="orderAudit" jdbcType="BIT" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+  </resultMap>
+
+  <select id="listAccountInputInvoiceByDate" resultMap="BaseResultMap">
+    SELECT * FROM account_input_invoice
+    <where>
+      invoce_no not in (SELECT invoice_no from account_payable_info)
+      <if test="dateBen != null and dateBen != ''">
+        and #{dateBen} &lt;= create_date
+      </if>
+      <if test="dateEnd != null and dateEnd != ''">
+        and #{dateEnd}  &gt;= create_date
+      </if>
+      <if test="supplierBen != null and supplierBen != ''">
+        and #{supplierBen} &lt;= supplier_no
+      </if>
+      <if test="supplierEnd != null and supplierEnd != ''">
+        and #{supplierEnd}  &gt;= supplier_no
+      </if>
+      <if test="invoiceNoBen != null and invoiceNoBen != ''">
+        and #{invoiceNoBen} &lt;= invoce_no
+      </if>
+      <if test="invoiceNoEnd != null and invoiceNoEnd != ''">
+        and #{invoiceNoEnd}  &gt;= invoce_no
+      </if>
+    </where>
+    ORDER BY addtime desc
+  </select>
+
+  <!--查询最订单号-->
+  <select id="getMaxOrderNo" resultType="java.lang.String">
+  SELECT MAX(order_no) FROM account_input_invoice
+  </select>
+
+  <select id="listOrderNoLike" resultMap="BaseResultMap">
+    SELECT * FROM account_input_invoice
+    <where>
+      <if test="orderNo != null and orderNo != ''">
+        and order_no like concat(concat('%',#{orderNo}),'%')
+      </if>
+    </where>
+    ORDER BY addtime desc
+  </select>
+
+  <select id="listAccountInputInvoice" resultMap="BaseResultMap">
+    select * from account_input_invoice
+    <where>
+      <if test="text != null and text != ''">
+        and order_no like concat(concat('%',#{text}),'%') or supplier_no_str like concat(concat('%',#{text}),'%')
+      </if>
+    </where>
+     order by addtime desc
+  </select>
+
+  <select id="getByOrderNo" resultMap="BaseResultMap">
+    select * from account_input_invoice where order_no = #{orderno} limit 0,1
+  </select>
+
+
+  <select id="listAccountInputInvoiceNotSh" resultMap="BaseResultMap">
+    select * from account_input_invoice where order_audit = 0 order by id desc
+  </select>
+
+  
+</mapper>

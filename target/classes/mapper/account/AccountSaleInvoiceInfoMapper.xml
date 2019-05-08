@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.account.AccountSaleInvoiceInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.account.AccountSaleInvoiceInfo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <result column="id" property="id" jdbcType="BIGINT" />
+    <result column="otherid" property="otherid" jdbcType="BIGINT" />
+    <result column="order_soruce" property="orderSoruce" jdbcType="VARCHAR" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="no" property="no" jdbcType="VARCHAR" />
+    <result column="customer_no" property="customerNo" jdbcType="VARCHAR" />
+    <result column="customer_str" property="customerStr" jdbcType="VARCHAR" />
+    <result column="product_no" property="productNo" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="invoce_name" property="invoceName" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="rate" property="rate" jdbcType="VARCHAR" />
+    <result column="rate_money" property="rateMoney" jdbcType="DECIMAL" />
+    <result column="tax" property="tax" jdbcType="VARCHAR" />
+    <result column="rate_not" property="rateNot" jdbcType="DECIMAL" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+
+  </resultMap>
+
+
+  <select id="getOrderAuditStatusByOrderNo" resultType="Integer">
+    select count(id) from account_sale_invoice_info where order_soruce = '销货单' and order_no = #{orderNo}
+  </select>
+
+  <select id="listAccountSaleInvoiceInfo" resultMap="BaseResultMap">
+    select  * from account_sale_invoice_info where otherid = #{otherid} order by addtime desc
+  </select>
+
+  <delete id="deleteAccountSaleInvoiceInfoByParentId">
+    delete from account_sale_invoice_info where otherid = #{otherid}
+  </delete>
+</mapper>

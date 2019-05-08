@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.sale.SalePurchaseOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.sale.SalePurchaseOrder" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="customer_no" property="customerNo" jdbcType="VARCHAR" />
+    <result column="warehouse_out" property="warehouseOut" jdbcType="VARCHAR" />
+    <result column="warehouse_out_str" property="warehouseOutStr" jdbcType="VARCHAR" />
+    <result column="customer_no_str" property="customerNoStr" jdbcType="VARCHAR" />
+    <result column="customer_order_no" property="customerOrderNo" jdbcType="VARCHAR" />
+    <result column="special_order" property="specialOrder" jdbcType="BIT" />
+    <result column="tax" property="tax" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="discount" property="discount" jdbcType="VARCHAR" />
+    <result column="invalid" property="invalid" jdbcType="BIT" />
+    <result column="customer_category" property="customerCategory" jdbcType="VARCHAR" />
+    <result column="receivable_balance" property="receivableBalance" jdbcType="DECIMAL" />
+    <result column="business_leader" property="businessLeader" jdbcType="VARCHAR" />
+    <result column="business_leader_str" property="businessLeaderStr" jdbcType="VARCHAR" />
+    <result column="payment_method" property="paymentMethod" jdbcType="VARCHAR" />
+    <result column="made_people" property="madePeople" jdbcType="VARCHAR" />
+    <result column="audit_people" property="auditPeople" jdbcType="VARCHAR" />
+    <result column="audit_people_str" property="auditPeopleStr" jdbcType="VARCHAR" />
+    <result column="last_update" property="lastUpdate" jdbcType="VARCHAR" />
+    <result column="last_update_str" property="lastUpdateStr" jdbcType="VARCHAR" />
+    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="zip" property="zip" jdbcType="VARCHAR" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="shipping_address" property="shippingAddress" jdbcType="VARCHAR" />
+    <result column="invoice_title" property="invoiceTitle" jdbcType="VARCHAR" />
+    <result column="invoice_address" property="invoiceAddress" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="order_audit" property="orderAudit" jdbcType="BIT" />
+  </resultMap>
+
+  <select id="listSalePurchaseOrderByOrderNotPins" resultMap="BaseResultMap">
+    select distinct o.order_no,o.* from sale_purchase_order o INNER JOIN sale_purchase_order_product p on o.id = p.purchase_order_id
+    where  p.num > p.sale_num
+    ORDER BY addtime desc
+  </select>
+
+  <!--查询最订单号-->
+  <select id="getMaxOrderNo" resultType="java.lang.String">
+  SELECT MAX(order_no) FROM sale_purchase_order
+  </select>
+
+  <select id="listSalePurchaseOrderAll" resultMap="BaseResultMap">
+    SELECT * FROM sale_purchase_order
+    <where>
+      <if test="audit != null and audit != '' and audit == '1'.toString()">
+        and order_audit = #{audit}
+      </if>
+      <if test="text != null and text != ''">
+        and order_no like concat(concat('%',#{text}),'%') or customer_no_str like concat(concat('%',#{text}),'%')
+      </if>
+    </where>
+     ORDER BY addtime desc
+    </select>
+
+  <select id="getSalePurchaseOrder" resultMap="BaseResultMap">
+        SELECT * FROM sale_purchase_order WHERE order_no = #{orderno}
+    </select>
+
+  <select id="getLastSalePurchaseOrder" resultMap="BaseResultMap">
+        SELECT * FROM sale_purchase_order  ORDER BY id desc  limit 0,1
+    </select>
+
+  <select id="getFirstSalePurchaseOrder" resultMap="BaseResultMap">
+        SELECT * FROM sale_purchase_order  ORDER BY id asc  limit 0,1
+    </select>
+
+  <select id="getSalePurchaseOrderByPage" resultMap="BaseResultMap">
+       SELECT * FROM sale_purchase_order limit #{page},#{rows}
+    </select>
+
+  <select id="getSalePurchaseOrderCount" resultType="integer">
+       SELECT count(*) FROM sale_purchase_order
+    </select>
+
+  <select id="listSalePurchanseOrderNotSh" resultMap="BaseResultMap">
+    SELECT * FROM sale_purchase_order where  order_audit = 0 order by id desc
+  </select>
+
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.education.mapper.basic.ProductSupplierMapper">
+  <resultMap id="BaseResultMap" type="com.yc.education.model.basic.ProductSupplier">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="proid" jdbcType="BIGINT" property="proid" />
+    <result column="supplierid" jdbcType="VARCHAR" property="supplierid" />
+    <result column="supdes" jdbcType="VARCHAR" property="supdes" />
+    <result column="supply" jdbcType="VARCHAR" property="supply" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+
+
+  <select id="selectProducctSupplierByProid" resultMap="BaseResultMap">
+    SELECT * FROM PRODUCT_SUPPLIER WHERE  proid=#{proid}
+  </select>
+
+</mapper>

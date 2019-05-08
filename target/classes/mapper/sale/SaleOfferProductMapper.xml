@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.sale.SaleOfferProductMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.sale.SaleOfferProduct" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="quotation_id" property="quotationId" jdbcType="BIGINT" />
+    <result column="product_no" property="productNo" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="pricing" property="pricing" jdbcType="DECIMAL" />
+    <result column="discount" property="discount" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="userid" property="userid" jdbcType="BIGINT" />
+    <association property="saleQuotations"  javaType="com.yc.education.model.sale.SaleQuotation" >
+      <id column="id" jdbcType="BIGINT" property="id" />
+      <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+      <result column="offer_no" jdbcType="VARCHAR" property="offerNo" />
+      <result column="enquiry_date" jdbcType="TIMESTAMP" property="enquiryDate" />
+      <result column="customer_no" jdbcType="VARCHAR" property="customerNo" />
+      <result column="customer_no_str" jdbcType="VARCHAR" property="customerNoStr" />
+      <result column="business" jdbcType="VARCHAR" property="business" />
+      <result column="business_str" jdbcType="VARCHAR" property="businessStr" />
+      <result column="tax" jdbcType="VARCHAR" property="tax" />
+      <result column="discount" jdbcType="VARCHAR" property="discount" />
+      <result column="special_offer" jdbcType="BIT" property="specialOffer" />
+      <result column="amount_receivable" jdbcType="VARCHAR" property="amountReceivable" />
+      <result column="valid_until" jdbcType="TIMESTAMP" property="validUntil" />
+      <result column="currency" jdbcType="VARCHAR" property="currency" />
+      <result column="single_people" jdbcType="VARCHAR" property="singlePeople" />
+      <result column="audit" jdbcType="VARCHAR" property="audit" />
+      <result column="audit_str" jdbcType="VARCHAR" property="auditStr" />
+      <result column="last_modifier" jdbcType="VARCHAR" property="lastModifier" />
+      <result column="last_modifier_str" jdbcType="VARCHAR" property="lastModifierStr" />
+      <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+      <result column="customer_category" jdbcType="VARCHAR" property="customerCategory" />
+      <result column="contact" jdbcType="VARCHAR" property="contact" />
+      <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+      <result column="fax" jdbcType="VARCHAR" property="fax" />
+      <result column="address" jdbcType="VARCHAR" property="address" />
+      <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+      <result column="order_audit" property="orderAudit" jdbcType="BIT" />
+    </association>
+  </resultMap>
+
+
+  <select id="listTimeWhere" resultMap="BaseResultMap">
+    SELECT * FROM sale_offer_product
+    <where>
+      <if test="ben != null and ben != ''">
+        and addtime &gt;= #{ben}
+      </if>
+      <if test="end != null and end != ''">
+        and addtime &lt;= #{end}
+      </if>
+    </where>
+    ORDER BY addtime desc
+  </select>
+
+
+  <select id="listSaleOfferProduct" resultMap="BaseResultMap">
+    select * from sale_offer_product where quotation_id = #{quotationid} order by addtime desc
+  </select>
+
+  <delete id="deleteSaleOfferProduct">
+    DELETE from sale_offer_product where quotation_id = #{quotationid}
+  </delete>
+
+
+  <select id="selectSaleOfferProductsByProductNumAndStartTimeAndEndTime" resultMap="BaseResultMap">
+
+    SELECT sop.*,sq.* from sale_offer_product sop , sale_quotation sq
+
+    <where>
+
+      and  sop.quotation_id = sq.id
+
+      and sop.product_no = #{productNum}
+
+      <if test="startTime != null and startTime != ''" >
+        and str_to_date(sq.addtime, '%Y-%m-%d') &gt;= str_to_date(#{startTime}, '%Y-%m-%d')
+      </if>
+      <if test="endTime != null and endTime != ''" >
+        and str_to_date(sq.addtime, '%Y-%m-%d') &lt;= str_to_date(#{endTime}, '%Y-%m-%d')
+      </if>
+
+    </where>
+
+  </select>
+
+</mapper>

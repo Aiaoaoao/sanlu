@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.sale.SalePurchaseOrderProductMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.sale.SalePurchaseOrderProduct" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="purchase_order_id" property="purchaseOrderId" jdbcType="BIGINT" />
+    <result column="product_no" property="productNo" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="pricing" property="pricing" jdbcType="DECIMAL" />
+    <result column="discount" property="discount" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="product_source" property="productSource" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="sale_num" property="saleNum" jdbcType="INTEGER" />
+    <result column="warehouse_position" property="warehousePosition" jdbcType="VARCHAR" />
+    <result column="floor" property="floor" jdbcType="VARCHAR" />
+    <association property="salePurchaseOrders" javaType="com.yc.education.model.sale.SalePurchaseOrder">
+      <id column="id" property="id" jdbcType="BIGINT" />
+      <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+      <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+      <result column="customer_no" property="customerNo" jdbcType="VARCHAR" />
+      <result column="warehouse_out" property="warehouseOut" jdbcType="VARCHAR" />
+      <result column="warehouse_out_str" property="warehouseOutStr" jdbcType="VARCHAR" />
+      <result column="customer_no_str" property="customerNoStr" jdbcType="VARCHAR" />
+      <result column="customer_order_no" property="customerOrderNo" jdbcType="VARCHAR" />
+      <result column="special_order" property="specialOrder" jdbcType="BIT" />
+      <result column="tax" property="tax" jdbcType="VARCHAR" />
+      <result column="currency" property="currency" jdbcType="VARCHAR" />
+      <result column="discount" property="discount" jdbcType="VARCHAR" />
+      <result column="invalid" property="invalid" jdbcType="BIT" />
+      <result column="customer_category" property="customerCategory" jdbcType="VARCHAR" />
+      <result column="receivable_balance" property="receivableBalance" jdbcType="DECIMAL" />
+      <result column="business_leader" property="businessLeader" jdbcType="VARCHAR" />
+      <result column="business_leader_str" property="businessLeaderStr" jdbcType="VARCHAR" />
+      <result column="payment_method" property="paymentMethod" jdbcType="VARCHAR" />
+      <result column="made_people" property="madePeople" jdbcType="VARCHAR" />
+      <result column="audit_people" property="auditPeople" jdbcType="VARCHAR" />
+      <result column="audit_people_str" property="auditPeopleStr" jdbcType="VARCHAR" />
+      <result column="last_update" property="lastUpdate" jdbcType="VARCHAR" />
+      <result column="last_update_str" property="lastUpdateStr" jdbcType="VARCHAR" />
+      <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+      <result column="zip" property="zip" jdbcType="VARCHAR" />
+      <result column="contact" property="contact" jdbcType="VARCHAR" />
+      <result column="phone" property="phone" jdbcType="VARCHAR" />
+      <result column="fax" property="fax" jdbcType="VARCHAR" />
+      <result column="shipping_address" property="shippingAddress" jdbcType="VARCHAR" />
+      <result column="invoice_title" property="invoiceTitle" jdbcType="VARCHAR" />
+      <result column="invoice_address" property="invoiceAddress" jdbcType="VARCHAR" />
+      <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+      <result column="order_audit" property="orderAudit" jdbcType="BIT" />
+    </association>
+  </resultMap>
+
+  <select id="listSalePurchaseOrderProductByOrderNotPins" resultMap="BaseResultMap">
+    select p.* from sale_purchase_order o INNER JOIN sale_purchase_order_product p on o.id = p.purchase_order_id
+    where  p.num > p.sale_num;
+  </select>
+
+  <select id="getSalePurchaseOrderProductBySaleNum" resultMap="BaseResultMap">
+    SELECT * from sale_purchase_order_product where purchase_order_id = (SELECT id from sale_purchase_order where order_no = #{orderNo}) and product_no = #{productNo}
+  </select>
+
+  <update id="updateSalePurchaseOrderProductSaleNum">
+    UPDATE sale_purchase_order_product p set p.sale_num = (p.sale_num + #{num})
+    where p.product_no = #{productNo} and p.purchase_order_id = (select id from sale_purchase_order  where order_no = #{orderNo});
+  </update>
+
+  <select id="listPurchaseOrderProduct" resultMap="BaseResultMap">
+    SELECT * from sale_purchase_order_product where purchase_order_id = #{orderid}
+  </select>
+
+
+  <delete id="deleteSalePurchaseOrderProductByParentId">
+    DELETE from sale_purchase_order_product where purchase_order_id = #{orderid}
+  </delete>
+
+  <select id="selectSalePurchaseOrderProductByProductNameAndStartTimeAndEndTime" resultMap="BaseResultMap">
+    select * from sale_purchase_order_product spop ,sale_purchase_order spo
+     <where>
+
+       and spop.purchase_order_id = spo.id
+
+       and spop.product_no = #{productName}
+
+       <if test="startTime != null and startTime != ''" >
+         and str_to_date(spo.addtime, '%Y-%m-%d') &gt;= str_to_date(#{startTime}, '%Y-%m-%d')
+       </if>
+       <if test="endTime != null and endTime != ''" >
+         and str_to_date(spo.addtime, '%Y-%m-%d') &lt;= str_to_date(#{endTime}, '%Y-%m-%d')
+       </if>
+
+     </where>
+      order by spo.addtime desc
+  </select>
+
+</mapper>

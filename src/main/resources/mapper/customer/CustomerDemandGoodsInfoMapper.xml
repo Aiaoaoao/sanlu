@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.education.mapper.customer.CustomerDemandGoodsInfoMapper">
+  <resultMap id="BaseResultMap" type="com.yc.education.model.customer.CustomerDemandGoodsInfo">
+    <!--
+      WARNING - @mbggenerated
+    -->
+      <id column="id" jdbcType="BIGINT" property="id" />
+      <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+      <result column="product_no" jdbcType="VARCHAR" property="productNo" />
+      <result column="product_name" jdbcType="VARCHAR" property="productName" />
+      <result column="brand" jdbcType="VARCHAR" property="brand" />
+      <result column="quantity_demand" jdbcType="INTEGER" property="quantityDemand" />
+      <result column="unit" jdbcType="VARCHAR" property="unit" />
+      <result column="price" jdbcType="DECIMAL" property="price" />
+      <result column="product_categories" jdbcType="VARCHAR" property="productCategories" />
+      <result column="product_nature" jdbcType="VARCHAR" property="productNature" />
+      <result column="manufacture_method" jdbcType="VARCHAR" property="manufactureMethod" />
+      <result column="process_method" jdbcType="VARCHAR" property="processMethod" />
+      <result column="process_material" jdbcType="VARCHAR" property="processMaterial" />
+      <result column="material" jdbcType="VARCHAR" property="material" />
+      <result column="continuity" jdbcType="VARCHAR" property="continuity" />
+      <result column="cut_oil" jdbcType="VARCHAR" property="cutOil" />
+      <result column="use_amount" jdbcType="INTEGER" property="useAmount" />
+      <result column="cut_speed" jdbcType="VARCHAR" property="cutSpeed" />
+      <result column="customer_demand_goods_id" jdbcType="BIGINT" property="customerDemandGoodsId" />
+      <result column="customer_name" jdbcType="VARCHAR" property="customerShortCall" />
+      <result column="create_no" jdbcType="VARCHAR" property="createNo" />
+      <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+      <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+
+    <select id="listCustomerDemandGoodsInfo" resultMap="BaseResultMap">
+        SELECT * FROM customer_demand_goods_info
+        <where>
+            <if test="productName!=''">
+                AND product_name  like concat(concat('%',#{productName}),'%')
+            </if>
+        </where>
+        ORDER BY addtime desc
+    </select>
+
+    <select id="listCustomerDemandGoodsInfoByCustomerDemandId" resultMap="BaseResultMap">
+        SELECT * FROM customer_demand_goods_info WHERE customer_demand_goods_id = #{customerDemandId}
+    </select>
+
+    <delete id="deleteCustomerDemandGoodsInfoByCustomerDemandId">
+        DELETE from customer_demand_goods_info where customer_demand_goods_id = #{customerDemandId}
+    </delete>
+
+    <select id="listCustomerDemandGoodsWhere" resultMap="BaseResultMap">
+        SELECT i.addtime,i.brand,i.continuity,i.customer_demand_goods_id,i.cut_oil,i.cut_speed,i.id,i.manufacture_method,i.unit,i.price,i.process_method,i.product_categories,i.product_name,i.product_nature,i.product_no,i.quantity_demand,i.use_amount,d.customer_name,d.create_no,d.create_date,d.remark from customer_demand_goods d INNER JOIN customer_demand_goods_info i on d.id=i.customer_demand_goods_id
+        <where>
+            <if test="createNo!='' and createNo != null">
+                AND #{createNo} &lt;= d.create_no
+            </if>
+            <if test="createNoEnd!='' and createNoEnd != null">
+                AND #{createNoEnd} &lt;= d.create_no
+            </if>
+            <if test="createDate!='' and createDate != null">
+                AND #{createDate} &lt;= d.create_date
+            </if>
+            <if test="createDateEnd!='' and createDateEnd != null">
+                AND #{createDateEnd} &lt;= d.create_date
+            </if>
+            <if test="customerNo!='' and customerNo != null">
+                AND #{customerNo} &lt;= d.customer_no
+            </if>
+            <if test="customerNoEnd!='' and customerNoEnd != null">
+                AND #{customerNoEnd} &lt;= d.customer_no
+            </if>
+            <if test="productNo!='' and productNo != null">
+                AND #{productNo} &lt;= i.product_no
+            </if>
+            <if test="productNoEnd!='' and productNoEnd != null">
+                AND #{productNoEnd} &lt;= i.product_no
+            </if>
+            <if test="material!='' and material != null">
+                AND #{material} = i.product_nature
+            </if>
+            <if test="manufacture!='' and manufacture != null">
+                AND #{manufacture} = i.manufacture_method
+            </if>
+            <if test="method!='' and method != null">
+                AND #{method} = i.process_method
+            </if>
+        </where>
+    </select>
+
+</mapper>

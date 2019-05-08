@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.sale.SaleOnlineOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.sale.SaleOnlineOrder" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_date" property="orderDate" jdbcType="TIMESTAMP" />
+    <result column="customer_no" property="customerNo" jdbcType="VARCHAR" />
+    <result column="order_remark" property="orderRemark" jdbcType="VARCHAR" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="customer_no_str" property="customerNoStr" jdbcType="VARCHAR" />
+    <result column="order_people" property="orderPeople" jdbcType="VARCHAR" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="zip" property="zip" jdbcType="VARCHAR" />
+    <result column="invoice_title" property="invoiceTitle" jdbcType="VARCHAR" />
+    <result column="invoice_address" property="invoiceAddress" jdbcType="VARCHAR" />
+    <result column="audit" property="audit" jdbcType="VARCHAR" />
+    <result column="update_last" property="updateLast" jdbcType="VARCHAR" />
+    <result column="invalid_people" property="invalidPeople" jdbcType="VARCHAR" />
+    <result column="base_remark" property="baseRemark" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="delivery_address" property="deliveryAddress" jdbcType="VARCHAR" />
+    <result column="audit_str" property="auditStr" jdbcType="VARCHAR" />
+    <result column="update_last_str" property="updateLastStr" jdbcType="VARCHAR" />
+    <result column="invalid_people_str" property="invalidPeopleStr" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="invalid" property="invalid" jdbcType="BIT" />
+    <result column="order_audit" property="orderAudit" jdbcType="BIT" />
+  </resultMap>
+
+  <!--查询最订单号-->
+  <select id="getMaxOrderNo" resultType="java.lang.String">
+  SELECT MAX(order_no) FROM sale_online_order
+  </select>
+
+  <select id="listSaleOnlineOrderAll" resultMap="BaseResultMap">
+      SELECT * FROM sale_online_order
+      <where>
+        <if test="audit != null and audit != '' and audit == '1'.toString()">
+          and order_audit = #{audit}
+        </if>
+        <if test="text != null and text != ''">
+          and order_no like concat(concat('%',#{text}),'%')
+          or customer_no_str like concat(concat('%',#{text}),'%')
+        </if>
+      </where>
+      ORDER BY addtime desc
+    </select>
+
+  <select id="getSaleOnlineOrder" resultMap="BaseResultMap">
+        SELECT * FROM sale_online_order WHERE offer_no = #{offerno}
+    </select>
+
+  <select id="getLastSaleOnlineOrder" resultMap="BaseResultMap">
+        SELECT * FROM sale_online_order  ORDER BY id desc  limit 0,1
+    </select>
+
+  <select id="getFirstSaleOnlineOrder" resultMap="BaseResultMap">
+        SELECT * FROM sale_online_order  ORDER BY id desc  limit 0,1
+    </select>
+
+  <select id="getSaleOnlineOrderByPage" resultMap="BaseResultMap">
+       SELECT * FROM sale_online_order limit #{page},#{rows}
+    </select>
+
+  <select id="getSaleOnlineOrderCount" resultType="integer">
+       SELECT count(*) FROM sale_online_order
+    </select>
+
+  <select id="listSaleOnlineOrderNotSh" resultMap="BaseResultMap">
+    SELECT * FROM sale_online_order where  order_audit = 0 order by id desc
+  </select>
+</mapper>

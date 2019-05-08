@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.basic.DepartmentBasicMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.basic.DepartmentBasic" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="idnum" property="idnum" jdbcType="VARCHAR" />
+    <result column="depname" property="depname" jdbcType="VARCHAR" />
+    <result column="parentid" property="parentid" jdbcType="BIGINT" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="addpeople" property="addpeople" jdbcType="VARCHAR" />
+    <result column="adddate" property="adddate" jdbcType="DATE" />
+    <result column="updatepeople" property="updatepeople" jdbcType="VARCHAR" />
+    <result column="updatedate" property="updatedate" jdbcType="DATE" />
+  </resultMap>
+
+
+  <select id="selectMaxIdnum" resultType="java.lang.String">
+    SELECT MAX(IDNUM) FROM DEPARTMENT_BASIC
+  </select>
+
+  <select id="selectDepartmentBasic" resultMap="BaseResultMap">
+    SELECT * FROM DEPARTMENT_BASIC
+    <where>
+      <if test="orderAndName != null and orderAndName != ''">
+        and idnum like concat(concat('%',#{orderAndName}),'%') or  depname like concat(concat('%',#{orderAndName}),'%')
+      </if>
+    </where>
+    order by id desc
+  </select>
+
+  <select id="selectDepartmentBasicByIsnum" resultMap="BaseResultMap">
+    SELECT * FROM DEPARTMENT_BASIC WHERE idnum = #{idnum} limit 0,1
+  </select>
+
+  <select id="selectDepartmentBasicByParentId"  resultMap="BaseResultMap">
+  SELECT * FROM DEPARTMENT_BASIC WHERE  parentid=#{parentid}
+  </select>
+
+  <select id="selectDepartmentBasicByDepName" resultMap="BaseResultMap">
+     SELECT * FROM DEPARTMENT_BASIC WHERE  depname=#{depname}
+  </select>
+
+
+</mapper>

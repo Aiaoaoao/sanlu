@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.education.mapper.customer.CustomerBusinessLeaderMapper">
+  <resultMap id="BaseResultMap" type="com.yc.education.model.customer.CustomerBusinessLeader">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="customer_id" jdbcType="BIGINT" property="customerId" />
+    <result column="employee_code" jdbcType="VARCHAR" property="employeeCode" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="primary_people" jdbcType="VARCHAR" property="primaryPeople" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="assistant" jdbcType="VARCHAR" property="assistant" />
+    <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+  </resultMap>
+
+    <select id="listCustomerBusinessLeaderByCustomerId" resultMap="BaseResultMap">
+        SELECT  * from customer_business_leader where customer_id = #{customerid} ORDER BY addtime desc
+    </select>
+
+    <delete id="deleteCustomerBusinessLeaderByCustomerId" >
+        DELETE from customer_business_leader where customer_id = #{customerid}
+    </delete>
+</mapper>

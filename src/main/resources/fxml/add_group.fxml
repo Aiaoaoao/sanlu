@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="136.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.PermissionsController">
+   <children>
+      <VBox layoutX="67.0" layoutY="23.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="99.0" prefWidth="320.0">
+               <children>
+                  <TextField fx:id="insertName" layoutX="31.0" layoutY="32.0" prefHeight="36.0" prefWidth="176.0" />
+               </children></Pane>
+            <Pane prefHeight="36.0" prefWidth="320.0">
+               <children>
+                  <Button layoutX="97.0" onAction="#saveInsertName" layoutY="7.0" mnemonicParsing="false" prefWidth="60.0" text="确定" />
+                  <Button layoutX="166.0" onAction="#coseAddGroupt" layoutY="7.0" mnemonicParsing="false" prefWidth="60.0" text="取消" />
+               </children></Pane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

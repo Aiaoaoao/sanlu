@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.stock.CheckStockMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.stock.CheckStock" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="checkdate" property="checkdate" jdbcType="DATE" />
+    <result column="checkorder" property="checkorder" jdbcType="VARCHAR" />
+    <result column="depotorder" property="depotorder" jdbcType="VARCHAR" />
+    <result column="depotname" property="depotname" jdbcType="VARCHAR" />
+    <result column="createpeople" property="createpeople" jdbcType="VARCHAR" />
+    <result column="shpeople" property="shpeople" jdbcType="VARCHAR" />
+    <result column="shdate" property="shdate" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="shstatus" property="shstatus" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="selectMaxIdnum"  resultType="java.lang.String" >
+    SELECT MAX(checkorder) FROM check_stock where checkdate =#{currentDate}
+  </select>
+
+  <select id="findCheckStock" resultMap="BaseResultMap">
+    select * from check_stock order by id desc
+  </select>
+
+  <select id="findCheckStockByOrders" resultMap="BaseResultMap">
+    select * from check_stock
+    <where>
+        <if test="orders != null and orders != ''">
+          and checkorder like concat(concat('%',#{orders}),'%')
+        </if>
+    </where>
+    order by id desc
+  </select>
+
+  <select id="findCheckStockNotSh" resultMap="BaseResultMap">
+    select * from check_stock where shstatus = 0 order by id desc
+  </select>
+
+  <select id="findCheckStockOrders" resultMap="BaseResultMap">
+    select * from check_stock where checkorder = #{orders}
+  </select>
+
+</mapper>

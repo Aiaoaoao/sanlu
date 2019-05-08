@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.account.AccountReceivableFeeMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.account.AccountReceivableFee" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="otherid" property="otherid" jdbcType="BIGINT" />
+    <result column="receive_no" property="receiveNo" jdbcType="VARCHAR" />
+    <result column="rush_money_can" property="rushMoneyCan" jdbcType="DECIMAL" />
+    <result column="rush_money_now" property="rushMoneyNow" jdbcType="DECIMAL" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="listAccountReceivableFee" resultMap="BaseResultMap">
+    select  * from account_receivable_fee where otherid = #{otherid} order by addtime desc
+  </select>
+
+  <delete id="deleteAccountReceivableFeeByParentId">
+    delete  from account_receivable_fee where otherid = #{otherid}
+  </delete>
+
+</mapper>

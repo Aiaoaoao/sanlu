@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.stock.ExpressMailMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.stock.ExpressMail" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="maildate" property="maildate" jdbcType="DATE" />
+    <result column="mailorder" property="mailorder" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="mailnum" property="mailnum" jdbcType="INTEGER" />
+    <result column="mailweight" property="mailweight" jdbcType="DOUBLE" />
+    <result column="contenttype" property="contenttype" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="paymethodtype" property="paymethodtype" jdbcType="INTEGER" />
+    <result column="paymethod" property="paymethod" jdbcType="VARCHAR" />
+    <result column="freighttype" property="freighttype" jdbcType="INTEGER" />
+    <result column="freightprice" property="freightprice" jdbcType="DOUBLE" />
+    <result column="ispay" property="ispay" jdbcType="INTEGER" />
+    <result column="ismonth" property="ismonth" jdbcType="INTEGER" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="ensure" property="ensure" jdbcType="DOUBLE" />
+    <result column="ensurepoint" property="ensurepoint" jdbcType="DOUBLE" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="createpeople" property="createpeople" jdbcType="VARCHAR" />
+    <result column="createdate" property="createdate" jdbcType="VARCHAR" />
+    <result column="updatepeople" property="updatepeople" jdbcType="VARCHAR" />
+    <result column="updatedate" property="updatedate" jdbcType="VARCHAR" />
+    <result column="shpeople" property="shpeople" jdbcType="VARCHAR" />
+    <result column="shdate" property="shdate" jdbcType="VARCHAR" />
+    <result column="shstatus" property="shstatus" jdbcType="INTEGER" />
+    <result column="mailid" property="mailid" jdbcType="VARCHAR" />
+    <result column="mailcompany" property="mailcompany" jdbcType="VARCHAR" />
+    <result column="mailprovince" property="mailprovince" jdbcType="VARCHAR" />
+    <result column="mailcity" property="mailcity" jdbcType="VARCHAR" />
+    <result column="mailarea" property="mailarea" jdbcType="VARCHAR" />
+    <result column="mailaddress" property="mailaddress" jdbcType="VARCHAR" />
+    <result column="mailpeople" property="mailpeople" jdbcType="VARCHAR" />
+    <result column="mailphone" property="mailphone" jdbcType="VARCHAR" />
+    <result column="collectid" property="collectid" jdbcType="VARCHAR" />
+    <result column="collectdes" property="collectdes" jdbcType="VARCHAR" />
+    <result column="collectcompany" property="collectcompany" jdbcType="VARCHAR" />
+    <result column="collectprovince" property="collectprovince" jdbcType="VARCHAR" />
+    <result column="collectcity" property="collectcity" jdbcType="VARCHAR" />
+    <result column="collectarea" property="collectarea" jdbcType="VARCHAR" />
+    <result column="collectaddress" property="collectaddress" jdbcType="VARCHAR" />
+    <result column="collectpeople" property="collectpeople" jdbcType="VARCHAR" />
+    <result column="collectphone" property="collectphone" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="selectMaxIdnum"  resultType="java.lang.String" >
+    SELECT MAX(collectorder) FROM express_mail where maildate =#{currentDate}
+  </select>
+
+  <select id="findExpressMail" resultMap="BaseResultMap">
+    select * from express_mail
+  </select>
+
+  <select id="findExpressMailByOrder" resultMap="BaseResultMap">
+select * from express_mail
+<where>
+  <if test="orders != null and orders != ''" >
+    and mailorder like concat(concat('%',#{orders}),'%')
+  </if>
+</where>
+order  by id desc
+  </select>
+
+  <select id="findExpressMailOrder" resultMap="BaseResultMap">
+    select * from express_mail where mailorder = #{orders}
+  </select>
+
+</mapper>

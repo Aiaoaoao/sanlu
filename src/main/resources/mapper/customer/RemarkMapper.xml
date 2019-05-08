@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.customer.RemarkMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.customer.Remark" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="otherid" property="otherid" jdbcType="BIGINT" />
+    <result column="typeid" property="typeid" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="listRemark" resultMap="BaseResultMap">
+        SELECT  * from remark where typeid = #{type} and otherid = #{otherid}
+      ORDER BY addtime desc
+    </select>
+
+  <delete id="deleteRemark" >
+        DELETE from remark where typeid = #{type} and otherid = #{otherid}
+    </delete>
+</mapper>

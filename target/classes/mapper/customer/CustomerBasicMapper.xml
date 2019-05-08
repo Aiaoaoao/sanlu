@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.customer.CustomerBasicMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.customer.CustomerBasic" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <id column="customer_id" property="customerId" jdbcType="BIGINT" />
+    <result column="country_id" property="countryId" jdbcType="BIGINT" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="payment_method" property="paymentMethod" jdbcType="VARCHAR" />
+    <result column="initial_quota" property="initialQuota" jdbcType="DECIMAL" />
+    <result column="initial_quota_money_type" property="initialQuotaMoneyType" jdbcType="VARCHAR" />
+    <result column="rush_money_date" property="rushMoneyDate" jdbcType="TIMESTAMP" />
+    <result column="shipping_address" property="shippingAddress" jdbcType="VARCHAR" />
+    <result column="shipping_address_remark" property="shippingAddressRemark" jdbcType="VARCHAR" />
+    <result column="primary_contactf" property="primaryContact" jdbcType="VARCHAR" />
+    <result column="archivist" property="archivist" jdbcType="VARCHAR" />
+    <result column="last_modifier" property="lastModifier" jdbcType="VARCHAR" />
+    <result column="establish_date" property="establishDate" jdbcType="VARCHAR" />
+    <result column="zip_code" property="zipCode" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="credit_line" property="creditLine" jdbcType="DECIMAL" />
+    <result column="credit_line_money_type" property="creditLineMoneyType" jdbcType="INTEGER" />
+    <result column="credit_line_remark" property="creditLineRemark" jdbcType="VARCHAR" />
+    <result column="minimum_discount" property="minimumDiscount" jdbcType="DOUBLE" />
+    <result column="contact_number" property="contactNumber" jdbcType="VARCHAR" />
+    <result column="document_date" property="documentDate" jdbcType="TIMESTAMP" />
+    <result column="last_modified_date" property="lastModifiedDate" jdbcType="TIMESTAMP" />
+    <result column="stop_use" property="stopUse" jdbcType="BIT" />
+    <result column="stop_use_str" property="stop_use_str" jdbcType="VARCHAR" />
+      <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+    <select id="getCustomerBasicByCustomerId" resultMap="BaseResultMap">
+        SELECT * FROM customer_basic WHERE customer_id = #{customerid} limit 0,1
+    </select>
+
+</mapper>

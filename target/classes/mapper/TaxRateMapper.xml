@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.TaxRateMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.TaxRate" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="starttime" property="starttime" jdbcType="DATE" />
+    <result column="endtime" property="endtime" jdbcType="DATE" />
+    <result column="nums" property="nums" jdbcType="DOUBLE" />
+    <result column="types" property="types" jdbcType="INTEGER" />
+    <result column="addtime" property="addtime" jdbcType="DATE" />
+  </resultMap>
+
+  <select id="selectTaxRateByOrderTime" resultType="java.lang.Double">
+
+    select nums from tax_rate
+
+    where starttime &lt;= #{orderTime} and endtime &gt;= #{orderTime} and types = #{types} or starttime &lt;= #{orderTime} and endtime is null and types = #{types}
+
+  </select>
+
+
+  <select id="selectTaxRatesLimit" resultMap="BaseResultMap">
+    select * from tax_rate  where types = #{types}  order by  id desc limit 1
+  </select>
+
+  <select id="selectTaxRatesByStartTimeAndEndTime" resultMap="BaseResultMap">
+     select * from tax_rate
+     where  str_to_date(starttime, '%Y-%m-%d') = str_to_date(#{startTime}, '%Y-%m-%d')
+     and  str_to_date(endtime, '%Y-%m-%d') = str_to_date(#{endTime}, '%Y-%m-%d') and types =#{types}
+
+     or str_to_date(starttime, '%Y-%m-%d') = str_to_date(#{startTime}, '%Y-%m-%d') and types =#{types}
+     limit 1
+  </select>
+
+</mapper>

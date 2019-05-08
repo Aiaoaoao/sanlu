@@ -1,0 +1,293 @@
+
+
+/* 一般背景色 */
+.general_background{
+    -fx-background-color: #EEE;
+}
+/* 标题栏背景颜色 */
+.title_bar_background{
+    -fx-background-color: #E8E7E3;
+}
+/* 标题栏 文字 */
+.title_bar_words{
+    -fx-font-size: 16;
+    -fx-label-padding: 0 0 0 10;
+    -fx-text-alignment: center;
+}
+/* 标题栏 状态 */
+.title_bar_words_state{
+    -fx-font-size: 16;
+    -fx-label-padding: 0 10 0 0;
+    -fx-text-alignment: center;
+}
+
+/* 菜单栏工具 */
+.menu_tools{
+    -fx-pref-width: 48;
+    -fx-pref-height: 65;
+}
+.menu_tools_inport{
+    -fx-pref-width: 60;
+    -fx-pref-height: 65;
+}
+/* 菜单工具中的文字 */
+.menu_words{
+    -fx-font-size: 12;
+}
+
+/* 鼠标悬停背景色 */
+.mouse_hover:hover{
+    -fx-background-color: #eee;
+    -fx-cursor: hand;
+}
+/* 菜单工具栏下的分割线 */
+.menu_underline{
+    -fx-background-color: #000;
+}
+
+.pan_bar_background{
+    -fx-background-color: #eee;
+}
+
+/* JFX TextField */
+.jfx_textfield{
+    -fx-background-color: #EEE;
+}
+/* 白色文本框 */
+.jfx_textfield_white{
+    -fx-background-color: #FFF;
+}
+/* 下拉框颜色 */
+.jfx_combobox{
+    -fx-background-color: #eee;
+}
+/* 灰色按钮 */
+.jfx_button{
+    -fx-background-color: #EEE;
+}
+/* 白色按钮 */
+.jfx_button_white{
+    -fx-background-color: #FFF;
+}
+
+.table-view .table-row-cell {
+
+    -fx-background-insets: 0;
+
+}
+.table-view .table-row-cell .table-cell {
+
+    -fx-border-width: 0px;
+
+}
+
+/* table-pane header color */
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: #7c7c7c;
+}
+
+/* 时间控件背景颜色 */
+.jfx-date-picker{
+    -jfx-default-color: #009688;
+}
+
+.jfx-check-box {
+    -jfx-unchecked-color: #5A5A5A;
+    -jfx-checked-color: #0F9D58;
+}
+
+.jfx-text-field {
+    -jfx-focus-color: #4059A9;
+    -jfx-unfocus-color: #4d4d4d;
+    -fx-padding: 0.333333em 0 0.333333em 0;
+}
+
+.jfx-combo-box {
+    -jfx-focus-color: #4059A900;
+    -jfx-unfocus-color: #4d4d4d00;
+    -fx-prompt-text-fill: #4d4d4d;
+}
+
+.mouse_hover:hover Label{
+    -fx-text-fill: #1F9659;
+}
+
+#firstimg{
+    -fx-background-image: url("/images/basic/fast.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.mouse_hover:hover #firstimg{
+    -fx-background-image: url("/images/basic/fasted.png") !important;
+    -fx-background-repeat:no-repeat;
+}
+
+
+
+#previmg{
+    -fx-background-image: url("/images/basic/prev.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.mouse_hover:hover #previmg{
+    -fx-background-image: url("/images/basic/preved.png") !important;
+    -fx-background-repeat:no-repeat;
+}
+
+
+#nextimg{
+    -fx-background-image: url("/images/basic/next.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.mouse_hover:hover #nextimg{
+    -fx-background-image: url("/images/basic/nexted.png") !important;
+    -fx-background-repeat:no-repeat;
+}
+
+#lastimg{
+    -fx-background-image: url("/images/basic/last.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.mouse_hover:hover #lastimg{
+    -fx-background-image: url("/images/basic/lasted.png") !important;
+    -fx-background-repeat:no-repeat;
+}
+#clearvboximg{
+    -fx-background-image: url("/images/basic/clear.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.mouse_hover:hover #clearvboximg{
+    -fx-background-image: url("/images/basic/cleared.png") !important;
+    -fx-background-repeat:no-repeat;
+}
+#submitvboximg{
+    -fx-background-image: url("/images/basic/commit.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.mouse_hover:hover #submitvboximg{
+    -fx-background-image: url("/images/basic/submited.png") !important;
+    -fx-background-repeat:no-repeat;
+}
+
+ #insertvboximg{
+     -fx-background-image: url("/images/basic/insert.png");
+     -fx-background-repeat:no-repeat;
+ }
+
+.mouse_hover:hover #insertvboximg{
+    -fx-background-image: url("/images/basic/inserted.png") !important;
+    -fx-background-repeat:no-repeat;
+}
+
+
+#updatevboximg{
+    -fx-background-image: url("/images/basic/update.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.mouse_hover:hover #updatevboximg{
+    -fx-background-image: url("/images/basic/updateed.png") !important;
+    -fx-background-repeat:no-repeat;
+}
+
+
+#deletevboximg{
+    -fx-background-image: url("/images/basic/delete.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.mouse_hover:hover #deletevboximg{
+    -fx-background-image: url("/images/basic/deleteed.png") !important;
+    -fx-background-repeat:no-repeat;
+}
+
+#copyimg{
+    -fx-background-image: url("/images/basic/copy.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.mouse_hover:hover #copyimg{
+    -fx-background-image: url("/images/basic/copyed.png") !important;
+    -fx-background-repeat:no-repeat;
+}
+
+/*审核*/
+#shyesimg{
+    -fx-background-image: url("/images/basic/sh.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.mouse_hover:hover #shyesimg{
+    -fx-background-image: url("/images/basic/shed.png") !important;
+    -fx-background-repeat:no-repeat;
+}
+
+/*取消审核*/
+#shnoimg{
+     -fx-background-image: url("/images/basic/qxsh.png");
+     -fx-background-repeat:no-repeat;
+ }
+
+.mouse_hover:hover #shnoimg{
+    -fx-background-image: url("/images/basic/qxshed.png") !important;
+    -fx-background-repeat:no-repeat;
+}
+
+/*导入*/
+#importDataimg{
+    -fx-background-image: url("/images/basic/dr.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.mouse_hover:hover #importDataimg{
+    -fx-background-image: url("/images/basic/dred.png") !important;
+    -fx-background-repeat:no-repeat;
+}
+
+    /*导出*/
+#importOutimg{
+    -fx-background-image: url("/images/basic/dc.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.mouse_hover:hover #importOutimg{
+    -fx-background-image: url("/images/basic/dced.png") !important;
+    -fx-background-repeat:no-repeat;
+}
+
+/* 导出按钮颜色 */
+.import_button Button{
+    -fx-background-color: #CCCCCC;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+}
+/* 导出按钮颜色 */
+.import_button Button:hover{
+    -fx-background-color: #169252;
+}
+/* 导出按钮颜色 */
+.import_button Button:pressed{
+    -fx-background-color: green;
+}
+
+.down_pane{
+    -fx-background-color: #D7D7D7;
+}
+
+.import_menu{
+    -fx-pref-width: 60;
+    -fx-pref-height: 65;
+}
+
+.rightSelectHover:hover{
+    -fx-background-color: #EEE;
+}
+
+#rightImg{
+    -fx-background-image: url("/images/basic/delete.png");
+    -fx-background-repeat:repeat;
+}

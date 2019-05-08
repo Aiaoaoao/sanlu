@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.stock.StockOutSaleProductMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.stock.StockOutSaleProduct" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="stock_out_sale_id" property="stockOutSaleId" jdbcType="BIGINT" />
+    <result column="order_source" property="orderSource" jdbcType="VARCHAR" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="product_no" property="productNo" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="warehouse_name" property="warehouseName" jdbcType="VARCHAR" />
+    <result column="floor" property="floor" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <association property="stockOutSales" javaType="com.yc.education.model.stock.StockOutSale">
+      <id column="id" property="id" jdbcType="BIGINT" />
+      <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+      <result column="outbound_no" property="outboundNo" jdbcType="VARCHAR" />
+      <result column="warehouse_in" property="warehouseIn" jdbcType="VARCHAR" />
+      <result column="warehouse_in_str" property="warehouseInStr" jdbcType="VARCHAR" />
+      <result column="customer_no" property="customerNo" jdbcType="VARCHAR" />
+      <result column="customer_no_str" property="customerNoStr" jdbcType="VARCHAR" />
+      <result column="made_people" property="madePeople" jdbcType="VARCHAR" />
+      <result column="audit" property="audit" jdbcType="VARCHAR" />
+      <result column="audit_str" property="auditStr" jdbcType="VARCHAR" />
+      <result column="last_update" property="lastUpdate" jdbcType="VARCHAR" />
+      <result column="last_update_str" property="lastUpdateStr" jdbcType="VARCHAR" />
+      <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+      <result column="order_audit" property="orderAudit" jdbcType="BIT" />
+    </association>
+  </resultMap>
+
+
+  <delete id="deleteStockOutSaleProductByParentId">
+    DELETE from stock_out_sale_product where stock_out_sale_id = #{otherid}
+  </delete>
+
+  <select id="listStockOutSaleProduct" resultMap="BaseResultMap">
+    SELECT * from stock_out_sale_product where stock_out_sale_id = #{orderid}
+  </select>
+
+  <select id="selectStockOutSaleProductByProductNameAndStartTimeAndEndTime" resultMap="BaseResultMap">
+  select * from stock_out_sale_product sosp , stock_out_sale sos
+  <where>
+
+    and sosp.stock_out_sale_id =  sos.id
+
+    and sosp.product_no = #{productName}
+
+    <if test="startTime != null and startTime != ''" >
+      and str_to_date(sos.addtime, '%Y-%m-%d') &gt;= str_to_date(#{startTime}, '%Y-%m-%d')
+    </if>
+    <if test="endTime != null and endTime != ''" >
+      and str_to_date(sos.addtime, '%Y-%m-%d') &lt;= str_to_date(#{endTime}, '%Y-%m-%d')
+    </if>
+  </where>
+   order by  sos.addtime
+  </select>
+
+</mapper>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.customer.InvoiceMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.customer.Invoice">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="customer_id" jdbcType="BIGINT" property="customerId" />
+    <result column="usual" jdbcType="BIT" property="usual" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="contact" jdbcType="VARCHAR" property="contact" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+    <result column="disdate" jdbcType="TIMESTAMP" property="disdate" />
+    <result column="disabled" property="disabled" jdbcType="BIT" />
+  </resultMap>
+
+  <update id="updateInvoiceDefault">
+        update invoice
+
+        <choose>
+          <when test="type == '1'.toString()">
+            set usual = 1
+          </when>
+          <when test="type == '2'.toString()">
+            set disabled = 1
+          </when>
+        </choose>
+        <choose>
+          <when test="date == 'date'.toString()">
+            , disdate = NOW()
+          </when>
+        </choose>
+        where id = #{id}
+    </update>
+
+  <update id="updateClearInvoiceDefault" >
+        update invoice
+    <choose>
+      <when test="type == '1'.toString()">
+        set usual = 0
+      </when>
+      <when test="type == '2'.toString()">
+        set disabled = 0
+      </when>
+    </choose>
+    where customer_id = #{customerid}
+    </update>
+
+  <select id="listInvoice" resultMap="BaseResultMap">
+        SELECT * FROM invoice ORDER BY  usual desc ,addtime desc
+    </select>
+
+  <select id="listInvoiceByCustomerId" resultMap="BaseResultMap">
+        SELECT * FROM invoice WHERE customer_id = #{customerid} order by  usual desc ,addtime desc
+  </select>
+
+  <delete id="deleteInvoiceByCustomerId">
+    delete from invoice where id = #{customerid}
+  </delete>
+
+</mapper>

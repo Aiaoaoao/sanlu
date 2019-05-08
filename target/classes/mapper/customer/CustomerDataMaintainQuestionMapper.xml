@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.customer.CustomerDataMaintainQuestionMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.customer.CustomerDataMaintainQuestion" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="maintain_id" property="maintainId" jdbcType="BIGINT" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+    <select id="listCustomerDataMaintainQuestion" resultMap="BaseResultMap">
+        SELECT * FROM customer_data_maintain_question
+        <where>
+            <if test="content!=''">
+                AND content  like concat(concat('%',#{content}),'%')
+            </if>
+        </where>
+        ORDER BY addtime desc
+    </select>
+
+    <select id="listCustomerDataMaintainQuestionByCustomerDemandId" resultMap="BaseResultMap">
+        SELECT * from customer_data_maintain_question WHERE maintain_id = #{maintainId}
+    </select>
+
+    <select id="listCustomerDataMaintainQuestionByType" resultMap="BaseResultMap">
+        SELECT * from customer_data_maintain_question WHERE maintain_id = #{maintainId} and `type` = #{type}
+    </select>
+
+    <delete id="deleteCustomerDataMaintainQuestionByCustomerDemandId">
+        DELETE from customer_data_maintain_question where maintain_id = #{maintainId}
+    </delete>
+</mapper>

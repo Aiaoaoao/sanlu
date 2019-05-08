@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- 年度销售统计 -->
+
+<AnchorPane maxWidth="1143.0" prefHeight="710.0" prefWidth="1143.0" stylesheets="@../../css/basic.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+    <children>
+        <HBox prefHeight="30.0" prefWidth="1143.0" styleClass="title_bar_background" stylesheets="@/css/basic.css">
+            <children>
+                <Label   prefHeight="30.0" prefWidth="129.0" styleClass="title_bar_words" text="年度销售统计">
+                </Label>
+            </children>
+        </HBox>
+      <Label layoutX="54.0" layoutY="93.0" text="公司别：" />
+      <Label layoutX="44.0" layoutY="301.0" text="统计时间：" />
+      <Pane layoutX="5.0" layoutY="665.0" prefHeight="63.0" prefWidth="1143.0" style="-fx-background-color: #eee;">
+         <children>
+            <Button layoutX="353.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="预览" />
+            <Button layoutX="446.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="Excel" />
+            <Button layoutX="634.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="打印" />
+            <Button layoutX="541.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="Word" />
+            <Button layoutX="724.0" layoutY="17.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #FFF;" text="退出" />
+         </children>
+      </Pane>
+      <Label layoutX="63.0" layoutY="60.0" text="条件" />
+      <DatePicker layoutX="108.0" layoutY="298.0" prefHeight="23.0" prefWidth="145.0" />
+      <TextArea  layoutX="108.0" layoutY="93.0" prefHeight="193.0" prefWidth="269.0" styleClass="jfx_textfield"  />
+      <CheckBox layoutX="117.0" layoutY="99.0" text="全部仓库" />
+      <CheckBox layoutX="117.0" layoutY="124.0" text="三禄" />
+      <CheckBox layoutX="117.0" layoutY="148.0" text="三禄一号库" />
+      <CheckBox layoutX="117.0" layoutY="173.0" text="三禄二号库" />
+      <CheckBox layoutX="117.0" layoutY="222.0" text="三禄四号库" />
+      <CheckBox layoutX="117.0" layoutY="198.0" text="三禄三号库" />
+
+
+    </children>
+</AnchorPane>

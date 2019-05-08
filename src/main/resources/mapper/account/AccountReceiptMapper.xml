@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.account.AccountReceiptMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.account.AccountReceipt" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="customer_no" jdbcType="VARCHAR" property="customerNo" />
+    <result column="customer_no_str" jdbcType="VARCHAR" property="customerNoStr" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="currency_type" jdbcType="VARCHAR" property="currencyType" />
+    <result column="rate" jdbcType="VARCHAR" property="rate" />
+    <result column="receipt_method" jdbcType="VARCHAR" property="receiptMethod" />
+    <result column="receipt_type" jdbcType="VARCHAR" property="receiptType" />
+    <result column="receipt_money" jdbcType="VARCHAR" property="receiptMoney" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+    <result column="receipt_people" jdbcType="VARCHAR" property="receiptPeople" />
+    <result column="receipt_people_str" jdbcType="VARCHAR" property="receiptPeopleStr" />
+    <result column="token_no" jdbcType="VARCHAR" property="tokenNo" />
+    <result column="made_people" jdbcType="VARCHAR" property="madePeople" />
+    <result column="token_date" jdbcType="TIMESTAMP" property="tokenDate" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="audit" jdbcType="VARCHAR" property="audit" />
+    <result column="audit_str" jdbcType="VARCHAR" property="auditStr" />
+    <result column="last_update" jdbcType="VARCHAR" property="lastUpdate" />
+    <result column="last_update_str" jdbcType="VARCHAR" property="lastUpdateStr" />
+    <result column="not_receipt_money" jdbcType="BIT" property="notReceiptMoney" />
+    <result column="order_audit" jdbcType="BIT" property="orderAudit" />
+    <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+  </resultMap>
+
+
+  <select id="listAccountReceiptNotShiroOrBalance" resultMap="BaseResultMap">
+    select * from account_receipt
+    <where>
+      and order_audit = 0  or order_audit = 1 and balance > 0
+      <if test="customerNo != null and customerNo != ''">
+        and customer_no = #{customerNo}
+      </if>
+      <if test="dateBen != null and dateBen != ''">
+        and #{dateBen} &lt;= create_date
+      </if>
+      <if test="dateEnd != null and dateEnd != ''">
+        and #{dateEnd}  &gt;= create_date
+      </if>
+    </where>
+    order by addtime asc
+  </select>
+
+  <select id="listAccountReceiptByWhere" resultMap="BaseResultMap">
+    SELECT * FROM account_receipt g
+    <where>
+      <if test="dateBen != null and dateBen != ''">
+        and #{dateBen} &lt;= g.create_date
+      </if>
+      <if test="dateEnd != null and dateEnd != ''">
+        and #{dateEnd}  &gt;= g.create_date
+      </if>
+      <if test="customerNo != null and customerNo != ''">
+        and #{customerNo} &lt;= g.customer_no
+      </if>
+      <if test="customerNoEnd != null and customerNoEnd != ''">
+        and #{customerNoEnd}  &gt;= g.customer_no
+      </if>
+    </where>
+    ORDER BY g.addtime asc
+  </select>
+
+  <!--查询最订单号-->
+  <select id="getMaxOrderNo" resultType="java.lang.String">
+  SELECT MAX(order_no) FROM account_receipt
+  </select>
+
+  <select id="listOrderNoLike" resultMap="BaseResultMap">
+    SELECT * FROM account_receipt
+    <where>
+      <if test="orderNo != null and orderNo != ''">
+        and order_no like concat(concat('%',#{orderNo}),'%')
+      </if>
+    </where>
+    ORDER BY addtime desc
+  </select>
+
+  <select id="listAccountReceipt" resultMap="BaseResultMap">
+    select * from account_receipt
+    <where>
+      <if test="text != null and text != ''">
+        and order_no like concat(concat('%',#{text}),'%')
+        or  customer_no_str like concat(concat('%',#{text}),'%')
+      </if>
+    </where>
+    order by addtime desc
+  </select>
+
+  <select id="getByOrderNo" resultMap="BaseResultMap">
+    select * from account_receipt where order_no = #{orderno} limit 0,1
+  </select>
+
+  <select id="listAccountReceiptNotSh" resultMap="BaseResultMap">
+    select * from account_receipt where order_audit = 0 order by id desc
+  </select>
+
+</mapper>

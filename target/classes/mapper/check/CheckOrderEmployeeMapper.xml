@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.check.CheckOrderEmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.check.CheckOrderEmployee" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="employeeorder" property="employeeorder" jdbcType="VARCHAR" />
+    <result column="employeename" property="employeename" jdbcType="VARCHAR" />
+    <result column="checkid" property="checkid" jdbcType="BIGINT" />
+  </resultMap>
+
+  <select id="findCheckOrderEmployees" resultMap="BaseResultMap">
+    select * from check_order_Employee where checkid = #{checkid}
+  </select>
+
+</mapper>

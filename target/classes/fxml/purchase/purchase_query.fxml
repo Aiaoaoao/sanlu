@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+
+<!-- 最新采购查询 -->
+
+<AnchorPane maxWidth="1143.0" prefHeight="710.0" prefWidth="1143.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yc.education.controller.purchase.PurchaseFindController">
+    <children>
+        <HBox prefHeight="30.0" prefWidth="1143.0" styleClass="title_bar_background" stylesheets="@/css/basic.css">
+            <children>
+                <Label prefHeight="30.0" prefWidth="116.0" styleClass="title_bar_words" text="最新采购查询">
+                </Label>
+                <Label prefHeight="30.0" prefWidth="105.0" styleClass="title_bar_words_state" text="【待输入】">
+                </Label>
+            </children>
+        </HBox>
+        <VBox layoutY="31.0" prefHeight="0.0" prefWidth="1143.0" styleClass="menu_underline" stylesheets="@/css/basic.css" AnchorPane.bottomAnchor="679.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0" />
+        <Pane layoutX="20.0" layoutY="41.0" prefHeight="161.0" prefWidth="698.0" stylesheets="@/css/basic.css">
+            <children>
+                <Label layoutY="6.0" text="产品编号：" />
+                <TextField fx:id="leftorder" layoutX="328.0" layoutY="2.0" />
+                <Button fx:id="leftbutton" defaultButton="true" layoutX="495.0" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#leftButton" text="..." />
+            <TextField fx:id="rightorder" layoutX="60.0" layoutY="2.0" />
+            <Button fx:id="rightbutton" defaultButton="true" layoutX="225.0" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#rightButton" text="..." />
+            <Line endX="60.0" layoutX="253.0" layoutY="14.0" startX="10.0" />
+            <Label layoutY="40.0" text="产品名称：" />
+            <TextField fx:id="rightname" layoutX="60.0" layoutY="36.0" prefHeight="23.0" prefWidth="179.0" />
+            <TextField fx:id="leftname" layoutX="328.0" layoutY="36.0" prefHeight="23.0" prefWidth="179.0" />
+            <Line endX="60.0" layoutX="253.0" layoutY="48.0" startX="10.0" />
+            <Button fx:id="querybutton" layoutX="516.0" layoutY="114.0" mnemonicParsing="false" onMouseClicked="#submitButton" prefHeight="23.0" prefWidth="60.0" text="查询" />
+            <Label layoutY="77.0" text="产品大类：" />
+            <ComboBox fx:id="rightcom" layoutX="58.0" layoutY="73.0" prefHeight="25.0" prefWidth="179.0" />
+            <Line endX="60.0" layoutX="253.0" layoutY="84.0" startX="10.0" />
+            <ComboBox fx:id="leftcom" layoutX="328.0" layoutY="73.0" prefHeight="25.0" prefWidth="179.0" />
+            <Button layoutX="585.0" layoutY="114.0" mnemonicParsing="false" onMouseClicked="#clearButton" prefHeight="23.0" prefWidth="60.0" text="清空" />
+            <Label layoutY="117.0" text="制单日期：" />
+            <DatePicker fx:id="rightdate" layoutX="57.0" layoutY="113.0" prefHeight="25.0" prefWidth="179.0" />
+            <Line endX="60.0" layoutX="253.0" layoutY="124.0" startX="10.0" />
+            <DatePicker fx:id="leftdate" layoutX="328.0" layoutY="111.0" prefHeight="25.0" prefWidth="179.0" />
+            </children>
+        </Pane>
+        <VBox layoutY="208.0" prefHeight="503.0" prefWidth="1143.0">
+
+            <HBox layoutY="1.0" prefHeight="30.0" prefWidth="1143.0" style="-fx-background-color: #FFF;" styleClass="items">
+                <children>
+                    <VBox fx:id="stock_find_fast" onMouseClicked="#findStockPages" prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">
+                        <children>
+                            <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../images/basic/fast.png" />
+                                </image>
+                                <VBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                                </VBox.margin>
+                            </ImageView>
+                        </children>
+                    </VBox>
+                    <VBox fx:id="stock_find_prev" onMouseClicked="#findStockPages" prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">
+                        <children>
+                            <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../images/basic/prev.png" />
+                                </image>
+                                <VBox.margin>
+                                    <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                </VBox.margin>
+                            </ImageView>
+                        </children>
+                    </VBox>
+                    <VBox fx:id="stock_find_next" onMouseClicked="#findStockPages" prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">
+                        <children>
+                            <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../images/basic/next.png" />
+                                </image>
+                                <VBox.margin>
+                                    <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                </VBox.margin>
+                            </ImageView>
+                        </children>
+                    </VBox>
+                    <VBox fx:id="stock_find_last" onMouseClicked="#findStockPages" prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">
+                        <children>
+                            <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../images/basic/last.png" />
+                                </image>
+                                <VBox.margin>
+                                    <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                </VBox.margin>
+                            </ImageView>
+                        </children>
+                    </VBox>
+                    <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                        <!--<children>-->
+                            <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                <!--<image>-->
+                                    <!--<Image url="@../../images/basic/commit.png" />-->
+                                <!--</image>-->
+                                <!--<VBox.margin>-->
+                                    <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                <!--</VBox.margin>-->
+                            <!--</ImageView>-->
+                        <!--</children>-->
+                    <!--</VBox>-->
+                    <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                        <!--<children>-->
+                            <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                <!--<image>-->
+                                    <!--<Image url="@../../images/basic/copy.png" />-->
+                                <!--</image>-->
+                                <!--<VBox.margin>-->
+                                    <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                <!--</VBox.margin>-->
+                            <!--</ImageView>-->
+                        <!--</children>-->
+                    <!--</VBox>-->
+                    <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                        <!--<children>-->
+                            <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                <!--<image>-->
+                                    <!--<Image url="@../../images/basic/clear.png" />-->
+                                <!--</image>-->
+                                <!--<VBox.margin>-->
+                                    <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                <!--</VBox.margin>-->
+                            <!--</ImageView>-->
+                        <!--</children>-->
+                    <!--</VBox>-->
+                    <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                        <!--<children>-->
+                            <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                <!--<image>-->
+                                    <!--<Image url="@../../images/basic/copy.png" />-->
+                                <!--</image>-->
+                                <!--<VBox.margin>-->
+                                    <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                <!--</VBox.margin>-->
+                            <!--</ImageView>-->
+                        <!--</children>-->
+                    <!--</VBox>-->
+                    <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                        <!--<children>-->
+                            <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                <!--<image>-->
+                                    <!--<Image url="@../../images/u85.png" />-->
+                                <!--</image>-->
+                                <!--<VBox.margin>-->
+                                    <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                <!--</VBox.margin>-->
+                            <!--</ImageView>-->
+                        <!--</children>-->
+                    <!--</VBox>-->
+                    <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                        <!--<children>-->
+                            <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                <!--<image>-->
+                                    <!--<Image url="@../../images/u80.png" />-->
+                                <!--</image>-->
+                                <!--<VBox.margin>-->
+                                    <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                <!--</VBox.margin>-->
+                            <!--</ImageView>-->
+                        <!--</children>-->
+                    <!--</VBox>-->
+                    <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                        <!--<children>-->
+                            <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                <!--<image>-->
+                                    <!--<Image url="@../../images/basic/delete.png" />-->
+                                <!--</image>-->
+                                <!--<VBox.margin>-->
+                                    <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                <!--</VBox.margin>-->
+                            <!--</ImageView>-->
+                        <!--</children>-->
+                    <!--</VBox>-->
+                    <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                        <!--<children>-->
+                            <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                <!--<image>-->
+                                    <!--<Image url="@../../images/basic/insert.png" />-->
+                                <!--</image>-->
+                                <!--<VBox.margin>-->
+                                    <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                <!--</VBox.margin>-->
+                            <!--</ImageView>-->
+                        <!--</children>-->
+                    <!--</VBox>-->
+                    <!--<VBox prefHeight="31.0" prefWidth="25.0" styleClass="btn_hover" stylesheets="@/css/customer/customer_base.css">-->
+                        <!--<children>-->
+                            <!--<ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">-->
+                                <!--<image>-->
+                                    <!--<Image url="@../../images/basic/insertdepot.png" />-->
+                                <!--</image>-->
+                                <!--<VBox.margin>-->
+                                    <!--<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />-->
+                                <!--</VBox.margin>-->
+                            <!--</ImageView>-->
+                        <!--</children>-->
+                    <!--</VBox>-->
+                </children>
+            </HBox>
+            <TableView fx:id="findPurchaseProduct" layoutY="31.0" prefHeight="483.0" prefWidth="1143.0">
+                <columns>
+                    <TableColumn prefWidth="50.0" text="" />
+                    <TableColumn fx:id="pronum" prefWidth="150.0" text="产品编号" />
+                    <TableColumn fx:id="proname" prefWidth="150.0" text="产品名称" />
+                    <TableColumn fx:id="protype" prefWidth="100.0" text="产品大类" />
+                    <TableColumn fx:id="purchasenum" prefWidth="100.0" text="采购数量" />
+                    <TableColumn fx:id="proremark" prefWidth="100.0" text="产品备注" />
+                    <TableColumn fx:id="purchaseorder" prefWidth="150.0" text="采购单号" />
+                    <TableColumn fx:id="seeorder" prefWidth="150.0" text="参考单号" />
+                    <TableColumn fx:id="createdate" prefWidth="120.0" text="制单日期" />
+                </columns>
+            </TableView>
+
+        </VBox>
+    </children>
+</AnchorPane>

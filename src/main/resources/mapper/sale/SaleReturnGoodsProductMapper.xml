@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.sale.SaleReturnGoodsProductMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.sale.SaleReturnGoodsProduct" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="return_goods_id" property="returnGoodsId" jdbcType="BIGINT" />
+    <result column="product_no" property="productNo" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="pricing" property="pricing" jdbcType="DECIMAL" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="warehouse_position" property="warehousePosition" jdbcType="VARCHAR" />
+    <result column="floor" property="floor" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="inbound_num" property="inboundNum" jdbcType="INTEGER" />
+    <association property="saleReturnGoods" javaType="com.yc.education.model.sale.SaleReturnGoods" >
+      <id column="id" property="id" jdbcType="BIGINT" />
+      <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+      <result column="pinback_no" property="pinbackNo" jdbcType="VARCHAR" />
+      <result column="early_document" property="earlyDocument" jdbcType="BIT" />
+      <result column="customer_no" property="customerNo" jdbcType="VARCHAR" />
+      <result column="customer_no_str" property="customerNoStr" jdbcType="VARCHAR" />
+      <result column="business_leader" property="businessLeader" jdbcType="VARCHAR" />
+      <result column="business_leader_str" property="businessLeaderStr" jdbcType="VARCHAR" />
+      <result column="tax" property="tax" jdbcType="INTEGER" />
+      <result column="currency" property="currency" jdbcType="VARCHAR" />
+      <result column="warehouse_in" property="warehouseIn" jdbcType="INTEGER" />
+      <result column="warehouse_location" property="warehouseLocation" jdbcType="INTEGER" />
+      <result column="warehouse_location_str" property="warehouseLocationStr" jdbcType="VARCHAR" />
+      <result column="return_reason" property="returnReason" jdbcType="VARCHAR" />
+      <result column="remark" property="remark" jdbcType="VARCHAR" />
+      <result column="return_reason_people" property="returnReasonPeople" jdbcType="VARCHAR" />
+      <result column="made_people" property="madePeople" jdbcType="VARCHAR" />
+      <result column="audit_people" property="auditPeople" jdbcType="VARCHAR" />
+      <result column="audit_people_str" property="auditPeopleStr" jdbcType="VARCHAR" />
+      <result column="last_update" property="lastUpdate" jdbcType="VARCHAR" />
+      <result column="last_update_str" property="lastUpdateStr" jdbcType="VARCHAR" />
+      <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+      <result column="order_audit" property="orderAudit" jdbcType="BIT" />
+      <result column="invalid" property="invalid" jdbcType="BIT" />
+      <result column="tax_rate" property="taxRate" jdbcType="FLOAT" />
+      <result column="ticket" property="ticket" jdbcType="BIT" />
+    </association>
+  </resultMap>
+
+
+  <update id="updateSaleReturnGoodsProductInboundNum">
+      UPDATE sale_return_goods_product p set p.inbound_num = (p.inbound_num + #{num})
+    where p.product_no = #{productNo} and p.return_goods_id = (select id from sale_return_goods  where pinback_no = #{orderNo});
+  </update>
+
+  <select id="getSaleReturnGoodsProductBySaleNum" resultMap="BaseResultMap">
+    SELECT * from sale_return_goods_product where return_goods_id = (SELECT id from sale_return_goods where pinback_no = #{orderNo}) and product_no = #{productNo}
+  </select>
+
+  <select id="listTimeWhere" resultMap="BaseResultMap">
+    SELECT * FROM sale_return_goods_product p,sale_return_goods g
+    <where>
+      and  p.return_goods_id = g.id
+      <if test="state != null and state != ''">
+        and g.ticket = #{state}
+      </if>
+      <if test="customerNo != null and customerNo != ''">
+        and g.customer_no = #{customerNo}
+      </if>
+      <if test="ben != null and ben != ''">
+        and p.addtime &gt;= #{ben}
+      </if>
+      <if test="end != null and end != ''">
+        and p.addtime &lt;= #{end}
+      </if>
+    </where>
+    ORDER BY p.addtime desc
+  </select>
+
+  <select id="listSaleReturnGoodsProduct" resultMap="BaseResultMap">
+    SELECT * from sale_return_goods_product where return_goods_id = #{orderid}
+  </select>
+  
+  <delete id="deleteSaleReturnGoodsProductByParentId">
+    delete from sale_return_goods_product where return_goods_id = #{orderid}
+  </delete>
+
+  <select id="selectSaleReturnGoodsProductdByProductNameAndStartTimeAndEndTime" resultMap="BaseResultMap">
+    select * from sale_return_goods_product srgp ,sale_return_goods srg
+     <where>
+      and srgp.return_goods_id = srg.id
+
+       and srgp.product_no =  #{productName}
+
+       <if test="startTime != null and startTime != ''" >
+         and str_to_date(srgp.addtime, '%Y-%m-%d') &gt;= str_to_date(#{startTime}, '%Y-%m-%d')
+       </if>
+       <if test="endTime != null and endTime != ''" >
+         and str_to_date(srgp.addtime, '%Y-%m-%d') &lt;= str_to_date(#{endTime}, '%Y-%m-%d')
+       </if>
+     </where>
+
+     order by srgp.addtime
+  </select>
+
+</mapper>

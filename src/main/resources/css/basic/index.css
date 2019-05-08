@@ -1,0 +1,35 @@
+
+#topPane{
+    -fx-background-color: #CCCCCC;
+}
+
+#vboxPane{
+    -fx-background-color: #FFFFFF;
+}
+#downPane{
+    -fx-background-color: #FFFFFF;
+}
+
+.hover-box:hover{
+
+    /*-fx-border-radius: 2;*/
+
+    -fx-background-color:#CCCCCC;
+
+}
+
+.insertWarehouse:hover{
+    -fx-background-color:#CCCCCC;
+}
+
+
+
+
+
+
+
+
+
+
+
+

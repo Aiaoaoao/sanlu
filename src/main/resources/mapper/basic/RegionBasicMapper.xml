@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.education.mapper.basic.RegionBasicMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.education.model.basic.RegionBasic" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="isnum" property="isnum" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+
+  <select id="selectProductBasic"  resultMap="BaseResultMap">
+  SELECT * FROM REGION_BASIC order by id DESC
+  </select>
+
+
+  <select id="selectProductBasicByOrderAndName" resultMap="BaseResultMap">
+    SELECT * FROM REGION_BASIC
+    <where>
+      <if test="OrderAndName != null and OrderAndName != ''">
+        and isnum like concat(concat('%',#{OrderAndName}),'%') or  area like concat(concat('%',#{OrderAndName}),'%')
+      </if>
+    </where>
+    order by id DESC
+  </select>
+
+  <select id="selectProductBasicByIsnum" resultMap="BaseResultMap">
+  select * from REGION_BASIC WHERE  isnum =#{isnum}
+  </select>
+
+
+
+</mapper>
